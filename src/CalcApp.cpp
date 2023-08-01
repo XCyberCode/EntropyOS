@@ -17,26 +17,26 @@ unsigned char calculatorIcon[] = {
 
 void CalcApp::draw()
 {
-  framework.begin();
-  framework.clearBuffer();
-
-  testButton.positionX = 0;
-  testButton.positionY = 20;
-  testButton.text = "Hello";
-  testButton.sizeX = 30;
-  testButton.sizeY = 30;
+  disp.begin();
+  testButton.positionX = 3;
+  testButton.positionY = 17;
+  testButton.text = "Hello, Framework!";
+  testButton.width = 120;
+  testButton.height = 30;
   testButton.isHighlighted = true;
-  testButton.textAnchor = "bottom";
+  testButton.textAnchorV = "center";
+  testButton.textAnchorH = "center";
  
-  testIcon.size[0] = 22;
-  testIcon.size[1] = 22;
+  testIcon.width = 22;
+  testIcon.height = 22;
 
   while(1)
   {
+    testButton.isHighlighted = !testButton.isHighlighted;
     disp.clearBuffer();
     //testIcon.draw(calculatorIcon);
     testButton.draw();
     disp.sendBuffer();
-    delay(50);
+    delay(400);
   }
 }

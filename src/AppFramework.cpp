@@ -3,27 +3,6 @@
 
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C disp(U8G2_R0);
 
-int AppFramework::getStrWidth(String str)
-{
-  return disp.getUTF8Width(str.c_str());
-}
-
-void AppFramework::begin()
-{
-  disp.begin();
-  disp.setFont(u8g2_font_5x7_tr);
-}
-
-void AppFramework::clearBuffer()
-{
-  disp.clearBuffer();
-}
-
-void AppFramework::sendBuffer()
-{
-  disp.sendBuffer();
-}
-
 void Button::draw()
 {
   // Draw Frame
@@ -32,11 +11,12 @@ void Button::draw()
     disp.drawFrame(
       positionX, 
       positionY, 
-      sizeX,
-      sizeY
+      width,
+      height
     );
   }
   
+  /*
   // Text Positioning
   if(textAnchor == "top")
   {
@@ -50,7 +30,7 @@ void Button::draw()
   {
     disp.drawStr(
       positionX + 2, 
-      positionY + floor(sizeY / 2) + 3, 
+      positionY + height / 2 + 3, 
       text.c_str()
     );
   }
@@ -58,10 +38,40 @@ void Button::draw()
   {
     disp.drawStr(
       positionX + 2, 
-      positionY + sizeY - 2, 
+      positionY + height - 2, 
       text.c_str()
     );
+  }*/
+
+  disp.setFont(u8g2_font_6x10_tf);
+  short textX, textY;
+  if(textAnchorV == "top")
+  {
+    textY = positionY + 8;
   }
+  else if(textAnchorV == "center")
+  {
+    textY = positionY + floor(height / 2) + 3;
+  }
+  else if(textAnchorV == "bottom")
+  {
+    textY = positionY + height - 2;
+  };
+
+  if(textAnchorH == "left")
+  {
+    textX = positionX + 2;
+  }
+  else if(textAnchorH == "center")
+  {
+    textX = positionX + (width / 2 - disp.getStrWidth(text.c_str()) / 2);
+  }
+  else if(textAnchorH == "right")
+  {
+    textX = positionX + (positionX + width - disp.getStrWidth(text.c_str()) - 5);
+  }
+
+  disp.drawStr(textX, textY, text.c_str());
 
   if(isHighlighted)
   {
@@ -69,8 +79,8 @@ void Button::draw()
     disp.drawBox(
       positionX + 1, 
       positionY + 1, 
-      sizeX - 2, 
-      sizeY - 2
+      width - 2, 
+      height - 2
     );
     disp.setDrawColor(1);
   }
@@ -78,10 +88,10 @@ void Button::draw()
 
 void TextLabel::draw()
 {
-  disp.drawStr((isCentered) ? 64 - disp.getUTF8Width(text.c_str()) / 2 : position[0], position[1], text.c_str()); 
+  disp.drawStr((textAnchor == "center") ? 64 - disp.getUTF8Width(text.c_str()) / 2 : positionX, positionY, text.c_str()); 
 }
 
 void Icon::draw(unsigned char image[])
 {
-  disp.drawXBMP(position[0], position[1], size[0], size[1], image);
+  disp.drawXBMP(positionX, positionY, width, height, image);
 }
