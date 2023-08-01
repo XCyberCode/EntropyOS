@@ -33,10 +33,10 @@ void CalcApp::draw()
 
   while(1)
   {
-    framework.clearBuffer();
+    disp.clearBuffer();
     //testIcon.draw(calculatorIcon);
     testButton.draw();
-    framework.sendBuffer();
+    disp.sendBuffer();
     delay(50);
   }
 }
