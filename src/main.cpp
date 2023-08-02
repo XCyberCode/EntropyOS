@@ -3,13 +3,13 @@
 #include <TimerMs.h>
 #include <EncButton.h>
 
-#include <CalcApp.hpp>
+#include <TestApp.hpp>
 
 AppFramework mainFramework;
 //Button testButton;
 //TextLabel testLabel;
 
-CalcApp calculator;
+TestApp calculator;
 
 EncButton<EB_TICK, 27> leftBtn;
 EncButton<EB_TICK, 26> centerBtn;

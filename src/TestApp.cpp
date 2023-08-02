@@ -1,5 +1,5 @@
 #include <AppFramework.hpp>
-#include <CalcApp.hpp>
+#include <TestApp.hpp>
 
 AppFramework framework;
 Button testButton;
@@ -15,7 +15,7 @@ unsigned char calculatorIcon[] = {
   0x00,0x05,0xc0,0x00,0x02,0xc0
 };
 
-void CalcApp::draw()
+void TestApp::draw()
 {
   disp.begin();
   testButton.positionX = 3;

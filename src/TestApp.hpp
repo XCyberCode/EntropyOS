@@ -1,4 +1,4 @@
-class CalcApp
+class TestApp
 {
   public:
     void draw();
