@@ -18,15 +18,16 @@ class Button
 {
   public:
     // Vars
-    String text = "N"; // Widget text
+    String text = "NONE"; // Widget text
     short width, height; // Widget size 
-    short positionX, positionY; // Widget position
-    // UNUSED. WILL BE REMOVED. === String anchor = "center"; 
+    short positionX, positionY; // Widget position 
     String textAnchorV = "center"; // Widget vertical text position. Can be: up, center, down
     String textAnchorH = "center"; // Widget horizontal text position. Can be: right, center, left
     bool isHighlighted = false; // If true, a button's content color will be inverted
-    String frameType = "rectangle"; // Can be: none, rectangle, rounded
-    bool isFramedOutside = false; // If true, a border will be drawn around widget
+    // REPLACED. String frameType = "rectangle"; // Button border style. Can be: none, rectangle, rounded, round
+    bool isFramed = true; // If true, a border will be drawn
+    short cornerRadius = 0; // Corner radius
+    // bool isFramedOutside = false; // If true, a border will be drawn around widget
 
     // Methods
     void draw(); // Draw configured widget

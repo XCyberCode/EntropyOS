@@ -26,6 +26,7 @@ void CalcApp::draw()
   testButton.isHighlighted = true;
   testButton.textAnchorV = "center";
   testButton.textAnchorH = "center";
+  testButton.cornerRadius = 9;
  
   testIcon.width = 22;
   testIcon.height = 22;

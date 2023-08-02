@@ -3,87 +3,37 @@
 
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C disp(U8G2_R0);
 
+// Draw widget
 void Button::draw()
 {
-  // Draw Frame
-  if(frameType == "rectangle")
-  {
-    disp.drawFrame(
-      positionX, 
-      positionY, 
-      width,
-      height
-    );
-  }
-  
-  /*
-  // Text Positioning
-  if(textAnchor == "top")
-  {
-    disp.drawStr(
-      positionX + 2, 
-      positionY + 8, 
-      text.c_str()
-    );
-  }
-  else if(textAnchor == "center")
-  {
-    disp.drawStr(
-      positionX + 2, 
-      positionY + height / 2 + 3, 
-      text.c_str()
-    );
-  }
-  else if(textAnchor == "bottom")
-  {
-    disp.drawStr(
-      positionX + 2, 
-      positionY + height - 2, 
-      text.c_str()
-    );
-  }*/
-
-  disp.setFont(u8g2_font_6x10_tf);
-  short textX, textY;
-  if(textAnchorV == "top")
-  {
-    textY = positionY + 8;
-  }
-  else if(textAnchorV == "center")
-  {
-    textY = positionY + floor(height / 2) + 3;
-  }
-  else if(textAnchorV == "bottom")
-  {
-    textY = positionY + height - 2;
-  };
-
-  if(textAnchorH == "left")
-  {
-    textX = positionX + 2;
-  }
-  else if(textAnchorH == "center")
-  {
-    textX = positionX + (width / 2 - disp.getStrWidth(text.c_str()) / 2);
-  }
-  else if(textAnchorH == "right")
-  {
-    textX = positionX + (positionX + width - disp.getStrWidth(text.c_str()) - 5);
-  }
-
-  disp.drawStr(textX, textY, text.c_str());
-
+  // Draw frame or field
   if(isHighlighted)
   {
-    disp.setDrawColor(2);
-    disp.drawBox(
-      positionX + 1, 
-      positionY + 1, 
-      width - 2, 
-      height - 2
-    );
-    disp.setDrawColor(1);
+    disp.drawRBox(positionX, positionY, width, height, cornerRadius);
   }
+  else if(isFramed)
+  {
+    disp.drawRFrame(positionX, positionY, width, height, cornerRadius);
+  }
+
+  // Text positioning 
+  disp.setFont(u8g2_font_6x10_tf);
+  short textX, textY;
+
+  // Vertical positioning
+  if(textAnchorV == "top") {textY = positionY + 8;}
+  else if(textAnchorV == "center") {textY = positionY + floor(height / 2) + 3;}
+  else if(textAnchorV == "bottom") {textY = positionY + height - 2;};
+
+  // Horizontal positioning
+  if(textAnchorH == "left") {textX = positionX + 2;}
+  else if(textAnchorH == "center") {textX = positionX + (width / 2 - disp.getStrWidth(text.c_str()) / 2);}
+  else if(textAnchorH == "right") {textX = positionX + (positionX + width - disp.getStrWidth(text.c_str()) - 5);}
+
+  disp.setDrawColor(2);
+  disp.setFontMode(1);
+  disp.drawStr(textX, textY, text.c_str());
+  disp.setDrawColor(1);
 }
 
 void TextLabel::draw()
