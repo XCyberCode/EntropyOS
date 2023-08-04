@@ -1,5 +1,5 @@
 # EntropyOS
-### Minimal OS for embedded devices
+Minimal OS for embedded devices
 
 
 ## Features ✨
