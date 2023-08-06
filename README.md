@@ -5,7 +5,7 @@ Minimal OS for embedded devices
 ## Features ✨
 - [ ] App Framework ⚒️ (WIP 🚧)
 - [ ] Apps 🔮 (WIP 🚧)
-- [ ] Hardware independent ⚙️
+- [ ] Hardware Independence ⚙️
 
 ## Recommended hardware 💾
 - CPU: ESP32
