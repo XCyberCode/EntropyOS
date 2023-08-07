@@ -3,6 +3,12 @@
 
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C disp(U8G2_R0);
 
+void AppFramework::begin()
+{
+  disp.begin();
+  disp.setFontMode(1);
+}
+
 // Draw widget
 void Button::draw()
 {
@@ -31,7 +37,6 @@ void Button::draw()
   else if(textAnchorH == "right") {textX = positionX + (positionX + width - disp.getStrWidth(text.c_str()) - 5);}
 
   disp.setDrawColor(2);
-  disp.setFontMode(1);
   disp.drawStr(textX, textY, text.c_str());
   disp.setDrawColor(1);
 }
