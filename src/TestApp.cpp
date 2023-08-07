@@ -17,7 +17,7 @@ unsigned char calculatorIcon[] = {
 
 void TestApp::draw()
 {
-  disp.begin();
+  framework.begin();
   testButton.positionX = 3;
   testButton.positionY = 17;
   testButton.text = "Hello, Framework!";
