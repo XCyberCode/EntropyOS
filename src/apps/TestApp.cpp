@@ -1,5 +1,5 @@
 #include <AppFramework.hpp>
-#include <TestApp.hpp>
+#include <apps/TestApp.hpp>
 
 AppFramework framework;
 Button testButton;

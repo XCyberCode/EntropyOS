@@ -9,7 +9,7 @@ extern U8G2_SSD1306_128X64_NONAME_F_HW_I2C disp;
 class AppFramework
 {
   public:
-    // void begin(); // Begin display
+    void begin(); // Begin display
     // void sendBuffer(); // Send data to display
     // void clearBuffer(); // Clear buffer
 };
