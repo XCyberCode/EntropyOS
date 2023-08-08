@@ -1,15 +1,13 @@
+// Libraries
 #include <Arduino.h>
-#include <AppFramework.hpp>
 #include <TimerMs.h>
 #include <EncButton.h>
 
-#include <apps/TestApp.hpp>
+// Local dependencies
+#include <apps/FirstSetup.hpp>
+#include <core/AppFramework.hpp>
 
-AppFramework mainFramework;
-//Button testButton;
-//TextLabel testLabel;
-
-TestApp calculator;
+FirstSetup welcome;
 
 EncButton<EB_TICK, 27> leftBtn;
 EncButton<EB_TICK, 26> centerBtn;
@@ -17,7 +15,7 @@ EncButton<EB_TICK, 25> rightBtn;
 
 void setup()
 {
-  calculator.draw();
+  welcome.draw();
 }
 
 void loop(){}

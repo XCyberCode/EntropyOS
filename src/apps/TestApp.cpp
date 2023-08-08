@@ -1,5 +1,9 @@
-#include <AppFramework.hpp>
+// Header
 #include <apps/TestApp.hpp>
+
+// Local dependencies
+#include <core/AppFramework.hpp>
+#include <core/HardwareManager.hpp>
 
 AppFramework framework;
 Button testButton;
