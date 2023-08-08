@@ -9,10 +9,6 @@
 
 FirstSetup welcome;
 
-EncButton<EB_TICK, 27> leftBtn;
-EncButton<EB_TICK, 26> centerBtn;
-EncButton<EB_TICK, 25> rightBtn;
-
 void setup()
 {
   welcome.draw();
