@@ -12,6 +12,16 @@ extern EncButton<EB_TICK, 26> upBtn;
 extern EncButton<EB_TICK, 25> rightBtn;
 extern EncButton<EB_TICK, 19> downBtn;
 extern EncButton<EB_TICK, 32> aBtn;
-extern EncButton<EB_TICK, 33> bBtn;
+extern EncButton<EB_TICK, 33> bBtn; 
+
+static void tickAll()
+{
+  leftBtn.tick();
+  upBtn.tick();
+  rightBtn.tick();
+  downBtn.tick();
+  aBtn.tick();
+  bBtn.tick();
+}
 
 #endif

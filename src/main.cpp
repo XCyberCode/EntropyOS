@@ -4,17 +4,19 @@
 #include <EncButton.h>
 
 // Local dependencies
-#include <apps/FirstSetup.hpp>
-#include <apps/TestApp.hpp>
+// #include <apps/FirstSetup.hpp>
+// #include <apps/TestApp.hpp>
+#include <apps/Launcher.hpp>
 #include <core/AppFramework.hpp>
 
 // FirstSetup welcome;
-TestApp testApp;
+// TestApp testApp;
+Launcher launcher;
 
 void setup()
 {
   beginFramework();
-  testApp.draw();
+  launcher.draw();
 }
 
 void loop(){}
