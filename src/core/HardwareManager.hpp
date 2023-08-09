@@ -24,4 +24,9 @@ static void tickAll()
   bBtn.tick();
 }
 
+static void beginHardware()
+{
+  disp.begin();
+  disp.setFontMode(1);
+}
 #endif

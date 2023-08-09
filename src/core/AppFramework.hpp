@@ -4,14 +4,11 @@
 // Local dependencies
 #include <core/HardwareManager.hpp>
 
-#ifndef APP_FRAMEWORK_H
-#define APP_FRAMEWORK_H
 static void beginFramework()
 {
   disp.begin();
   disp.setFontMode(1);
 }
-#endif
 
 class Button
 {

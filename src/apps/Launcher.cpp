@@ -36,7 +36,7 @@ void Launcher::draw()
 {
   appLabel.width = 64;
   appLabel.height = 16;
-  appLabel.positionX = 0;
+  appLabel.positionX = 32;
   appLabel.positionY = 32;
   appLabel.textAnchorH = "center";
   appLabel.textAnchorV = "center";
@@ -53,6 +53,10 @@ void Launcher::draw()
     else if(rightBtn.click())
     {
       (cursorPos == 1) ? cursorPos = 0 : cursorPos++;
+    }
+    else if(upBtn.click())
+    {
+      loadApp(cursorPos);
     }
 
     appLabel.text = appNames[cursorPos];
