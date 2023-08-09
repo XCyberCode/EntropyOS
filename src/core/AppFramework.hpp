@@ -4,12 +4,6 @@
 // Local dependencies
 #include <core/HardwareManager.hpp>
 
-static void beginFramework()
-{
-  disp.begin();
-  disp.setFontMode(1);
-}
-
 class Button
 {
   public:

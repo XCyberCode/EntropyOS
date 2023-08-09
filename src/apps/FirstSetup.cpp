@@ -3,8 +3,6 @@
 
 // Local dependencies
 #include <core/AppFramework.hpp>
+#include <core/HardwareManager.hpp>
 
-void FirstSetup::draw()
-{
-
-}
+void FirstSetup::draw(){}
