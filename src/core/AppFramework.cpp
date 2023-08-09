@@ -7,12 +7,6 @@
 // Local dependencies
 #include <core/HardwareManager.hpp>
 
-void AppFramework::begin()
-{
-  disp.begin();
-  disp.setFontMode(1);
-}
-
 // Draw widget
 void Button::draw()
 {

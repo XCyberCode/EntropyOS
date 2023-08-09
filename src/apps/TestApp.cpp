@@ -5,7 +5,6 @@
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
 
-AppFramework framework;
 Button testButton;
 TextLabel testLabel;
 Icon testIcon;
@@ -21,7 +20,6 @@ unsigned char calculatorIcon[] = {
 
 void TestApp::draw()
 {
-  framework.begin();
   testButton.positionX = 3;
   testButton.positionY = 17;
   testButton.text = "Hello, Framework!";

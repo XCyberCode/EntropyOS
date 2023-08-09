@@ -5,13 +5,16 @@
 
 // Local dependencies
 #include <apps/FirstSetup.hpp>
+#include <apps/TestApp.hpp>
 #include <core/AppFramework.hpp>
 
-FirstSetup welcome;
+// FirstSetup welcome;
+TestApp testApp;
 
 void setup()
 {
-  welcome.draw();
+  beginFramework();
+  testApp.draw();
 }
 
 void loop(){}

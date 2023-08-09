@@ -1,13 +1,14 @@
 // Libraries
 #include <Arduino.h>
 
-class AppFramework
+// Local dependencies
+#include <core/HardwareManager.hpp>
+
+static void beginFramework()
 {
-  public:
-    void begin(); // Begin display
-    // void sendBuffer(); // Send data to display
-    // void clearBuffer(); // Clear buffer
-};
+  disp.begin();
+  disp.setFontMode(1);
+}
 
 class Button
 {
@@ -21,8 +22,7 @@ class Button
     bool isHighlighted = false; // If true, a button's content color will be inverted
     bool isFramed = true; // If true, a border will be drawn
     short cornerRadius = 0; // Corner radius
-    // UNUSED. bool isFramedOutside = false; // If true, a border will be drawn around widget
-
+    
     // Methods
     void draw(); // Draw configured widget
 };
