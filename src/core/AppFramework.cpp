@@ -7,6 +7,7 @@
 // Local dependencies
 #include <core/HardwareManager.hpp>
 
+// === Button methods
 // Draw widget
 void Button::draw()
 {
@@ -39,12 +40,50 @@ void Button::draw()
   disp.setDrawColor(1);
 }
 
+// === TextLabel methods
 void TextLabel::draw()
 {
   disp.drawStr((textAnchor == "center") ? 64 - disp.getUTF8Width(text.c_str()) / 2 : positionX, positionY, text.c_str()); 
 }
 
+// === Icon methods
+// Draw widget
 void Icon::draw(unsigned char image[])
 {
   disp.drawXBMP(positionX, positionY, width, height, image);
+}
+
+// === Timer methods
+// Start timer
+void Timer::start() 
+{
+  isRunning = true;
+}
+
+// Stop timer
+void Timer::stop()
+{
+  isRunning = false;
+}
+
+// Set timer mode
+void Timer::setMode(bool _isTimer = 0)
+{
+  isTimer = _isTimer;
+}
+
+// Get timer status
+bool Timer::tick()
+{
+  if(isRunning && millis() - timerTime >= timerPeriod)
+  {
+    if(isTimer) 
+    {
+      isRunning = false;
+      return true;
+    }
+    timerTime = millis();
+    return true;
+  }
+  return false;
 }

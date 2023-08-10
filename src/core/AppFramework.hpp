@@ -4,6 +4,8 @@
 // Local dependencies
 #include <core/HardwareManager.hpp>
 
+#ifndef APP_FRAMEWORK_H
+#define APP_FRAMEWORK_H
 class Button
 {
   public:
@@ -50,3 +52,26 @@ class Icon
     void draw(unsigned char image[]); // Draw configured widget. The target icon is excepted as an argument
 };
 
+class Timer
+{
+  private:
+    // Vars
+    uint32_t timerTime = 0, timerPeriod = 100;
+    bool isRunning, isTimer; 
+  
+  public:
+    // Constructor
+    Timer(uint32_t _timerPeriod = 100, bool _isRunning = 0, bool _isTimer = 0)
+    {
+      timerPeriod = _timerPeriod;
+      isRunning = _isRunning;
+      isTimer = _isTimer;
+    }
+
+    // Methods
+    void start();
+    void stop();
+    void setMode(bool _isTimer);
+    bool tick();
+};
+#endif

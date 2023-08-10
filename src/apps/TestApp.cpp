@@ -1,16 +1,13 @@
 // Header
 #include <apps/TestApp.hpp>
 
-// Libraries
-#include <TimerMs.h>
-
 // Local dependencies
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
 #include <core/Icons.hpp>
 
 Button testButton;
-TimerMs invertTimer(400, 0, 0);
+Timer invertTimer(400, 0, 0);
 
 void TestApp::draw()
 {
