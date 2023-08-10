@@ -32,9 +32,7 @@ class TextLabel
     short positionX, positionY; // Position of the widget
     String textAnchorV = "center"; // Vertical position of the widget text. Can be: top, center, bottom
     String textAnchorH = "center"; // Horizontal position of the widget text. Can be right, center, left
-    // DEPRECATED. Use Button instead. bool isFramed = true; // If true, a border will be drawn
-    // DEPRECATED. Use Button instead. short cornerRadius = 0; // Corner radius
-    
+       
     // Methods
     void draw(); // Draw configured widget
 };
@@ -45,7 +43,7 @@ class Icon
     // Vars
     short width, height; // Size of the widget
     short positionX, positionY; // Position of the widget
-    bool isFramed = true; // If true, a border will be drawn
+    bool isFramed = false; // If true, a border will be drawn
 
     // Methods
     void draw(unsigned char image[]); // Draw configured widget. The target icon is excepted as an argument

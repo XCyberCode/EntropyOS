@@ -21,18 +21,17 @@ void Button::draw()
     disp.drawRFrame(positionX, positionY, width, height, cornerRadius);
   }
 
-  // Text positioning 
-  disp.setFont(u8g2_font_6x10_tf);
+  // Positioning of the text 
   short textX, textY;
 
   // Vertical positioning
-  if(textAnchorV == "top") {textY = positionY + 8;}
-  else if(textAnchorV == "center") {textY = positionY + floor(height / 2) + 3;}
+  if(textAnchorV == "top") {textY = positionY + disp.getMaxCharHeight() + 2;}
+  else if(textAnchorV == "center") {textY = positionY + floor(height / 2) + floor(disp.getMaxCharHeight() / 2) - 2;}
   else if(textAnchorV == "bottom") {textY = positionY + height - 2;};
 
   // Horizontal positioning
   if(textAnchorH == "left") {textX = positionX + 2;}
-  else if(textAnchorH == "center") {textX = positionX + (width / 2 - disp.getStrWidth(text.c_str()) / 2);}
+  else if(textAnchorH == "center") {textX = positionX + width / 2 - disp.getStrWidth(text.c_str()) / 2;}
   else if(textAnchorH == "right") {textX = positionX + (positionX + width - disp.getStrWidth(text.c_str()) - 5);}
 
   disp.setDrawColor(2);
@@ -43,7 +42,12 @@ void Button::draw()
 // === TextLabel methods
 void TextLabel::draw()
 {
-  disp.drawStr((textAnchor == "center") ? 64 - disp.getUTF8Width(text.c_str()) / 2 : positionX, positionY, text.c_str()); 
+  // Positioning of the text
+  short textX, textY;
+
+  // Vertical positioning
+  // if(textAnchorV == "top") {textY = positionY + disp.getMaxCharHeight();}
+  // else if(textAnchorV == "center") {}
 }
 
 // === Icon methods
@@ -51,6 +55,10 @@ void TextLabel::draw()
 void Icon::draw(unsigned char image[])
 {
   disp.drawXBMP(positionX, positionY, width, height, image);
+  if(isFramed)
+  {
+    disp.drawFrame(positionX, positionY, width, height);
+  }
 }
 
 // === Timer methods
