@@ -1,14 +1,16 @@
 // Header
 #include <apps/TestApp.hpp>
 
+// Libraries
+#include <TimerMs.h>
+
 // Local dependencies
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
 #include <core/Icons.hpp>
 
 Button testButton;
-TextLabel testLabel;
-Icon testIcon;
+TimerMs invertTimer(400, 0, 0);
 
 void TestApp::draw()
 {
@@ -21,17 +23,23 @@ void TestApp::draw()
   testButton.textAnchorV = "center";
   testButton.textAnchorH = "center";
   testButton.cornerRadius = 9;
- 
-  testIcon.width = 22;
-  testIcon.height = 22;
+  
+  invertTimer.start();
 
   while(1)
   {
-    testButton.isHighlighted = !testButton.isHighlighted;
+    tickAll();
+
+    if(bBtn.click())
+    {
+      return;
+    }
+    if(invertTimer.tick())
+    {
+      testButton.isHighlighted = !testButton.isHighlighted;
+    }
     disp.clearBuffer();
-    testIcon.draw(calculatorIcon);
     testButton.draw();
     disp.sendBuffer();
-    delay(400);
   }
 }

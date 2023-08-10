@@ -54,7 +54,7 @@ void Launcher::draw()
     {
       (cursorPos == 1) ? cursorPos = 0 : cursorPos++;
     }
-    else if(upBtn.click())
+    else if(aBtn.click())
     {
       loadApp(cursorPos);
     }

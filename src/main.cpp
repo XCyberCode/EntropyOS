@@ -11,7 +11,8 @@ Launcher launcher;
 
 void setup()
 {
-  beginHardware();
+  disp.begin();
+  disp.setFontMode(1);
   launcher.draw();
 }
 
