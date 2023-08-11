@@ -4,6 +4,7 @@
 // Apps
 #include <apps/TestApp.hpp>
 #include <apps/Settings.hpp>
+#include <apps/Debug.hpp>
 
 // Local dependencies
 #include <core/HardwareManager.hpp>
@@ -12,9 +13,10 @@
 // Apps instances
 Settings settings;
 TestApp testApp;
+Debug debugApp;
 
 // Variables
-const char* appNames[] = {"Settings", "TestApp"};
+const char* appNames[] = {"Settings", "TestApp", "Debug"};
 short cursorPos = 0;
 
 // Widgets
@@ -29,6 +31,10 @@ void loadApp(short appID)
   else if(appID == 1)
   {
     testApp.draw();
+  }
+  else if(appID == 2)
+  {
+    debugApp.draw();
   }
 }
 
@@ -48,11 +54,11 @@ void Launcher::draw()
     tickAll();
     if(leftBtn.click())
     {
-      (cursorPos == 0) ? cursorPos = 1 : cursorPos--;
+      (cursorPos == 0) ? cursorPos = 2 : cursorPos--;
     }
     else if(rightBtn.click())
     {
-      (cursorPos == 1) ? cursorPos = 0 : cursorPos++;
+      (cursorPos == 2) ? cursorPos = 0 : cursorPos++;
     }
     else if(aBtn.click())
     {
