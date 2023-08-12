@@ -16,11 +16,11 @@ void Debug::draw()
   while(1)
   {
     tickAll();
-    if(upBtn.click()) {upBtnWidget.isHighlighted = !upBtnWidget.isHighlighted;}
-    if(downBtn.click()) {downBtnWidget.isHighlighted = !downBtnWidget.isHighlighted;}
-    if(leftBtn.click()) {leftBtnWidget.isHighlighted = !leftBtnWidget.isHighlighted;}
-    if(rightBtn.click()) {rightBtnWidget.isHighlighted = !rightBtnWidget.isHighlighted;}
-    if(aBtn.click()) {aBtnWidget.isHighlighted = !rightBtnWidget.isHighlighted;}
+    if(upBtn.click()) {upBtnWidget.invertHighlight();}
+    if(downBtn.click()) {downBtnWidget.invertHighlight();}
+    if(leftBtn.click()) {leftBtnWidget.invertHighlight();}
+    if(rightBtn.click()) {rightBtnWidget.invertHighlight();}
+    if(aBtn.click()) {aBtnWidget.invertHighlight();}
 
     if(bBtn.click())
     {

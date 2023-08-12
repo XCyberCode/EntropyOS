@@ -61,37 +61,3 @@ void Icon::draw(unsigned char image[])
   }
 }
 
-// === Timer methods
-// Start timer
-void Timer::start() 
-{
-  isRunning = true;
-}
-
-// Stop timer
-void Timer::stop()
-{
-  isRunning = false;
-}
-
-// Set timer mode
-void Timer::setMode(bool _isTimer = 0)
-{
-  isTimer = _isTimer;
-}
-
-// Get timer status
-bool Timer::tick()
-{
-  if(isRunning && millis() - timerTime >= timerPeriod)
-  {
-    if(isTimer) 
-    {
-      isRunning = false;
-      return true;
-    }
-    timerTime = millis();
-    return true;
-  }
-  return false;
-}

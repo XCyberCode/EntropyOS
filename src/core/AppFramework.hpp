@@ -8,6 +8,17 @@
 #define APP_FRAMEWORK_H
 class Button
 {
+  private:
+    // Vars
+    String text = "NONE"; // Text of the widget
+    short width, height; // Size of the widget
+    short positionX, positionY; // Position of the widget 
+    String textAnchorV = "center"; // Vertical position of the widget text. Can be: up, center, down
+    String textAnchorH = "center"; // Horizontal position ot the widget text. Can be: right, center, left
+    bool isHighlighted = false; // If true, a button's content color will be inverted
+    bool isFramed = true; // If true, a border will be drawn
+    short cornerRadius = 0; // Radius of the corners
+
   public:
     // Constructor
     Button(
@@ -21,28 +32,56 @@ class Button
         String _textAnchorH = "center"
     )
     {
+      setPosition(_positionX, _positionY);
+      setSize(_width, _height);
+      setCornerRadius(_cornerRadius);
+      setText(_text);
+      setTextAnchor(_textAnchorV, _textAnchorH);
+    }
+    
+    // Methods
+    void draw(); // Draw configured widget
+    
+    void setPosition(short _positionX = 0, short _positionY = 0)
+    {
       positionX = _positionX;
       positionY = _positionY;
-      width = _width;
-      height = _height;
-      cornerRadius = _cornerRadius;
-      text = _text;
+    }
+
+    // Set text of the widget
+    void setText(String _text = "NONE") {text = _text;}
+
+    // Set text anchor of the widget
+    void setTextAnchor(String _textAnchorV = "center", String _textAnchorH = "center")
+    {
       textAnchorV = _textAnchorV;
       textAnchorH = _textAnchorH;
     }
 
-    // Vars
-    String text = "NONE"; // Text of the widget
-    short width, height; // Size of the widget
-    short positionX, positionY; // Position of the widget 
-    String textAnchorV = "center"; // Vertical position of the widget text. Can be: up, center, down
-    String textAnchorH = "center"; // Horizontal position ot the widget text. Can be: right, center, left
-    bool isHighlighted = false; // If true, a button's content color will be inverted
-    bool isFramed = true; // If true, a border will be drawn
-    short cornerRadius = 0; // Radius of the corners
-    
-    // Methods
-    void draw(); // Draw configured widget
+    // Set size of the widget
+    void setSize(short _width = 0, short _height = 0)
+    {
+      if(_width >= 0 && _height >= 0)
+      {
+        width = _width;
+        height = _height;
+      }
+    }
+
+    // Set corner radius of the widget
+    void setCornerRadius(short _radius = 0)
+    {
+      if(_radius >= 0)
+      {
+        cornerRadius = _radius;
+      }
+    }
+
+    // Set content highlight state of the widget
+    void setHighlight(bool _state = 0) {isHighlighted = _state;}
+
+    // Invert content highlight state of the widget
+    void invertHighlight() {isHighlighted = !isHighlighted;}
 };
 
 class TextLabel
@@ -88,9 +127,31 @@ class Timer
     }
 
     // Methods
-    void start();
-    void stop();
-    void setMode(bool _isTimer);
-    bool tick();
+    // Start timer
+    void start() {
+      isRunning = true;
+      timerTime = millis();
+    };
+
+    // Stop timer
+    void stop() {isRunning = false;};
+    
+    // Set timer mode
+    void setMode(bool _isTimer) {isTimer = _isTimer;};
+    
+    // Check timer state
+    bool tick()
+    {
+      if(isRunning && millis() - timerTime >= timerPeriod)
+      {
+        if(isTimer)
+        {
+          isRunning = false;
+          return true;
+        }
+        timerTime = millis();
+        return true;
+      }
+    };
 };
 #endif
