@@ -14,23 +14,23 @@ Button bBtnWidget;
 
 void Debug::draw()
 {
-  upBtnWidget.positionX = 36;
-  upBtnWidget.positionY = 14;
-  upBtnWidget.width = 12;
-  upBtnWidget.height = 12;
+  upBtnWidget.positionX = 31;
+  upBtnWidget.positionY = 5;
+  upBtnWidget.width = 18;
+  upBtnWidget.height = 18;
   upBtnWidget.text = "U";
   upBtnWidget.textAnchorV = "center";
   upBtnWidget.textAnchorH = "center";
-  upBtnWidget.cornerRadius = 5;
+  upBtnWidget.cornerRadius = 4;
 
-  downBtnWidget.positionX = 36;
-  downBtnWidget.positionY = 40;
-  downBtnWidget.width = 12;
-  downBtnWidget.height = 12;
+  downBtnWidget.positionX = 31;
+  downBtnWidget.positionY = 41;
+  downBtnWidget.width = 18;
+  downBtnWidget.height = 18;
   downBtnWidget.text = "D";
   downBtnWidget.textAnchorV = "center";
   downBtnWidget.textAnchorH = "center";
-  downBtnWidget.cornerRadius = 5;
+  downBtnWidget.cornerRadius = 4;
 
   while(1)
   {
