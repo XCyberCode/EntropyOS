@@ -2,17 +2,21 @@
 #include <U8g2lib.h>
 #include <EncButton.h>
 
+// Local dependencies
+#include <core/Pins.hpp>
+
 // Include guard
 #ifndef HARDWARE_MANAGER_H
 #define HARDWARE_MANAGER_H
 
+extern EncButton<EB_TICK, LEFT_BTN_PIN> leftBtn;
+extern EncButton<EB_TICK, UP_BTN_PIN> upBtn;
+extern EncButton<EB_TICK, RIGHT_BTN_PIN> rightBtn;
+extern EncButton<EB_TICK, DOWN_BTN_PIN> downBtn;
+extern EncButton<EB_TICK, A_BTN_PIN> aBtn;
+extern EncButton<EB_TICK, B_BTN_PIN> bBtn;
+
 extern U8G2_SSD1306_128X64_NONAME_F_HW_I2C disp;
-extern EncButton<EB_TICK, 27> leftBtn;
-extern EncButton<EB_TICK, 26> upBtn;
-extern EncButton<EB_TICK, 25> rightBtn;
-extern EncButton<EB_TICK, 16> downBtn;
-extern EncButton<EB_TICK, 32> aBtn;
-extern EncButton<EB_TICK, 33> bBtn; 
 
 static void tickAll()
 {
