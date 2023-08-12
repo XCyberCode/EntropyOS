@@ -9,6 +9,28 @@
 class Button
 {
   public:
+    // Constructor
+    Button(
+        short _positionX = 0, 
+        short _positionY = 0, 
+        short _width = 0, 
+        short _height = 0, 
+        short _cornerRadius = 0, 
+        String _text = "NONE", 
+        String _textAnchorV = "center", 
+        String _textAnchorH = "center"
+    )
+    {
+      positionX = _positionX;
+      positionY = _positionY;
+      width = _width;
+      height = _height;
+      cornerRadius = _cornerRadius;
+      text = _text;
+      textAnchorV = _textAnchorV;
+      textAnchorH = _textAnchorH;
+    }
+
     // Vars
     String text = "NONE"; // Text of the widget
     short width, height; // Size of the widget

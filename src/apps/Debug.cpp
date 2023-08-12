@@ -5,39 +5,22 @@
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
 
-Button upBtnWidget;
-Button downBtnWidget;
-Button leftBtnWidget;
-Button rightBtnWidget;
-Button aBtnWidget;
-Button bBtnWidget;
+Button upBtnWidget(36, 5, 18, 18, 4, "U");
+Button downBtnWidget(36, 41, 18, 18, 4, "D");
+Button leftBtnWidget(18, 23, 18, 18, 4, "L");
+Button rightBtnWidget(54, 23, 18, 18, 4, "R");
+Button aBtnWidget(90, 23, 18, 18, 4, "A");
 
 void Debug::draw()
 {
-  upBtnWidget.positionX = 31;
-  upBtnWidget.positionY = 5;
-  upBtnWidget.width = 18;
-  upBtnWidget.height = 18;
-  upBtnWidget.text = "U";
-  upBtnWidget.textAnchorV = "center";
-  upBtnWidget.textAnchorH = "center";
-  upBtnWidget.cornerRadius = 4;
-
-  downBtnWidget.positionX = 31;
-  downBtnWidget.positionY = 41;
-  downBtnWidget.width = 18;
-  downBtnWidget.height = 18;
-  downBtnWidget.text = "D";
-  downBtnWidget.textAnchorV = "center";
-  downBtnWidget.textAnchorH = "center";
-  downBtnWidget.cornerRadius = 4;
-
   while(1)
   {
     tickAll();
     if(upBtn.click()) {upBtnWidget.isHighlighted = !upBtnWidget.isHighlighted;}
-
     if(downBtn.click()) {downBtnWidget.isHighlighted = !downBtnWidget.isHighlighted;}
+    if(leftBtn.click()) {leftBtnWidget.isHighlighted = !leftBtnWidget.isHighlighted;}
+    if(rightBtn.click()) {rightBtnWidget.isHighlighted = !rightBtnWidget.isHighlighted;}
+    if(aBtn.click()) {aBtnWidget.isHighlighted = !rightBtnWidget.isHighlighted;}
 
     if(bBtn.click())
     {
@@ -47,6 +30,9 @@ void Debug::draw()
     disp.clearBuffer();
     upBtnWidget.draw();
     downBtnWidget.draw();
+    leftBtnWidget.draw();
+    rightBtnWidget.draw();
+    aBtnWidget.draw();
     disp.sendBuffer();
   }
 }
