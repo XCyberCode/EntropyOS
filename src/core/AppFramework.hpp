@@ -67,11 +67,23 @@ class Button
     // Set text of the widget
     void setText(String _text) {text = _text;}
 
+    // Set vertical text acnhor of the widget
+    void setTextAnchorV(String _textAnchorV)
+    {
+      textAnchorV = _textAnchorV;
+    }
+
+    // Set horizontal text anchor of the widget
+    void setTextAnchorH(String _textAnchorH)
+    {
+      textAnchorH = _textAnchorH;
+    }
+
     // Set text anchor of the widget
     void setTextAnchor(String _textAnchorV, String _textAnchorH)
     {
-      textAnchorV = _textAnchorV;
-      textAnchorH = _textAnchorH;
+      setTextAnchorV(_textAnchorV);
+      setTextAnchorH(_textAnchorH);
     }
 
     // Set width of the widget
@@ -117,7 +129,7 @@ class Button
 
 class TextLabel
 {
-  public:
+  private:
     // Vars
     String text = "NONE"; // Text of the widget
     short width, height; // Size of the widget
@@ -125,8 +137,85 @@ class TextLabel
     String textAnchorV = "center"; // Vertical position of the widget text. Can be: top, center, bottom
     String textAnchorH = "center"; // Horizontal position of the widget text. Can be right, center, left
        
+  public:
     // Methods
-    void draw(); // Draw configured widget
+    // Draw configured widget
+    void draw();
+
+    // Set width of the widget
+    void setWidth(short _width)
+    {
+      if(_width >= 0)
+      {
+        width = _width;
+      }
+    }
+
+    // Set height of the widget
+    void setHeight(short _height)
+    {
+      if(_height >= 0)
+      {
+        height = _height;
+      }
+    }
+
+    // Set size of the widget
+    void setSize(short _width, short _height)
+    {
+      setWidth(_width);
+      setHeight(_height);
+    }
+
+    // Set vertical position of the widget
+    void setPositionX(short _positionX)
+    {
+      if(_positionX >= 0)
+      {
+        positionX = _positionX;
+      }
+    }
+
+    // Set horizontal position of the widget
+    void setPositionY(short _positionY)
+    {
+      if(_positionY >= 0)
+      {
+        positionY = _positionY;
+      }
+    }
+
+    // Set position of the widget
+    void setPosition(short _positionX, short _positionY)
+    {
+      setPositionX(_positionX);
+      setPositionY(_positionY);
+    }
+
+    // Set text of the widget
+    void setText(String _text)
+    {
+      text = _text;
+    }
+
+    // Set vertical text anchor of the widget
+    void setTextAnchorV(String _textAnchorV)
+    {
+      textAnchorV = _textAnchorV;
+    }
+
+    // Set horizontal text anchor of the widget
+    void setTextAnchorH(String _textAnchorH)
+    {
+      textAnchorH = _textAnchorH;
+    }
+
+    // Set text anchors of the widget
+    void setTextAnchor(String _textAnchorV, String _textAnchorH)
+    {
+      setTextAnchorV(_textAnchorV);
+      setTextAnchorH(_textAnchorH);
+    }
 };
 
 class Icon
