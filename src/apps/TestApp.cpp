@@ -6,21 +6,11 @@
 #include <core/HardwareManager.hpp>
 #include <core/Icons.hpp>
 
-Button testButton;
+Button testButton(3, 17, 120, 30, 9, "Hello, Framework!");
 Timer invertTimer(400, 0, 0);
 
 void TestApp::draw()
 {
-  testButton.positionX = 3;
-  testButton.positionY = 17;
-  testButton.text = "Hello, Framework!";
-  testButton.width = 120;
-  testButton.height = 30;
-  testButton.isHighlighted = true;
-  testButton.textAnchorV = "center";
-  testButton.textAnchorH = "center";
-  testButton.cornerRadius = 9;
-  
   invertTimer.start();
 
   while(1)
@@ -31,10 +21,12 @@ void TestApp::draw()
     {
       return;
     }
+    
     if(invertTimer.tick())
     {
-      testButton.isHighlighted = !testButton.isHighlighted;
+      testButton.invertFocus();
     }
+
     disp.clearBuffer();
     testButton.draw();
     disp.sendBuffer();

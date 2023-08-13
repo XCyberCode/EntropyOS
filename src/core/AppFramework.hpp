@@ -8,6 +8,16 @@
 #define APP_FRAMEWORK_H
 class Button
 {
+  private:
+    String text; // Text of the widget
+    short width, height; // Size of the widget
+    short positionX, positionY; // Position of the widget 
+    String textAnchorV; // Vertical position of the widget text. Can be: up, center, down
+    String textAnchorH; // Horizontal position ot the widget text. Can be: right, center, left
+    bool isFocused; // If true, a button content color will be inverted
+    bool isBordered; // If true, a border will be drawn
+    short cornerRadius; // Radius of the corners
+
   public:
     // Constructor
     Button(
@@ -18,65 +28,334 @@ class Button
         short _cornerRadius = 0, 
         String _text = "NONE", 
         String _textAnchorV = "center", 
-        String _textAnchorH = "center"
+        String _textAnchorH = "center",
+        bool _isFocused = false,
+        bool _isBordered = true
     )
+    {
+      setPosition(_positionX, _positionY);
+      setSize(_width, _height);
+      setCornerRadius(_cornerRadius);
+      setText(_text);
+      setTextAnchor(_textAnchorV, _textAnchorH);
+      setFocus(_isFocused);
+      setFrame(_isBordered);
+    }
+    
+    // Draw configured widget
+    void draw();
+   
+    // Set horizontal position of the widget
+    void setPositionX(short _positionX)
+    {
+      if(_positionX >= 0)
+      {
+        positionX = _positionX;
+      }
+    }
+
+    // Set vertical position of the widget
+    void setPositionY(short _positionY)
+    {
+      if(_positionY >= 0)
+      {
+        positionY = _positionY;
+      }
+    }
+
+    // Set position of the widget
+    void setPosition(short _positionX, short _positionY)
     {
       positionX = _positionX;
       positionY = _positionY;
-      width = _width;
-      height = _height;
-      cornerRadius = _cornerRadius;
-      text = _text;
+    }
+
+    // Set width of the widget
+    void setWidth(short _width)
+    {
+      if(_width >= 0)
+      {
+        width = _width;
+      }
+    }
+
+    // Set height of the widget
+    void setHeight(short _height)
+    {
+      if(_height >= 0)
+      {
+        height = _height;
+      }
+    }
+
+    // Set size of the widget
+    void setSize(short _width, short _height)
+    {
+      setWidth(_width);
+      setHeight(_height);
+    }
+
+    // Set text of the widget
+    void setText(String _text) {text = _text;}
+
+    // Set vertical text acnhor of the widget
+    void setTextAnchorV(String _textAnchorV)
+    {
       textAnchorV = _textAnchorV;
+    }
+
+    // Set horizontal text anchor of the widget
+    void setTextAnchorH(String _textAnchorH)
+    {
       textAnchorH = _textAnchorH;
     }
 
-    // Vars
-    String text = "NONE"; // Text of the widget
-    short width, height; // Size of the widget
-    short positionX, positionY; // Position of the widget 
-    String textAnchorV = "center"; // Vertical position of the widget text. Can be: up, center, down
-    String textAnchorH = "center"; // Horizontal position ot the widget text. Can be: right, center, left
-    bool isHighlighted = false; // If true, a button's content color will be inverted
-    bool isFramed = true; // If true, a border will be drawn
-    short cornerRadius = 0; // Radius of the corners
-    
-    // Methods
-    void draw(); // Draw configured widget
+    // Set text anchor of the widget
+    void setTextAnchor(String _textAnchorV, String _textAnchorH)
+    {
+      setTextAnchorV(_textAnchorV);
+      setTextAnchorH(_textAnchorH);
+    }
+
+    // Set corner radius of the widget
+    void setCornerRadius(short _cornerRadius)
+    {
+      if(_cornerRadius >= 0)
+      {
+        cornerRadius = _cornerRadius;
+      }
+    }
+
+    // Set content highlight state of the widget
+    void setFocus(bool _isFocused) {isFocused = _isFocused;}
+
+    // Invert content highlight state of the widget
+    void invertFocus() {isFocused = !isFocused;}
+
+    // Set frame state of the widget
+    void setFrame(bool _isBordered)
+    {
+      isBordered = _isBordered;
+    }
 };
 
 class TextLabel
 {
-  public:
-    // Vars
+  private:
     String text = "NONE"; // Text of the widget
     short width, height; // Size of the widget
     short positionX, positionY; // Position of the widget
     String textAnchorV = "center"; // Vertical position of the widget text. Can be: top, center, bottom
     String textAnchorH = "center"; // Horizontal position of the widget text. Can be right, center, left
        
-    // Methods
-    void draw(); // Draw configured widget
+  public:
+    // Constructor
+    TextLabel(
+        short _positionX = 0, 
+        short _positionY = 0,
+        short _width = 0,
+        short _height = 0,
+        String _text = "NONE",
+        String _textAnchorV = "center",
+        String _textAnchorH = "center"
+    )
+    {
+      setPosition(_positionX, _positionY);
+      setSize(_width, _height);
+      setText(_text);
+      setTextAnchor(_textAnchorV, _textAnchorH);
+    }
+    // Draw configured widget
+    void draw();
+
+    // Set width of the widget
+    void setWidth(short _width)
+    {
+      if(_width >= 0)
+      {
+        width = _width;
+      }
+    }
+
+    // Set height of the widget
+    void setHeight(short _height)
+    {
+      if(_height >= 0)
+      {
+        height = _height;
+      }
+    }
+
+    // Set size of the widget
+    void setSize(short _width, short _height)
+    {
+      setWidth(_width);
+      setHeight(_height);
+    }
+
+    // Set vertical position of the widget
+    void setPositionX(short _positionX)
+    {
+      if(_positionX >= 0)
+      {
+        positionX = _positionX;
+      }
+    }
+
+    // Set horizontal position of the widget
+    void setPositionY(short _positionY)
+    {
+      if(_positionY >= 0)
+      {
+        positionY = _positionY;
+      }
+    }
+
+    // Set position of the widget
+    void setPosition(short _positionX, short _positionY)
+    {
+      setPositionX(_positionX);
+      setPositionY(_positionY);
+    }
+
+    // Set text of the widget
+    void setText(String _text)
+    {
+      text = _text;
+    }
+
+    // Set vertical text anchor of the widget
+    void setTextAnchorV(String _textAnchorV)
+    {
+      textAnchorV = _textAnchorV;
+    }
+
+    // Set horizontal text anchor of the widget
+    void setTextAnchorH(String _textAnchorH)
+    {
+      textAnchorH = _textAnchorH;
+    }
+
+    // Set text anchors of the widget
+    void setTextAnchor(String _textAnchorV, String _textAnchorH)
+    {
+      setTextAnchorV(_textAnchorV);
+      setTextAnchorH(_textAnchorH);
+    }
 };
 
 class Icon
 {
-  public:
-    // Vars
+  private:
     short width, height; // Size of the widget
     short positionX, positionY; // Position of the widget
-    bool isFramed = false; // If true, a border will be drawn
+    bool isBordered; // If true, a border will be drawn
+    short borderPadding = 0; // Padding between border and content
+    short cornerRadius = 0; // Radius of the border corners
 
-    // Methods
-    void draw(unsigned char image[]); // Draw configured widget. The target icon is excepted as an argument
+  public:
+    // Constructor
+    Icon(
+        short _positionX = 0, 
+        short _positionY = 0, 
+        short _width = 0, 
+        short _height = 0,
+        bool _isBordered = false,
+        short _cornerRadius = 0,
+        short _borderPadding = 0
+    )
+    {
+      setPosition(_positionX, _positionY);
+      setSize(_width, _height);
+      setBorder(_isBordered);
+      setCornerRadius(_cornerRadius);
+      setBorderPadding(_borderPadding);
+    }
+    // Draw configured widget. The target icon is excepted as an argument
+    void draw(unsigned char image[]);
+
+    // Set horizontal position of the widget
+    void setPositionX(short _positionX)
+    {
+      if(_positionX >= 0)
+      {
+        positionX = _positionX;
+      }
+    }
+
+    // Set vertical position of the widget
+    void setPositionY(short _positionY)
+    {
+      if(_positionY >= 0)
+      {
+        positionY = _positionY;
+      }
+    }
+
+    // Set position of the widget
+    void setPosition(short _positionX, short _positionY)
+    {
+      setPositionX(_positionX);
+      setPositionY(_positionY);
+    }
+
+    // Set width of the widget
+    void setWidth(short _width)
+    {
+      if(_width >= 0)
+      {
+        width = _width;
+      }
+    }
+
+    // Set height of the widget
+    void setHeight(short _height)
+    {
+      if(_height >= 0)
+      {
+        height = _height;
+      }
+    }
+
+    // Set size of the widget
+    void setSize(short _width, short _height)
+    {
+      setWidth(_width);
+      setHeight(_width);
+    }
+
+    // Set frame state of the widget
+    void setBorder(bool _isBordered)
+    {
+      isBordered = _isBordered;
+    }
+
+    // Set radius of the border corners
+    void setCornerRadius(short _cornerRadius)
+    {
+      if(_cornerRadius >= 0)
+      {
+        cornerRadius = _cornerRadius;
+      }
+    }
+
+    // Set padding between border and content
+    void setBorderPadding(short _borderPadding)
+    {
+      if(_borderPadding >= 0)
+      {
+        borderPadding = _borderPadding;
+      }
+    }
 };
 
 class Timer
 {
   private:
-    // Vars
-    uint32_t timerTime = 0, timerPeriod = 100;
-    bool isRunning, isTimer; 
+    uint32_t timerTime = 0; // Time, elapsed by timer
+    uint32_t timerPeriod = 100; // Round time of the timer
+    bool isRunning; // Current state of the timer 
+    bool isTimer;  // If true, timer will be stopped after one round
   
   public:
     // Constructor
@@ -87,10 +366,32 @@ class Timer
       isTimer = _isTimer;
     }
 
-    // Methods
-    void start();
-    void stop();
-    void setMode(bool _isTimer);
-    bool tick();
+    // Start timer
+    void start() {
+      isRunning = true;
+      timerTime = millis();
+    };
+
+    // Stop timer
+    void stop() {isRunning = false;};
+    
+    // Set timer mode
+    void setMode(bool _isTimer) {isTimer = _isTimer;};
+    
+    // Check timer state
+    bool tick()
+    {
+      if(isRunning && millis() - timerTime >= timerPeriod)
+      {
+        if(isTimer)
+        {
+          isRunning = false;
+          return true;
+        }
+        timerTime = millis();
+        return true;
+      }
+      return false;
+    };
 };
 #endif
