@@ -9,14 +9,14 @@
 class Button
 {
   private:
-    String text = "NONE"; // Text of the widget
+    String text; // Text of the widget
     short width, height; // Size of the widget
     short positionX, positionY; // Position of the widget 
-    String textAnchorV = "center"; // Vertical position of the widget text. Can be: up, center, down
-    String textAnchorH = "center"; // Horizontal position ot the widget text. Can be: right, center, left
-    bool isFocus = false; // If true, a button's content color will be inverted
-    bool isFramed = true; // If true, a border will be drawn
-    short cornerRadius = 0; // Radius of the corners
+    String textAnchorV; // Vertical position of the widget text. Can be: up, center, down
+    String textAnchorH; // Horizontal position ot the widget text. Can be: right, center, left
+    bool isFocus; // If true, a button's content color will be inverted
+    bool isFramed; // If true, a border will be drawn
+    short cornerRadius; // Radius of the corners
 
   public:
     // Constructor
@@ -28,7 +28,9 @@ class Button
         short _cornerRadius = 0, 
         String _text = "NONE", 
         String _textAnchorV = "center", 
-        String _textAnchorH = "center"
+        String _textAnchorH = "center",
+        bool _isFocus = false,
+        bool _isFramed = true
     )
     {
       setPosition(_positionX, _positionY);
@@ -36,6 +38,8 @@ class Button
       setCornerRadius(_cornerRadius);
       setText(_text);
       setTextAnchor(_textAnchorV, _textAnchorH);
+      setFocus(_isFocus);
+      setFrame(_isFramed);
     }
     
     // Draw configured widget
@@ -127,6 +131,12 @@ class Button
 
     // Invert content highlight state of the widget
     void invertFocus() {isFocus = !isFocus;}
+
+    // Set frame state of the widget
+    void setFrame(bool _isFramed)
+    {
+      isFramed = _isFramed;
+    }
 };
 
 class TextLabel
@@ -139,6 +149,22 @@ class TextLabel
     String textAnchorH = "center"; // Horizontal position of the widget text. Can be right, center, left
        
   public:
+    // Constructor
+    TextLabel(
+        short _positionX = 0, 
+        short _positionY = 0,
+        short _width = 0,
+        short _height = 0,
+        String _text = "NONE",
+        String _textAnchorV = "center",
+        String _textAnchorH = "center"
+    )
+    {
+      setPosition(_positionX, _positionY);
+      setSize(_width, _height);
+      setText(_text);
+      setTextAnchor(_textAnchorV, _textAnchorH);
+    }
     // Draw configured widget
     void draw();
 
@@ -223,9 +249,22 @@ class Icon
   private:
     short width, height; // Size of the widget
     short positionX, positionY; // Position of the widget
-    bool isFramed = false; // If true, a border will be drawn
+    bool isFramed; // If true, a border will be drawn
 
   public:
+    // Constructor
+    Icon(
+        short _positionX = 0, 
+        short _positionY = 0, 
+        short _width = 0, 
+        short _height = 0,
+        bool _isFramed = false
+    )
+    {
+      setPosition(_positionX, _positionX);
+      setSize(_width, _height);
+      setFrame(_isFramed);
+    }
     // Draw configured widget. The target icon is excepted as an argument
     void draw(unsigned char image[]);
 
