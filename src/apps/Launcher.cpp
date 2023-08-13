@@ -9,6 +9,7 @@
 // Local dependencies
 #include <core/HardwareManager.hpp>
 #include <core/AppFramework.hpp>
+#include <core/Icons.hpp>
 
 // Apps instances
 Settings settings;
@@ -20,7 +21,8 @@ const char* appNames[] = {"Settings", "TestApp", "Debug"};
 short cursorPos = 0;
 
 // Widgets
-Button appLabel(32, 32, 64, 16, 7);
+Button appLabel(32, 42, 64, 16, 7);
+Icon appIcon(53, 11, 22, 22);
 
 void loadApp(short appID)
 {
