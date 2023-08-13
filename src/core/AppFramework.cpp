@@ -11,30 +11,30 @@
 void Button::draw()
 {
   // Draw frame or field
-  if(isFocused)
+  if(_isFocused)
   {
-    disp.drawRBox(positionX, positionY, width, height, cornerRadius);
+    disp.drawRBox(_positionX, _positionY, _width, _height, _cornerRadius);
   }
-  else if(isBordered)
+  else if(_isBordered)
   {
-    disp.drawRFrame(positionX, positionY, width, height, cornerRadius);
+    disp.drawRFrame(_positionX, _positionY, _width, _height, _cornerRadius);
   }
 
   // Positioning of the text 
   short textX, textY;
 
   // Vertical positioning
-  if(textAnchorV == "top") {textY = positionY + disp.getMaxCharHeight() + 2;}
-  else if(textAnchorV == "center") {textY = positionY + floor(height / 2) + 3;}
-  else if(textAnchorV == "bottom") {textY = positionY + height - 2;}
+  if(_textAnchorV == "top") {textY = _positionY + disp.getMaxCharHeight() + 2;}
+  else if(_textAnchorV == "center") {textY = _positionY + floor(_height / 2) + 3;}
+  else if(_textAnchorV == "bottom") {textY = _positionY + _height - 2;}
 
   // Horizontal positioning
-  if(textAnchorH == "left") {textX = positionX + 2;}
-  else if(textAnchorH == "center") {textX = positionX + width / 2 - disp.getStrWidth(text.c_str()) / 2;}
-  else if(textAnchorH == "right") {textX = positionX + (positionX + width - disp.getStrWidth(text.c_str()) - 5);}
+  if(_textAnchorH == "left") {textX = _positionX + 2;}
+  else if(_textAnchorH == "center") {textX = _positionX + _width / 2 - disp.getStrWidth(_text.c_str()) / 2;}
+  else if(_textAnchorH == "right") {textX = _positionX + (_positionX + _width - disp.getStrWidth(_text.c_str()) - 5);}
 
   disp.setDrawColor(2);
-  disp.drawStr(textX, textY, text.c_str());
+  disp.drawStr(textX, textY, _text.c_str());
   disp.setDrawColor(1);
 }
 
@@ -45,32 +45,38 @@ void TextLabel::draw()
   short textX, textY;
 
   // Vertical positioning
-  if(textAnchorV == "top") {textY = positionY + 7;}
-  else if(textAnchorV == "center") {textY = positionY + floor(height / 2) + 4;}
-  else if(textAnchorV == "bottom") {textY = positionY + height;}
+  if(_textAnchorV == "top") {textY = _positionY + 7;}
+  else if(_textAnchorV == "center") {textY = _positionY + floor(_height / 2) + 4;}
+  else if(_textAnchorV == "bottom") {textY = _positionY + _height;}
 
   // Horizontal positioning
-  if(textAnchorH == "left") {textX = positionX;}
-  else if(textAnchorH == "center") {textX = positionX + width / 2 - disp.getStrWidth(text.c_str()) / 2;}
-  else if(textAnchorH == "right") {textX = positionX + width - disp.getStrWidth(text.c_str());}
+  if(_textAnchorH == "left") {textX = _positionX;}
+  else if(_textAnchorH == "center") {textX = _positionX + _width / 2 - disp.getStrWidth(_text.c_str()) / 2;}
+  else if(_textAnchorH == "right") {textX = _positionX + _width - disp.getStrWidth(_text.c_str());}
 
   disp.setDrawColor(2);
-  disp.drawStr(textX, textY, text.c_str());
+  disp.drawStr(textX, textY, _text.c_str());
   disp.setDrawColor(1);
 }
 
 // Draw Icon widget
 void Icon::draw(unsigned char image[])
 {
-  disp.drawXBMP(positionX, positionY, width, height, image);
-  if(isBordered)
+  disp.drawXBMP(_positionX, _positionY, _width, _height, image);
+  if(_isBordered)
   {
     disp.drawRFrame(
-      positionX - borderPadding, 
-      positionY - borderPadding, 
-      width + borderPadding * 2,
-      height + borderPadding * 2, 
-      cornerRadius
+      _positionX - _borderPadding, 
+      _positionY - _borderPadding, 
+      _width + _borderPadding * 2,
+      _height + _borderPadding * 2, 
+      _cornerRadius
     );
   }
+}
+
+// Draw Checkbox widget
+void Checkbox::draw()
+{
+  disp.drawRBox(_positionX, _positionY, _width, _height, _cornerRadius);
 }
