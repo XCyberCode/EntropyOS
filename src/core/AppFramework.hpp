@@ -48,6 +48,7 @@ class Button
       positionY = _positionY;
     }
 
+    // Set horizontal position of the widget
     void setPositionX(short _positionX)
     {
       if(_positionX >= 0)
@@ -56,6 +57,7 @@ class Button
       }
     }
 
+    // Set vertical position of the widget
     void setPositionY(short _positionY)
     {
       if(_positionY >= 0)
