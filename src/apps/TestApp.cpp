@@ -21,10 +21,12 @@ void TestApp::draw()
     {
       return;
     }
+    
     if(invertTimer.tick())
     {
       testButton.invertFocus();
     }
+
     disp.clearBuffer();
     testButton.draw();
     disp.sendBuffer();
