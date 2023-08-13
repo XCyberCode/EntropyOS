@@ -222,14 +222,71 @@ class TextLabel
 
 class Icon
 {
-  public:
+  private:
     // Vars
     short width, height; // Size of the widget
     short positionX, positionY; // Position of the widget
     bool isFramed = false; // If true, a border will be drawn
 
+  public:
     // Methods
     void draw(unsigned char image[]); // Draw configured widget. The target icon is excepted as an argument
+
+    // Set width of the widget
+    void setWidth(short _width)
+    {
+      if(_width >= 0)
+      {
+        width = _width;
+      }
+    }
+
+    // Set height of the widget
+    void setHeight(short _height)
+    {
+      if(_height >= 0)
+      {
+        height = _height;
+      }
+    }
+
+    // Set size of the widget
+    void setSize(short _width, short _height)
+    {
+      setWidth(_width);
+      setHeight(_width);
+    }
+
+    // Set horizontal position of the widget
+    void setPositionX(short _positionX)
+    {
+      if(_positionX >= 0)
+      {
+        positionX = _positionX;
+      }
+    }
+
+    // Set vertical position of the widget
+    void setPositionY(short _positionY)
+    {
+      if(_positionY >= 0)
+      {
+        positionY = _positionY;
+      }
+    }
+
+    // Set position of the widget
+    void setPosition(short _positionX, short _positionY)
+    {
+      setPositionX(_positionX);
+      setPositionY(_positionY);
+    }
+
+    // Set frame state of the widget
+    void setFrame(bool _isFramed)
+    {
+      isFramed = _isFramed;
+    }
 };
 
 class Timer
