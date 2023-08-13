@@ -14,8 +14,8 @@ class Button
     short positionX, positionY; // Position of the widget 
     String textAnchorV; // Vertical position of the widget text. Can be: up, center, down
     String textAnchorH; // Horizontal position ot the widget text. Can be: right, center, left
-    bool isFocus; // If true, a button's content color will be inverted
-    bool isFramed; // If true, a border will be drawn
+    bool isFocused; // If true, a button content color will be inverted
+    bool isBordered; // If true, a border will be drawn
     short cornerRadius; // Radius of the corners
 
   public:
@@ -29,8 +29,8 @@ class Button
         String _text = "NONE", 
         String _textAnchorV = "center", 
         String _textAnchorH = "center",
-        bool _isFocus = false,
-        bool _isFramed = true
+        bool _isFocused = false,
+        bool _isBordered = true
     )
     {
       setPosition(_positionX, _positionY);
@@ -38,8 +38,8 @@ class Button
       setCornerRadius(_cornerRadius);
       setText(_text);
       setTextAnchor(_textAnchorV, _textAnchorH);
-      setFocus(_isFocus);
-      setFrame(_isFramed);
+      setFocus(_isFocused);
+      setFrame(_isBordered);
     }
     
     // Draw configured widget
@@ -118,24 +118,24 @@ class Button
     }
 
     // Set corner radius of the widget
-    void setCornerRadius(short _radius)
+    void setCornerRadius(short _cornerRadius)
     {
-      if(_radius >= 0)
+      if(_cornerRadius >= 0)
       {
-        cornerRadius = _radius;
+        cornerRadius = _cornerRadius;
       }
     }
 
     // Set content highlight state of the widget
-    void setFocus(bool _isFocus) {isFocus = _isFocus;}
+    void setFocus(bool _isFocused) {isFocused = _isFocused;}
 
     // Invert content highlight state of the widget
-    void invertFocus() {isFocus = !isFocus;}
+    void invertFocus() {isFocused = !isFocused;}
 
     // Set frame state of the widget
-    void setFrame(bool _isFramed)
+    void setFrame(bool _isBordered)
     {
-      isFramed = _isFramed;
+      isBordered = _isBordered;
     }
 };
 
@@ -249,7 +249,9 @@ class Icon
   private:
     short width, height; // Size of the widget
     short positionX, positionY; // Position of the widget
-    bool isFramed; // If true, a border will be drawn
+    bool isBordered; // If true, a border will be drawn
+    short borderPadding = 0; // Padding between border and content
+    short cornerRadius = 0; // Radius of the border corners
 
   public:
     // Constructor
@@ -258,12 +260,16 @@ class Icon
         short _positionY = 0, 
         short _width = 0, 
         short _height = 0,
-        bool _isFramed = false
+        bool _isBordered = false,
+        short _cornerRadius = 0,
+        short _borderPadding = 0
     )
     {
-      setPosition(_positionX, _positionX);
+      setPosition(_positionX, _positionY);
       setSize(_width, _height);
-      setFrame(_isFramed);
+      setBorder(_isBordered);
+      setCornerRadius(_cornerRadius);
+      setBorderPadding(_borderPadding);
     }
     // Draw configured widget. The target icon is excepted as an argument
     void draw(unsigned char image[]);
@@ -319,9 +325,27 @@ class Icon
     }
 
     // Set frame state of the widget
-    void setFrame(bool _isFramed)
+    void setBorder(bool _isBordered)
     {
-      isFramed = _isFramed;
+      isBordered = _isBordered;
+    }
+
+    // Set radius of the border corners
+    void setCornerRadius(short _cornerRadius)
+    {
+      if(_cornerRadius >= 0)
+      {
+        cornerRadius = _cornerRadius;
+      }
+    }
+
+    // Set padding between border and content
+    void setBorderPadding(short _borderPadding)
+    {
+      if(_borderPadding >= 0)
+      {
+        borderPadding = _borderPadding;
+      }
     }
 };
 

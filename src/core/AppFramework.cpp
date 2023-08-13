@@ -11,11 +11,11 @@
 void Button::draw()
 {
   // Draw frame or field
-  if(isFocus)
+  if(isFocused)
   {
     disp.drawRBox(positionX, positionY, width, height, cornerRadius);
   }
-  else if(isFramed)
+  else if(isBordered)
   {
     disp.drawRFrame(positionX, positionY, width, height, cornerRadius);
   }
@@ -63,8 +63,14 @@ void TextLabel::draw()
 void Icon::draw(unsigned char image[])
 {
   disp.drawXBMP(positionX, positionY, width, height, image);
-  if(isFramed)
+  if(isBordered)
   {
-    disp.drawFrame(positionX, positionY, width, height);
+    disp.drawRFrame(
+      positionX - borderPadding, 
+      positionY - borderPadding, 
+      width + borderPadding * 2,
+      height + borderPadding * 2, 
+      cornerRadius
+    );
   }
 }

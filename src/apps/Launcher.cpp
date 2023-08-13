@@ -18,11 +18,12 @@ Debug debugApp;
 
 // Variables
 const char* appNames[] = {"Settings", "TestApp", "Debug"};
+unsigned char* appIcons[] = {settingsIcon, testIcon, clockIcon};
 short cursorPos = 0;
 
 // Widgets
 Button appLabel(32, 42, 64, 16, 7);
-Icon appIcon(53, 11, 22, 22);
+Icon appIcon(53, 11, 22, 22, true, 3, 5);
 
 void loadApp(short appID)
 {
@@ -61,6 +62,7 @@ void Launcher::draw()
     appLabel.setText(appNames[cursorPos]);
     disp.clearBuffer();
     appLabel.draw();
+    appIcon.draw(appIcons[cursorPos]);
     disp.sendBuffer();
   }
 }
