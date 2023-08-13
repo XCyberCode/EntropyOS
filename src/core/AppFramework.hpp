@@ -9,7 +9,6 @@
 class Button
 {
   private:
-    // Vars
     String text = "NONE"; // Text of the widget
     short width, height; // Size of the widget
     short positionX, positionY; // Position of the widget 
@@ -39,8 +38,8 @@ class Button
       setTextAnchor(_textAnchorV, _textAnchorH);
     }
     
-    // Methods
-    void draw(); // Draw configured widget
+    // Draw configured widget
+    void draw();
    
     // Set horizontal position of the widget
     void setPositionX(short _positionX)
@@ -133,7 +132,6 @@ class Button
 class TextLabel
 {
   private:
-    // Vars
     String text = "NONE"; // Text of the widget
     short width, height; // Size of the widget
     short positionX, positionY; // Position of the widget
@@ -141,7 +139,6 @@ class TextLabel
     String textAnchorH = "center"; // Horizontal position of the widget text. Can be right, center, left
        
   public:
-    // Methods
     // Draw configured widget
     void draw();
 
@@ -224,14 +221,13 @@ class TextLabel
 class Icon
 {
   private:
-    // Vars
     short width, height; // Size of the widget
     short positionX, positionY; // Position of the widget
     bool isFramed = false; // If true, a border will be drawn
 
   public:
-    // Methods
-    void draw(unsigned char image[]); // Draw configured widget. The target icon is excepted as an argument
+    // Draw configured widget. The target icon is excepted as an argument
+    void draw(unsigned char image[]);
 
     // Set horizontal position of the widget
     void setPositionX(short _positionX)
@@ -293,9 +289,10 @@ class Icon
 class Timer
 {
   private:
-    // Vars
-    uint32_t timerTime = 0, timerPeriod = 100;
-    bool isRunning, isTimer; 
+    uint32_t timerTime = 0; // Time, elapsed by timer
+    uint32_t timerPeriod = 100; // Round time of the timer
+    bool isRunning; // Current state of the timer 
+    bool isTimer;  // If true, timer will be stopped after one round
   
   public:
     // Constructor
@@ -306,7 +303,6 @@ class Timer
       isTimer = _isTimer;
     }
 
-    // Methods
     // Start timer
     void start() {
       isRunning = true;
