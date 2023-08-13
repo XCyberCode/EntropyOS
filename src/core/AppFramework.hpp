@@ -398,22 +398,22 @@ class Timer
 class Checkbox
 {
   private:
-    short _positionX, _positionY;
-    short _width, _height;
-    String _text;
-    bool _isChecked;
-    short _cornerRadius;
+    short _positionX, _positionY; // Position of the widget
+    short _width, _height; // Size of the widget
+    String _text; // Text of the widget
+    bool _isChecked; // State of the widget
+    short _cornerRadius; // Radius of the border corners
 
   public:
     // Constructor
     Checkbox(
-      short positionX, 
-      short positionY, 
-      short width, 
-      short height, 
-      bool isChecked, 
-      short cornerRadius, 
-      String text
+      short positionX = 0, 
+      short positionY = 0, 
+      short width = 10, 
+      short height = 10, 
+      bool isChecked = false, 
+      short cornerRadius = 0, 
+      String text = ""
     )
     {
       setPosition(positionX, positionY);
