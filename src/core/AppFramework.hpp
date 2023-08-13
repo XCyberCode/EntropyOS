@@ -41,13 +41,7 @@ class Button
     
     // Methods
     void draw(); // Draw configured widget
-    
-    void setPosition(short _positionX, short _positionY)
-    {
-      positionX = _positionX;
-      positionY = _positionY;
-    }
-
+   
     // Set horizontal position of the widget
     void setPositionX(short _positionX)
     {
@@ -66,26 +60,11 @@ class Button
       }
     }
 
-    // Set text of the widget
-    void setText(String _text) {text = _text;}
-
-    // Set vertical text acnhor of the widget
-    void setTextAnchorV(String _textAnchorV)
+    // Set position of the widget
+    void setPosition(short _positionX, short _positionY)
     {
-      textAnchorV = _textAnchorV;
-    }
-
-    // Set horizontal text anchor of the widget
-    void setTextAnchorH(String _textAnchorH)
-    {
-      textAnchorH = _textAnchorH;
-    }
-
-    // Set text anchor of the widget
-    void setTextAnchor(String _textAnchorV, String _textAnchorH)
-    {
-      setTextAnchorV(_textAnchorV);
-      setTextAnchorH(_textAnchorH);
+      positionX = _positionX;
+      positionY = _positionY;
     }
 
     // Set width of the widget
@@ -111,6 +90,28 @@ class Button
     {
       setWidth(_width);
       setHeight(_height);
+    }
+
+    // Set text of the widget
+    void setText(String _text) {text = _text;}
+
+    // Set vertical text acnhor of the widget
+    void setTextAnchorV(String _textAnchorV)
+    {
+      textAnchorV = _textAnchorV;
+    }
+
+    // Set horizontal text anchor of the widget
+    void setTextAnchorH(String _textAnchorH)
+    {
+      textAnchorH = _textAnchorH;
+    }
+
+    // Set text anchor of the widget
+    void setTextAnchor(String _textAnchorV, String _textAnchorH)
+    {
+      setTextAnchorV(_textAnchorV);
+      setTextAnchorH(_textAnchorH);
     }
 
     // Set corner radius of the widget
@@ -232,31 +233,6 @@ class Icon
     // Methods
     void draw(unsigned char image[]); // Draw configured widget. The target icon is excepted as an argument
 
-    // Set width of the widget
-    void setWidth(short _width)
-    {
-      if(_width >= 0)
-      {
-        width = _width;
-      }
-    }
-
-    // Set height of the widget
-    void setHeight(short _height)
-    {
-      if(_height >= 0)
-      {
-        height = _height;
-      }
-    }
-
-    // Set size of the widget
-    void setSize(short _width, short _height)
-    {
-      setWidth(_width);
-      setHeight(_width);
-    }
-
     // Set horizontal position of the widget
     void setPositionX(short _positionX)
     {
@@ -280,6 +256,31 @@ class Icon
     {
       setPositionX(_positionX);
       setPositionY(_positionY);
+    }
+
+    // Set width of the widget
+    void setWidth(short _width)
+    {
+      if(_width >= 0)
+      {
+        width = _width;
+      }
+    }
+
+    // Set height of the widget
+    void setHeight(short _height)
+    {
+      if(_height >= 0)
+      {
+        height = _height;
+      }
+    }
+
+    // Set size of the widget
+    void setSize(short _width, short _height)
+    {
+      setWidth(_width);
+      setHeight(_width);
     }
 
     // Set frame state of the widget
