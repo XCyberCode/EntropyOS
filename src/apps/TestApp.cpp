@@ -23,7 +23,7 @@ void TestApp::draw()
     }
     if(invertTimer.tick())
     {
-      testButton.invertHighlight();
+      testButton.invertFocus();
     }
     disp.clearBuffer();
     testButton.draw();

@@ -13,17 +13,19 @@ Button aBtnWidget(90, 23, 18, 18, 4, "A");
 
 void Debug::draw()
 {
+  tone(17, 500);
   while(1)
   {
     tickAll();
-    if(upBtn.click()) {upBtnWidget.invertHighlight();}
-    if(downBtn.click()) {downBtnWidget.invertHighlight();}
-    if(leftBtn.click()) {leftBtnWidget.invertHighlight();}
-    if(rightBtn.click()) {rightBtnWidget.invertHighlight();}
-    if(aBtn.click()) {aBtnWidget.invertHighlight();}
+    if(upBtn.click()) {upBtnWidget.invertFocus();}
+    if(downBtn.click()) {downBtnWidget.invertFocus();}
+    if(leftBtn.click()) {leftBtnWidget.invertFocus();}
+    if(rightBtn.click()) {rightBtnWidget.invertFocus();}
+    if(aBtn.click()) {aBtnWidget.invertFocus();}
 
     if(bBtn.click())
     {
+      noTone(17);
       return;
     }
 

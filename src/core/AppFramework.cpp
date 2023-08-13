@@ -12,7 +12,7 @@
 void Button::draw()
 {
   // Draw frame or field
-  if(isHighlighted)
+  if(isFocus)
   {
     disp.drawRBox(positionX, positionY, width, height, cornerRadius);
   }
@@ -60,4 +60,3 @@ void Icon::draw(unsigned char image[])
     disp.drawFrame(positionX, positionY, width, height);
   }
 }
-

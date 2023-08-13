@@ -15,7 +15,7 @@ class Button
     short positionX, positionY; // Position of the widget 
     String textAnchorV = "center"; // Vertical position of the widget text. Can be: up, center, down
     String textAnchorH = "center"; // Horizontal position ot the widget text. Can be: right, center, left
-    bool isHighlighted = false; // If true, a button's content color will be inverted
+    bool isFocus = false; // If true, a button's content color will be inverted
     bool isFramed = true; // If true, a border will be drawn
     short cornerRadius = 0; // Radius of the corners
 
@@ -42,34 +42,65 @@ class Button
     // Methods
     void draw(); // Draw configured widget
     
-    void setPosition(short _positionX = 0, short _positionY = 0)
+    void setPosition(short _positionX, short _positionY)
     {
       positionX = _positionX;
       positionY = _positionY;
     }
 
+    void setPositionX(short _positionX)
+    {
+      if(_positionX >= 0)
+      {
+        positionX = _positionX;
+      }
+    }
+
+    void setPositionY(short _positionY)
+    {
+      if(_positionY >= 0)
+      {
+        positionY = _positionY;
+      }
+    }
+
     // Set text of the widget
-    void setText(String _text = "NONE") {text = _text;}
+    void setText(String _text) {text = _text;}
 
     // Set text anchor of the widget
-    void setTextAnchor(String _textAnchorV = "center", String _textAnchorH = "center")
+    void setTextAnchor(String _textAnchorV, String _textAnchorH)
     {
       textAnchorV = _textAnchorV;
       textAnchorH = _textAnchorH;
     }
 
-    // Set size of the widget
-    void setSize(short _width = 0, short _height = 0)
+    // Set width of the widget
+    void setWidth(short _width)
     {
-      if(_width >= 0 && _height >= 0)
+      if(_width >= 0)
       {
         width = _width;
+      }
+    }
+
+    // Set height of the widget
+    void setHeight(short _height)
+    {
+      if(_height >= 0)
+      {
         height = _height;
       }
     }
 
+    // Set size of the widget
+    void setSize(short _width, short _height)
+    {
+      setWidth(_width);
+      setHeight(_height);
+    }
+
     // Set corner radius of the widget
-    void setCornerRadius(short _radius = 0)
+    void setCornerRadius(short _radius)
     {
       if(_radius >= 0)
       {
@@ -78,10 +109,10 @@ class Button
     }
 
     // Set content highlight state of the widget
-    void setHighlight(bool _state = 0) {isHighlighted = _state;}
+    void setFocus(bool _isFocus) {isFocus = _isFocus;}
 
     // Invert content highlight state of the widget
-    void invertHighlight() {isHighlighted = !isHighlighted;}
+    void invertFocus() {isFocus = !isFocus;}
 };
 
 class TextLabel
@@ -152,6 +183,7 @@ class Timer
         timerTime = millis();
         return true;
       }
+      return false;
     };
 };
 #endif
