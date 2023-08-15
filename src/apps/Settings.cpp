@@ -1,13 +1,23 @@
 // Header
 #include <apps/Settings.hpp>
 
+// Libraries
+#include <NTPClient.h>
+
 // Local dependencies
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
 
 TextLabel itemLabel(0, 0, 128, 16, "", "center", "left");
-String items[] = {"General", "System", "Network", "Hardware"};
+String items[] = {"Load time from NTP", "Set timezone", "None", "None"};
 short cursorPosition = 0;
+
+void executeTask(short taskID)
+{
+  if(taskID == 0)
+  {
+  }
+}
 
 void Settings::draw()
 {
