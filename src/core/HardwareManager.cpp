@@ -1,6 +1,17 @@
 // Header
 #include <core/HardwareManager.hpp>
 
+// Libraries
+#include <U8g2lib.h>
+#include <EncButton.h>
+#include <Preferences.h>
+
+// Local dependencies
+#include <core/Pins.hpp>
+
+// Drivers
+#include <lib/DS1307.hpp>
+
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C disp(U8G2_R0);
 
 EncButton<EB_TICK, LEFT_BTN_PIN> leftBtn;

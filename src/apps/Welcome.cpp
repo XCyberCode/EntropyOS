@@ -1,8 +1,8 @@
 // Header
-#include <apps/FirstSetup.hpp>
+#include <apps/Welcome.hpp>
 
 // Local dependencies
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
 
-void FirstSetup::draw(){}
+void Welcome::draw(){}

@@ -1,4 +1,4 @@
-class FirstSetup
+class Welcome
 {
   public:
     static void draw();
