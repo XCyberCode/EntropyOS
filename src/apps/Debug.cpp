@@ -11,7 +11,7 @@ Button leftBtnWidget(18, 23, 18, 18, 4, "L");
 Button rightBtnWidget(54, 23, 18, 18, 4, "R");
 Button aBtnWidget(90, 23, 18, 18, 4, "A");
 
-TextLabel timeWidget(0, 0, 128, 16, "0:0:0", "top", "right");
+TextLabel timeWidget(0, 0, 128, 16, "N:N:N", "top", "right");
 
 Timer clockUpdateTimer(1000, 0, 0);
 
