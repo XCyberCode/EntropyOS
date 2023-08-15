@@ -17,8 +17,8 @@ Timer clockUpdateTimer(1000, 0, 0);
 
 void Debug::draw()
 {
-  clockModule.setAll(0, 0, 0, 3, 15, 8, 23);
-  //tone(17, 500);
+  // clockModule.set(0, 0, 0, 3, 15, 8, 23);
+  // tone(17, 500);
   clockUpdateTimer.start();
   while(1)
   {
