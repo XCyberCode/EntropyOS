@@ -15,15 +15,21 @@
 #include <core/AppFramework.hpp>
 #include <core/Icons.hpp>
 
-// Apps instances
-Settings settings;
-TestApp testApp;
-Debug debugApp;
-I2CScanner scannerApp;
-
 // Variables
-const char* appNames[] = {"Settings", "TestApp", "Debug", "Scanner"};
-unsigned char* appIcons[] = {settingsIcon, testIcon, clockIcon, settingsIcon};
+const char* appNames[] = {
+  "Settings", 
+  "TestApp", 
+  "Debug", 
+  "Scanner"
+};
+
+unsigned char* appIcons[] = {
+  settingsIcon, 
+  testIcon, 
+  clockIcon, 
+  scannerIcon
+};
+
 short cursorPos = 0;
 
 // Widgets
@@ -34,19 +40,19 @@ void loadApp(short appID)
 {
   if(appID == 0)
   {
-    settings.draw();
+    Settings::draw();
   }
   else if(appID == 1)
   {
-    testApp.draw();
+    TestApp::draw();
   }
   else if(appID == 2)
   {
-    debugApp.draw();
+    Debug::draw();
   }
   else if(appID == 3)
   {
-    scannerApp.draw();
+    I2CScanner::draw();
   }
 }
 

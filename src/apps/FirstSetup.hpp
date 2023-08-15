@@ -1,5 +1,5 @@
 class FirstSetup
 {
   public:
-    void draw();
+    static void draw();
 };

@@ -1,5 +1,5 @@
 class I2CScanner
 {
   public: 
-    void draw();
+    static void draw();
 };

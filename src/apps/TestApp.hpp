@@ -1,5 +1,5 @@
 class TestApp
 {
   public:
-    void draw();
+    static void draw();
 };

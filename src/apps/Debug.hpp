@@ -1,5 +1,8 @@
+// Libraries
+#include <Arduino.h>
+
 class Debug
 {
   public:
-    void draw();
+    static void draw();
 };

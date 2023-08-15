@@ -1,5 +1,5 @@
 class Launcher
 {
   public:
-    void draw();
+    static void draw();
 };

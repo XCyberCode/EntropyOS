@@ -1,5 +1,5 @@
 class Settings
 {
   public:
-    void draw();
+    static void draw();
 };
