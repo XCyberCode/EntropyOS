@@ -2,10 +2,9 @@
 #include <apps/Launcher.hpp>
 
 // Defines
-#define MAX_CURSOR_POS 3
+#define MAX_CURSOR_POS 2
 
 // Apps
-#include <apps/TestApp.hpp>
 #include <apps/Settings.hpp>
 #include <apps/Debug.hpp>
 #include <apps/I2CScanner.hpp>
@@ -18,14 +17,12 @@
 // Variables
 const char* appNames[] = {
   "Settings", 
-  "TestApp", 
   "Debug", 
   "Scanner"
 };
 
 unsigned char* appIcons[] = {
   settingsIcon, 
-  testIcon, 
   clockIcon, 
   scannerIcon
 };
@@ -44,13 +41,9 @@ void loadApp(short appID)
   }
   else if(appID == 1)
   {
-    TestApp::draw();
-  }
-  else if(appID == 2)
-  {
     Debug::draw();
   }
-  else if(appID == 3)
+  else if(appID == 2)
   {
     I2CScanner::draw();
   }
