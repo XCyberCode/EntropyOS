@@ -2,7 +2,8 @@
 #include <apps/Settings.hpp>
 
 // Libraries
-#include <NTPClient.h>
+// #include <NTPClient.h>
+// #include <WiFi.h>
 
 // Local dependencies
 #include <core/AppFramework.hpp>
@@ -16,6 +17,28 @@ void executeTask(short taskID)
 {
   if(taskID == 0)
   {
+  }
+
+  else if(taskID == 1)
+  {
+    TextLabel timezoneLabel(0, 0, 128, 64);
+    short timezoneOffset = storage.getShort("timezone");
+
+    while(1)
+    {
+      tickAll();
+      if(bBtn.click()) {
+        storage.putShort("timezone", timezoneOffset);
+        break;
+      }
+      if(rightBtn.click()) {timezoneOffset++;}
+      if(leftBtn.click()) {timezoneOffset--;}
+
+      disp.clearBuffer();
+      timezoneLabel.setText("Timezone: UTC" + String(timezoneOffset));
+      timezoneLabel.draw();
+      disp.sendBuffer();
+    }
   }
 }
 
@@ -50,6 +73,10 @@ void Settings::draw()
     if(bBtn.click())
     {
       return;
+    }
+    if(aBtn.click())
+    {
+      executeTask(cursorPosition);
     }
 
     disp.clearBuffer();
