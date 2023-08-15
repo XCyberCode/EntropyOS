@@ -1,11 +1,11 @@
 // Libraries
 #include <U8g2lib.h>
 #include <EncButton.h>
-//#include <DS1307RTC.h>
-//#include <TimeLib.h>
 
 // Local dependencies
 #include <core/Pins.hpp>
+
+// Drivers
 #include <lib/DS1307.hpp>
 
 // Include guard

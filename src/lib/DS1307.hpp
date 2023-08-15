@@ -12,13 +12,13 @@
 class DS1307
 {
   private:
-    byte _second;
-    byte _minute;
-    byte _hour;
-    byte _dayOfWeek;
-    byte _dayOfMonth;
-    byte _month;
-    byte _year;
+    byte _second; // Seconds
+    byte _minute; // Minutes
+    byte _hour; // Hours
+    byte _dayOfWeek; // Day of the week
+    byte _dayOfMonth; // Day of the month
+    byte _month; // Month
+    byte _year; // Year
 
     // Convert from decimal to binary-decimal
     byte decToBcd(byte value)
@@ -31,7 +31,9 @@ class DS1307
     {
       return (value / 16 * 10) + (value % 16);
     }
+
   public:
+    // Read time and date
     void read()
     {
       Wire.beginTransmission(DS1307_I2C_ADDRESS);
@@ -48,20 +50,21 @@ class DS1307
       _year = bcdToDec(Wire.read());
     }
 
-    void setAll(byte second, byte minute, byte hour, byte dayOfWeek, byte dayOfMonth, byte month, byte year)
+    // Set time and date
+    void set(byte second, byte minute, byte hour, byte dayOfWeek, byte dayOfMonth, byte month, byte year)
     {
       Wire.beginTransmission(DS1307_I2C_ADDRESS);
       // выставляем регистр указателей DS3231 на регистр «00h»,
       // т.е. на регистр, в котором хранятся данные о секундах:
       Wire.write(0);
-      Wire.write(decToBcd(second)); // задаем секунды
-      Wire.write(decToBcd(minute)); // задаем минуты
-      Wire.write(decToBcd(hour)); // задаем часы
-      Wire.write(decToBcd(dayOfWeek));
-      // задаем день недели (1 – это воскресенье, 7 – это суббота)
-      Wire.write(decToBcd(dayOfMonth)); // задаем дату (от 1 до 31)
-      Wire.write(decToBcd(month)); // задаем месяц
-      Wire.write(decToBcd(year)); // задаем год (от 0 до 99)
+      Wire.write(decToBcd(second)); // Set seconds
+      Wire.write(decToBcd(minute)); // Set minutes
+      Wire.write(decToBcd(hour)); // Set hours
+      Wire.write(decToBcd(dayOfWeek)); 
+      // Set day of the week (1 – Sunday, 7 – Saturday)
+      Wire.write(decToBcd(dayOfMonth)); // Set day (from 1 to 31)
+      Wire.write(decToBcd(month)); // Set months
+      Wire.write(decToBcd(year)); // Set years (from 0 to 99)
       Wire.endTransmission();
     }
 
