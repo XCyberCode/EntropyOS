@@ -4,8 +4,8 @@
 // Local dependencies
 #include <core/HardwareManager.hpp>
 
-#ifndef APPFRAMEWORKH
-#define APPFRAMEWORKH
+#ifndef APP_FRAMEWORK_H
+#define APP_FRAMEWORK_H
 class Button
 {
   private:

@@ -1,9 +1,12 @@
 // Libraries
 #include <U8g2lib.h>
 #include <EncButton.h>
+//#include <DS1307RTC.h>
+//#include <TimeLib.h>
 
 // Local dependencies
 #include <core/Pins.hpp>
+#include <lib/DS1307.hpp>
 
 // Include guard
 #ifndef HARDWARE_MANAGER_H
@@ -18,6 +21,8 @@ extern EncButton<EB_TICK, B_BTN_PIN> bBtn;
 
 extern U8G2_SSD1306_128X64_NONAME_F_HW_I2C disp;
 
+extern DS1307 clockModule;
+
 static void tickAll()
 {
   leftBtn.tick();
@@ -30,7 +35,9 @@ static void tickAll()
 
 static void beginHardware()
 {
+  Wire.begin();
   disp.begin();
+  disp.setFont(u8g2_font_6x10_tf);
   disp.setFontMode(1);
 }
 

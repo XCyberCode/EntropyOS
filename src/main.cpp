@@ -11,9 +11,7 @@ Launcher launcher;
 
 void setup()
 {
-  disp.begin();
-  disp.setFont(u8g2_font_6x10_tf);
-  disp.setFontMode(1);
+  beginHardware();
   launcher.draw();
 }
 

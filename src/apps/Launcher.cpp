@@ -1,10 +1,14 @@
 // Header
 #include <apps/Launcher.hpp>
 
+// Defines
+#define MAX_CURSOR_POS 3
+
 // Apps
 #include <apps/TestApp.hpp>
 #include <apps/Settings.hpp>
 #include <apps/Debug.hpp>
+#include <apps/I2CScanner.hpp>
 
 // Local dependencies
 #include <core/HardwareManager.hpp>
@@ -15,10 +19,11 @@
 Settings settings;
 TestApp testApp;
 Debug debugApp;
+I2CScanner scannerApp;
 
 // Variables
-const char* appNames[] = {"Settings", "TestApp", "Debug"};
-unsigned char* appIcons[] = {settingsIcon, testIcon, clockIcon};
+const char* appNames[] = {"Settings", "TestApp", "Debug", "Scanner"};
+unsigned char* appIcons[] = {settingsIcon, testIcon, clockIcon, settingsIcon};
 short cursorPos = 0;
 
 // Widgets
@@ -39,6 +44,10 @@ void loadApp(short appID)
   {
     debugApp.draw();
   }
+  else if(appID == 3)
+  {
+    scannerApp.draw();
+  }
 }
 
 void Launcher::draw() 
@@ -48,11 +57,11 @@ void Launcher::draw()
     tickAll();
     if(leftBtn.click())
     {
-      (cursorPos == 0) ? cursorPos = 2 : cursorPos--;
+      (cursorPos == 0) ? cursorPos = MAX_CURSOR_POS : cursorPos--;
     }
     else if(rightBtn.click())
     {
-      (cursorPos == 2) ? cursorPos = 0 : cursorPos++;
+      (cursorPos == MAX_CURSOR_POS) ? cursorPos = 0 : cursorPos++;
     }
     else if(aBtn.click())
     {
