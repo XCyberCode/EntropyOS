@@ -21,15 +21,15 @@ I2CScanner appScanner;
 
 // Variables
 const char* appNames[] = {
-  appSettings.name,
-  appDebug.name, 
-  appScanner.name
+  appSettings.appName,
+  appDebug.appName, 
+  appScanner.appName
 };
 
 unsigned char* appIcons[] = {
-  appSettings.icon, 
-  appDebug.icon, 
-  appScanner.icon
+  appSettings.appIcon, 
+  appDebug.appIcon, 
+  appScanner.appIcon
 };
 
 short cursorPos = 0;

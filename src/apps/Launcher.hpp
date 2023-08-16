@@ -1,5 +1,7 @@
 class Launcher
 {
   public:
-    static void draw();
+    void draw();
+    const char * appName = "Launcher";
+    // unsigned char * appIcon;
 };

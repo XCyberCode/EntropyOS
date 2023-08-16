@@ -5,6 +5,6 @@ class I2CScanner
 {
   public: 
     void draw();
-    const char * name = "Scanner";
-    unsigned char * icon = scannerIcon;
+    const char * appName = "Scanner";
+    unsigned char * appIcon = scannerIcon;
 };

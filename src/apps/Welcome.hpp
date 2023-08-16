@@ -1,5 +1,10 @@
+// Local dependencies
+#include <core/Icons.hpp>
+
 class Welcome
 {
   public:
-    static void draw();
+    void draw();
+    const char * appName = "Welcome";
+    unsigned char * appIcon = welcomeIcon;
 };

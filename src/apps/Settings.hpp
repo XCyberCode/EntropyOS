@@ -5,6 +5,6 @@ class Settings
 {
   public:
     void draw();
-    const char * name = "Settings";
-    unsigned char * icon = settingsIcon;
+    const char * appName = "Settings";
+    unsigned char * appIcon = settingsIcon;
 };

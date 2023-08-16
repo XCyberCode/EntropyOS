@@ -8,6 +8,6 @@ class Debug
 {
   public:
     void draw();
-    const char * name = "Debug";
-    unsigned char * icon = clockIcon;
+    const char * appName = "Debug";
+    unsigned char * appIcon = clockIcon;
 };
