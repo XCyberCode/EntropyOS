@@ -18,9 +18,7 @@ void contrastStep()
 
 void controlsStep()
 {
-<<<<<<< HEAD
   stepLabel.setText("Right, Left - change");
-=======
   disp.clearBuffer();
   stepLabel.setPositionY(37);
   stepLabel.setText("< > Change value");
@@ -32,45 +30,36 @@ void controlsStep()
   disp.sendBuffer();
 
   stepLabel.setPositionY(37);
->>>>>>> 285e2c0 (Update welcome app)
 
   while(1)
   {
     tickAll();
     if(aBtn.click()) {return;}
-<<<<<<< HEAD
     disp.clearBuffer();
     stepLabel.draw();
     stepIcon.draw(welcomeIcon);
     disp.sendBuffer();
-=======
->>>>>>> 285e2c0 (Update welcome app)
   }
 }
 
 void welcomeStep()
 {
   stepLabel.setText("Welcome!");
-<<<<<<< HEAD
-=======
+
   disp.clearBuffer();
   stepLabel.draw();
   stepIcon.draw(welcomeIcon);
   disp.sendBuffer();
->>>>>>> 285e2c0 (Update welcome app)
 
   while(1)
   {
     tickAll();
     if(aBtn.click()) {return;}
-<<<<<<< HEAD
 
     disp.clearBuffer();
     stepLabel.draw();
     stepIcon.draw(welcomeIcon);
     disp.sendBuffer();
-=======
->>>>>>> 285e2c0 (Update welcome app)
   }
 }
 
