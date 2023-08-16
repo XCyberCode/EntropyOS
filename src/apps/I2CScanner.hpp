@@ -1,5 +1,10 @@
+// Local dependencies
+#include <core/Icons.hpp>
+
 class I2CScanner
 {
   public: 
-    static void draw();
+    void draw();
+    const char * name = "Scanner";
+    unsigned char * icon = scannerIcon;
 };

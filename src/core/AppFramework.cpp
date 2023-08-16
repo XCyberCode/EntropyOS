@@ -68,7 +68,7 @@ void Icon::draw(unsigned char image[])
     disp.drawRFrame(
       _positionX - _borderPadding, 
       _positionY - _borderPadding, 
-      _width + _borderPadding * 2,
+      _width + _borderPadding * 2 + 1,
       _height + _borderPadding * 2, 
       _cornerRadius
     );

@@ -1,8 +1,13 @@
 // Libraries
 #include <Arduino.h>
 
+// Local dependencies
+#include <core/Icons.hpp>
+
 class Debug
 {
   public:
-    static void draw();
+    void draw();
+    const char * name = "Debug";
+    unsigned char * icon = clockIcon;
 };

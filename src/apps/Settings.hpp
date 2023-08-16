@@ -1,5 +1,10 @@
+// Local dependencies
+#include <core/Icons.hpp>
+
 class Settings
 {
   public:
-    static void draw();
+    void draw();
+    const char * name = "Settings";
+    unsigned char * icon = settingsIcon;
 };
