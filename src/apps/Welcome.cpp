@@ -50,11 +50,6 @@ void welcomeStep()
   {
     tickAll();
     if(aBtn.click()) {return;}
-
-    disp.clearBuffer();
-    stepLabel.draw();
-    stepIcon.draw(welcomeIcon);
-    disp.sendBuffer();
   }
 }
 
