@@ -15,6 +15,7 @@ void setup()
   if(!storage.getShort("initialized"))
   {
     appWelcome.draw();
+    appLauncher.draw();
   }
   else 
   {

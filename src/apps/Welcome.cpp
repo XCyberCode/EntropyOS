@@ -18,7 +18,6 @@ void contrastStep()
 
 void controlsStep()
 {
-  stepLabel.setText("Right, Left - change");
   disp.clearBuffer();
   stepLabel.setPositionY(37);
   stepLabel.setText("< > Change value");
@@ -35,10 +34,6 @@ void controlsStep()
   {
     tickAll();
     if(aBtn.click()) {return;}
-    disp.clearBuffer();
-    stepLabel.draw();
-    stepIcon.draw(welcomeIcon);
-    disp.sendBuffer();
   }
 }
 
