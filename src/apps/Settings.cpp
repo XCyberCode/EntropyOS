@@ -10,8 +10,61 @@
 #include <core/HardwareManager.hpp>
 
 TextLabel itemLabel(0, 0, 128, 16, "", "center", "left");
-String items[] = {"Load time from NTP", "Set timezone", "None", "None"};
+String items[] = {"Load time from NTP", "Set timezone", "Set contrast"};
 short cursorPosition = 0;
+
+void contrastWindow()
+{
+  TextLabel contrastLabel(0, 0, 128, 64);
+  short contrastValue = storage.getShort("contrast");
+
+  while(1)
+  {
+    tickAll();
+    if(bBtn.click())
+    {
+      storage.putShort("contrast", contrastValue);
+      return;
+    }
+    if(rightBtn.click() && contrastValue < 255) 
+    {
+      contrastValue += 5;
+      disp.setContrast(contrastValue);
+    }
+    if(leftBtn.click() && contrastValue > 0) 
+    {
+      contrastValue -= 5;
+      disp.setContrast(contrastValue);
+    }
+
+    disp.clearBuffer();
+    contrastLabel.setText("Contrast: " + String(contrastValue));
+    contrastLabel.draw();
+    disp.sendBuffer();
+  }
+}
+
+void timezoneWindow()
+{
+  TextLabel timezoneLabel(0, 0, 128, 64);
+  short timezoneOffset = storage.getShort("timezone");
+
+  while(1)
+  {
+    tickAll();
+    if(bBtn.click()) {
+      storage.putShort("timezone", timezoneOffset);
+      return;
+    }
+    if(rightBtn.click()) {timezoneOffset++;}
+    if(leftBtn.click()) {timezoneOffset--;}
+
+    disp.clearBuffer();
+    timezoneLabel.setText("Timezone: UTC" + String(timezoneOffset));
+    timezoneLabel.draw();
+    disp.sendBuffer();
+  }
+}
 
 void executeTask(short taskID)
 {
@@ -21,24 +74,12 @@ void executeTask(short taskID)
 
   else if(taskID == 1)
   {
-    TextLabel timezoneLabel(0, 0, 128, 64);
-    short timezoneOffset = storage.getShort("timezone");
+    timezoneWindow();
+  }
 
-    while(1)
-    {
-      tickAll();
-      if(bBtn.click()) {
-        storage.putShort("timezone", timezoneOffset);
-        break;
-      }
-      if(rightBtn.click()) {timezoneOffset++;}
-      if(leftBtn.click()) {timezoneOffset--;}
-
-      disp.clearBuffer();
-      timezoneLabel.setText("Timezone: UTC" + String(timezoneOffset));
-      timezoneLabel.draw();
-      disp.sendBuffer();
-    }
+  else if(taskID == 2)
+  {
+    contrastWindow();
   }
 }
 
@@ -80,7 +121,7 @@ void Settings::draw()
     }
 
     disp.clearBuffer();
-    for(int currentItem = 0; currentItem < 4; currentItem++)
+    for(int currentItem = 0; currentItem < 3; currentItem++)
     {
       itemLabel.setPositionY(16 * currentItem);
       if(currentItem == cursorPosition)
