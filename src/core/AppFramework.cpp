@@ -7,6 +7,37 @@
 // Local dependencies
 #include <core/HardwareManager.hpp>
 
+// Get vertical position of the text
+short getVerticalPosition(
+  short positionY, 
+  short height, 
+  String text, 
+  String mode,
+  short offset = 0
+)
+{
+  if(mode == "top") {return positionY + 7 + offset;}
+  else if(mode == "center") {return positionY + floor(height / 2) + 4;}
+  else if(mode == "bottom") {return positionY + height - offset;}
+  return 0;
+}
+
+// Get horizontal position of the text
+short getHorizontalPosition(
+  short positionX, 
+  short width, 
+  String text, 
+  String mode, 
+  short textWidth,
+  short offset = 0
+)
+{
+  if(mode == "left") {return positionX + offset;}
+  else if(mode == "center") {return positionX + width / 2 - textWidth / 2;}
+  else if(mode == "right") {return positionX + width - textWidth - offset;}
+  return 0;
+}
+
 // Draw Button widget
 void Button::draw()
 {
@@ -20,42 +51,24 @@ void Button::draw()
     disp.drawRFrame(_positionX, _positionY, _width, _height, _cornerRadius);
   }
 
-  // Positioning of the text 
-  short textX, textY;
-
-  // Vertical positioning
-  if(_textAnchorV == "top") {textY = _positionY + disp.getMaxCharHeight() + 2;}
-  else if(_textAnchorV == "center") {textY = _positionY + floor(_height / 2) + 3;}
-  else if(_textAnchorV == "bottom") {textY = _positionY + _height - 2;}
-
-  // Horizontal positioning
-  if(_textAnchorH == "left") {textX = _positionX + 2;}
-  else if(_textAnchorH == "center") {textX = _positionX + _width / 2 - disp.getStrWidth(_text.c_str()) / 2;}
-  else if(_textAnchorH == "right") {textX = _positionX + (_positionX + _width - disp.getStrWidth(_text.c_str()) - 5);}
-
   disp.setDrawColor(2);
-  disp.drawStr(textX, textY, _text.c_str());
+  disp.drawStr(
+    getHorizontalPosition(_positionX, _width, _text, _textAnchorH, disp.getUTF8Width(_text.c_str()), 2), 
+    getVerticalPosition(_positionY, _height, _text, _textAnchorV, 2), 
+    _text.c_str()
+  );
   disp.setDrawColor(1);
 }
 
 // Draw TextLabel widget
 void TextLabel::draw()
 {
-  // Positioning of the text
-  short textX, textY;
-
-  // Vertical positioning
-  if(_textAnchorV == "top") {textY = _positionY + 7;}
-  else if(_textAnchorV == "center") {textY = _positionY + floor(_height / 2) + 4;}
-  else if(_textAnchorV == "bottom") {textY = _positionY + _height;}
-
-  // Horizontal positioning
-  if(_textAnchorH == "left") {textX = _positionX;}
-  else if(_textAnchorH == "center") {textX = _positionX + _width / 2 - disp.getStrWidth(_text.c_str()) / 2;}
-  else if(_textAnchorH == "right") {textX = _positionX + _width - disp.getStrWidth(_text.c_str());}
-
   disp.setDrawColor(2);
-  disp.drawStr(textX, textY, _text.c_str());
+  disp.drawStr(
+    getHorizontalPosition(_positionX, _width, _text, _textAnchorH, disp.getUTF8Width(_text.c_str())), 
+    getVerticalPosition(_positionY, _height, _text, _textAnchorV),
+    _text.c_str()
+  );
   disp.setDrawColor(1);
 }
 
