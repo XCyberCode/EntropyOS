@@ -7,7 +7,7 @@
 #include <core/Pins.hpp>
 
 // Drivers
-#include <lib/DS1307.hpp>
+#include <lib/DS1307.h>
 
 // Include guard
 #ifndef HARDWARE_MANAGER_H

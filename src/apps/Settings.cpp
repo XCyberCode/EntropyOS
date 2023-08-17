@@ -12,6 +12,7 @@
 // Local dependencies
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
+#include <lib/FastString.h>
 
 TextLabel itemLabel(0, 0, 128, 16, 2, 1);
 String items[] = {"Load time from NTP", "Set timezone", "Set contrast", "Reset all data"};

@@ -4,10 +4,12 @@
 // Local dependencies
 #include <apps/Launcher.hpp>
 #include <apps/Welcome.hpp>
+#include <apps/TestApp.hpp>
 #include <core/HardwareManager.hpp>
 
 Launcher appLauncher;
 Welcome appWelcome;
+TestApp appTest;
 
 void setup()
 {

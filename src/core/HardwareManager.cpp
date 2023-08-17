@@ -10,7 +10,7 @@
 #include <core/Pins.hpp>
 
 // Drivers
-#include <lib/DS1307.hpp>
+#include <lib/DS1307.h>
 
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C disp(U8G2_R0);
 
