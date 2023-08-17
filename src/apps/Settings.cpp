@@ -12,7 +12,7 @@
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
 
-TextLabel itemLabel(0, 0, 128, 16, "", 2, 1);
+TextLabel itemLabel(0, 0, 128, 16, 2, 1);
 String items[] = {"Load time from NTP", "Set timezone", "Set contrast", "Reset all data"};
 short cursorPosition = 0;
 
@@ -41,8 +41,7 @@ void contrastWindow()
     }
 
     disp.clearBuffer();
-    contrastLabel.setText("Contrast: " + String(contrastValue));
-    contrastLabel.draw();
+    contrastLabel.draw(("Contrast: " + String(contrastValue)).c_str());
     disp.sendBuffer();
   }
 }
@@ -63,17 +62,16 @@ void timezoneWindow()
     if(leftBtn.click()) {timezoneOffset--;}
 
     disp.clearBuffer();
-    timezoneLabel.setText("Timezone: UTC" + String(timezoneOffset));
-    timezoneLabel.draw();
+    timezoneLabel.draw(("Timezone: UTC" + String(timezoneOffset)).c_str());
     disp.sendBuffer();
   }
 }
 
 void resetWindow()
 {
-  TextLabel warningLabel(0, 0, 128, 64, "All data will be erased.");
+  TextLabel warningLabel(0, 0, 128, 64);
   disp.clearBuffer();
-  warningLabel.draw();
+  warningLabel.draw("All data will be erased.");
   disp.sendBuffer();
 
   while(1)
@@ -83,8 +81,7 @@ void resetWindow()
     if(aBtn.click())
     {
       disp.clearBuffer();
-      warningLabel.setText("Loading. Please wait.");
-      warningLabel.draw();
+      warningLabel.draw("Loading. Please wait.");
       disp.sendBuffer();
 
       storage.putBool("initialized", false);
@@ -146,14 +143,12 @@ void Settings::draw()
       itemLabel.setPositionY(16 * currentItem);
       if(currentItem == cursorPosition)
       {
-        itemLabel.setText("> " + items[currentItem]);
+        itemLabel.draw(("> " + String(items[currentItem])).c_str());
       }
       else
       {
-        itemLabel.setText("  " + items[currentItem]);
+        itemLabel.draw(("  " + String(items[currentItem])).c_str());
       }
-      itemLabel.draw();
     }
-    disp.sendBuffer();
   }
 }

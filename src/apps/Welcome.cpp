@@ -7,7 +7,7 @@
 #include <core/Icons.hpp>
 
 Icon stepIcon(53, 13, 22, 22, true, 7, 5);
-TextLabel stepLabel(0, 43, 128, 16, "Loading", 2, 2);
+TextLabel stepLabel(0, 43, 128, 16, 2, 2);
 short currentStep = 1;
 short stepValue = 0;
 
@@ -20,11 +20,9 @@ void controlsStep()
 {
   disp.clearBuffer();
   stepLabel.setPositionY(37);
-  stepLabel.setText("< > Change value");
-  stepLabel.draw();
+  stepLabel.draw("< > Change value");
   stepLabel.setPositionY(47);
-  stepLabel.setText("A  Next step");
-  stepLabel.draw();
+  stepLabel.draw("A  Next step");
   stepIcon.draw(welcomeIcon);
   disp.sendBuffer();
 
@@ -39,10 +37,8 @@ void controlsStep()
 
 void welcomeStep()
 {
-  stepLabel.setText("Welcome!");
-
   disp.clearBuffer();
-  stepLabel.draw();
+  stepLabel.draw("Welcome!");
   stepIcon.draw(welcomeIcon);
   disp.sendBuffer();
 

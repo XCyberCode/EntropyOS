@@ -11,7 +11,7 @@
 short getVerticalPosition(
   short positionY, 
   short height, 
-  String text, 
+  const char * text, 
   short mode,
   short offset = 0
 )
@@ -26,7 +26,7 @@ short getVerticalPosition(
 short getHorizontalPosition(
   short positionX, 
   short width, 
-  String text, 
+  const char * text, 
   short mode, 
   short textWidth,
   short offset = 0
@@ -39,7 +39,7 @@ short getHorizontalPosition(
 }
 
 // Draw Button widget
-void Button::draw()
+void Button::draw(const char * text)
 {
   // Draw frame or field
   if(_isFocused)
@@ -53,21 +53,21 @@ void Button::draw()
 
   disp.setDrawColor(2);
   disp.drawStr(
-    getHorizontalPosition(_positionX, _width, _text, _textAnchorH, disp.getUTF8Width(_text.c_str()), 2), 
-    getVerticalPosition(_positionY, _height, _text, _textAnchorV, 2), 
-    _text.c_str()
+    getHorizontalPosition(_positionX, _width, text, _textAnchorH, disp.getUTF8Width(text), 2), 
+    getVerticalPosition(_positionY, _height, text, _textAnchorV, 2), 
+    text
   );
   disp.setDrawColor(1);
 }
 
 // Draw TextLabel widget
-void TextLabel::draw()
+void TextLabel::draw(const char * text)
 {
   disp.setDrawColor(2);
   disp.drawStr(
-    getHorizontalPosition(_positionX, _width, _text, _textAnchorH, disp.getUTF8Width(_text.c_str())), 
-    getVerticalPosition(_positionY, _height, _text, _textAnchorV),
-    _text.c_str()
+    getHorizontalPosition(_positionX, _width, text, _textAnchorH, disp.getUTF8Width(text)), 
+    getVerticalPosition(_positionY, _height, text, _textAnchorV),
+    text
   );
   disp.setDrawColor(1);
 }

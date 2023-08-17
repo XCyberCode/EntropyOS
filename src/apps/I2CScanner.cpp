@@ -10,8 +10,8 @@
 #include <core/HardwareManager.hpp>
 
 Timer rescanTimer(3000, 0, 0);
-TextLabel infoLabel(0, 15, 128, 16, "=== Serial Mode ===");
-TextLabel speedInfoLabel(0, 31, 128, 16, "Boudrate: 115200");
+TextLabel infoLabel(0, 15, 128, 16);
+TextLabel speedInfoLabel(0, 31, 128, 16);
 
 byte error, address;
 short numOfDevices;
@@ -21,8 +21,8 @@ void I2CScanner::draw()
   Serial.begin(115200);
 
   disp.clearBuffer();
-  infoLabel.draw();
-  speedInfoLabel.draw();
+  infoLabel.draw("=== Serial Mode ===");
+  speedInfoLabel.draw("Boudrate: 115200");
   disp.sendBuffer();
 
   rescanTimer.start();

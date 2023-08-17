@@ -76,9 +76,8 @@ void Launcher::draw()
       loadApp(cursorPos);
     }
 
-    appLabel.setText(appNames[cursorPos]);
     disp.clearBuffer();
-    appLabel.draw();
+    appLabel.draw(appNames[cursorPos]);
     appIcon.draw(appIcons[cursorPos]);
     disp.sendBuffer();
   }

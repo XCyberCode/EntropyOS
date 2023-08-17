@@ -10,7 +10,7 @@
 class Button
 {
   private:
-    String _text; // Text of the widget
+    // DEPRECATED. String _text; // Text of the widget
     short _width, _height; // Size of the widget
     short _positionX, _positionY; // Position of the widget 
     short _textAnchorV; // Vertical position of the widget text. Can be: 1 - up, 2 - center, 3 - down
@@ -26,8 +26,7 @@ class Button
         short positionY = 0, 
         short width = 0, 
         short height = 0, 
-        short cornerRadius = 0, 
-        String text = "NONE", 
+        short cornerRadius = 0,  
         short textAnchorV = 2, 
         short textAnchorH = 2,
         bool isFocused = false,
@@ -37,14 +36,13 @@ class Button
       setPosition(positionX, positionY);
       setSize(width, height);
       setCornerRadius(cornerRadius);
-      setText(text);
       setTextAnchor(textAnchorV, textAnchorH);
       setFocus(isFocused);
       setFrame(isBordered);
     }
     
     // Draw configured widget
-    void draw();
+    void draw(const char *);
    
     // Set horizontal position of the widget
     void setPositionX(short positionX)
@@ -96,9 +94,6 @@ class Button
       setHeight(height);
     }
 
-    // Set text of the widget
-    void setText(String text) {_text = text;}
-
     // Set vertical text acnhor of the widget
     void setTextAnchorV(short textAnchorV)
     {
@@ -143,7 +138,7 @@ class Button
 class TextLabel
 {
   private:
-    String _text = "NONE"; // Text of the widget
+    // DEPRECATED. String _text = "NONE"; // Text of the widget
     short _width, _height; // Size of the widget
     short _positionX, _positionY; // Position of the widget
     short _textAnchorV = 2; // Vertical position of the widget text. Can be: 1 - top, 2 - center, 3 - bottom
@@ -156,18 +151,16 @@ class TextLabel
         short positionY = 0,
         short width = 0,
         short height = 0,
-        String text = "NONE",
         short textAnchorV = 2,
         short textAnchorH = 2
     )
     {
       setPosition(positionX, positionY);
       setSize(width, height);
-      setText(text);
       setTextAnchor(textAnchorV, textAnchorH);
     }
     // Draw configured widget
-    void draw();
+    void draw(const char *);
 
     // Set width of the widget
     void setWidth(short width)
@@ -217,12 +210,6 @@ class TextLabel
     {
       setPositionX(positionX);
       setPositionY(positionY);
-    }
-
-    // Set text of the widget
-    void setText(String text)
-    {
-      _text = text;
     }
 
     // Set vertical text anchor of the widget
