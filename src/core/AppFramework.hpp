@@ -4,6 +4,7 @@
 // Local dependencies
 #include <core/HardwareManager.hpp>
 
+// Include guard
 #ifndef APP_FRAMEWORK_H
 #define APP_FRAMEWORK_H
 class Button
@@ -12,8 +13,8 @@ class Button
     String _text; // Text of the widget
     short _width, _height; // Size of the widget
     short _positionX, _positionY; // Position of the widget 
-    String _textAnchorV; // Vertical position of the widget text. Can be: up, center, down
-    String _textAnchorH; // Horizontal position ot the widget text. Can be: right, center, left
+    short _textAnchorV; // Vertical position of the widget text. Can be: 1 - up, 2 - center, 3 - down
+    short _textAnchorH; // Horizontal position ot the widget text. Can be: 1 - right, 2 - center, 3 - left
     bool _isFocused; // If true, a button content color will be inverted
     bool _isBordered; // If true, a border will be drawn
     short _cornerRadius; // Radius of the corners
@@ -27,8 +28,8 @@ class Button
         short height = 0, 
         short cornerRadius = 0, 
         String text = "NONE", 
-        String textAnchorV = "center", 
-        String textAnchorH = "center",
+        short textAnchorV = 2, 
+        short textAnchorH = 2,
         bool isFocused = false,
         bool isBordered = true
     )
@@ -99,19 +100,19 @@ class Button
     void setText(String text) {_text = text;}
 
     // Set vertical text acnhor of the widget
-    void setTextAnchorV(String textAnchorV)
+    void setTextAnchorV(short textAnchorV)
     {
       _textAnchorV = textAnchorV;
     }
 
     // Set horizontal text anchor of the widget
-    void setTextAnchorH(String textAnchorH)
+    void setTextAnchorH(short textAnchorH)
     {
       _textAnchorH = textAnchorH;
     }
 
     // Set text anchor of the widget
-    void setTextAnchor(String textAnchorV, String textAnchorH)
+    void setTextAnchor(short textAnchorV, short textAnchorH)
     {
       setTextAnchorV(textAnchorV);
       setTextAnchorH(textAnchorH);
@@ -145,8 +146,8 @@ class TextLabel
     String _text = "NONE"; // Text of the widget
     short _width, _height; // Size of the widget
     short _positionX, _positionY; // Position of the widget
-    String _textAnchorV = "center"; // Vertical position of the widget text. Can be: top, center, bottom
-    String _textAnchorH = "center"; // Horizontal position of the widget text. Can be right, center, left
+    short _textAnchorV = 2; // Vertical position of the widget text. Can be: 1 - top, 2 - center, 3 - bottom
+    short _textAnchorH = 2; // Horizontal position of the widget text. Can be 1 - right, 2 - center, 3 - left
        
   public:
     // Constructor
@@ -156,8 +157,8 @@ class TextLabel
         short width = 0,
         short height = 0,
         String text = "NONE",
-        String textAnchorV = "center",
-        String textAnchorH = "center"
+        short textAnchorV = 2,
+        short textAnchorH = 2
     )
     {
       setPosition(positionX, positionY);
@@ -225,19 +226,19 @@ class TextLabel
     }
 
     // Set vertical text anchor of the widget
-    void setTextAnchorV(String textAnchorV)
+    void setTextAnchorV(short textAnchorV)
     {
       _textAnchorV = textAnchorV;
     }
 
     // Set horizontal text anchor of the widget
-    void setTextAnchorH(String textAnchorH)
+    void setTextAnchorH(short textAnchorH)
     {
       _textAnchorH = textAnchorH;
     }
 
     // Set text anchors of the widget
-    void setTextAnchor(String textAnchorV, String textAnchorH)
+    void setTextAnchor(short textAnchorV, short textAnchorH)
     {
       setTextAnchorV(textAnchorV);
       setTextAnchorH(textAnchorH);

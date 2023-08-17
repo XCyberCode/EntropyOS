@@ -9,7 +9,7 @@
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
 
-TextLabel itemLabel(0, 0, 128, 16, "", "center", "left");
+TextLabel itemLabel(0, 0, 128, 16, "", 2, 1);
 String items[] = {"Load time from NTP", "Set timezone", "Set contrast"};
 short cursorPosition = 0;
 

@@ -12,13 +12,13 @@ short getVerticalPosition(
   short positionY, 
   short height, 
   String text, 
-  String mode,
+  short mode,
   short offset = 0
 )
 {
-  if(mode == "top") {return positionY + 7 + offset;}
-  else if(mode == "center") {return positionY + floor(height / 2) + 4;}
-  else if(mode == "bottom") {return positionY + height - offset;}
+  if(mode == 1) {return positionY + 7 + offset;}
+  else if(mode == 2) {return positionY + floor(height / 2) + 4;}
+  else if(mode == 3) {return positionY + height - offset;}
   return 0;
 }
 
@@ -27,14 +27,14 @@ short getHorizontalPosition(
   short positionX, 
   short width, 
   String text, 
-  String mode, 
+  short mode, 
   short textWidth,
   short offset = 0
 )
 {
-  if(mode == "left") {return positionX + offset;}
-  else if(mode == "center") {return positionX + width / 2 - textWidth / 2;}
-  else if(mode == "right") {return positionX + width - textWidth - offset;}
+  if(mode == 1) {return positionX + offset;}
+  else if(mode == 2) {return positionX + width / 2 - textWidth / 2;}
+  else if(mode == 3) {return positionX + width - textWidth - offset;}
   return 0;
 }
 
