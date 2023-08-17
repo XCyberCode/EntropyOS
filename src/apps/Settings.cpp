@@ -1,7 +1,10 @@
 // Header
 #include <apps/Settings.hpp>
 
-// Libraries
+// Defines
+// Numder of menu items
+#define NUMBER_OF_ITEMS 4
+
 // #include <NTPClient.h>
 // #include <WiFi.h>
 
@@ -10,7 +13,7 @@
 #include <core/HardwareManager.hpp>
 
 TextLabel itemLabel(0, 0, 128, 16, "", 2, 1);
-String items[] = {"Load time from NTP", "Set timezone", "Set contrast"};
+String items[] = {"Load time from NTP", "Set timezone", "Set contrast", "Reset all data"};
 short cursorPosition = 0;
 
 void contrastWindow()
@@ -66,20 +69,37 @@ void timezoneWindow()
   }
 }
 
+void resetWindow()
+{
+  TextLabel warningLabel(0, 0, 128, 64, "All data will be erased.");
+  disp.clearBuffer();
+  warningLabel.draw();
+  disp.sendBuffer();
+
+  while(1)
+  {
+    tickAll();
+    if(bBtn.click()) {return;}
+    if(aBtn.click())
+    {
+      disp.clearBuffer();
+      warningLabel.setText("Loading. Please wait.");
+      warningLabel.draw();
+      disp.sendBuffer();
+
+      storage.putBool("initialized", false);
+      ESP.restart();
+    }
+  }
+}
+
 void executeTask(short taskID)
 {
-  if(taskID == 0)
+  switch(taskID)
   {
-  }
-
-  else if(taskID == 1)
-  {
-    timezoneWindow();
-  }
-
-  else if(taskID == 2)
-  {
-    contrastWindow();
+    case 1: timezoneWindow(); break;
+    case 2: contrastWindow(); break;
+    case 3: resetWindow(); break;
   }
 }
 
@@ -121,7 +141,7 @@ void Settings::draw()
     }
 
     disp.clearBuffer();
-    for(int currentItem = 0; currentItem < 3; currentItem++)
+    for(int currentItem = 0; currentItem < NUMBER_OF_ITEMS; currentItem++)
     {
       itemLabel.setPositionY(16 * currentItem);
       if(currentItem == cursorPosition)

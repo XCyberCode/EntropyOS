@@ -6,7 +6,7 @@
 #include <core/HardwareManager.hpp>
 #include <core/Icons.hpp>
 
-Icon stepIcon(53, 13, 22, 22, true, 5, 5);
+Icon stepIcon(53, 13, 22, 22, true, 7, 5);
 TextLabel stepLabel(0, 43, 128, 16, "Loading", 2, 2);
 short currentStep = 1;
 short stepValue = 0;
