@@ -7,6 +7,7 @@
 // Include guard
 #ifndef APP_FRAMEWORK_H
 #define APP_FRAMEWORK_H
+
 class Button
 {
   private:
