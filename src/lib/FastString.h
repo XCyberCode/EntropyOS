@@ -44,7 +44,7 @@ class FastString
         return *this;
       }
       _strBuffer[_bufferLength] = value;
-      _strBuffer[_bufferLength + 1] = '\0';
+      _strBuffer[++_bufferLength] = '\0';
       return *this;
     }
 
