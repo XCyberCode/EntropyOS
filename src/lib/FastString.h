@@ -5,15 +5,19 @@ template <short BUFFER_SIZE = 64>
 class FastString
 {
   private:
-    short _length = 0;
-
-  public:
+    short _bufferLength = 0;
     char _strBuffer[BUFFER_SIZE + 1];
 
+  public:
     FastString()
     {
       clearBuffer();
     };
+
+    char * getBuffer()
+    {
+      return _strBuffer;
+    }
 
     short getCapacity()
     {
@@ -22,42 +26,85 @@ class FastString
 
     short getLength()
     {
-      _length = strlen(_strBuffer);
-      return _length;
+      _bufferLength = strlen(_strBuffer);
+      return _bufferLength;
     }
 
     void clearBuffer()
     {
       _strBuffer[0] = '\0';
-      _length = 0;
+      _bufferLength = 0;
     }
 
     // Add
-    FastString& add(const char addStr)
+    FastString& add(const char value)
     {
-      if(_length + 1 >= BUFFER_SIZE)
+      if(_bufferLength + 1 >= BUFFER_SIZE)
       {
         return *this;
       }
-      _strBuffer[_length] = addStr;
-      _strBuffer[_length + 1] = '\0';
+      _strBuffer[_bufferLength] = value;
+      _strBuffer[_bufferLength + 1] = '\0';
       return *this;
     }
 
-    FastString& add(const char * addStr)
+    FastString& add(const char * value)
     {
-      return add((char*)addStr, strlen(addStr));
+      return add((char*)value, strlen(value));
     }
 
-    FastString& add(char * addStr, short addLength)
+    FastString& add(char * value, short valueLength)
     {
-      if(_length + addLength >= BUFFER_SIZE)
+      if(_bufferLength + valueLength >= BUFFER_SIZE)
       {
         return *this;
       }
-      memcpy(_strBuffer + _length, addStr, addLength);
-      _length += addLength;
-      _strBuffer[_length] = '\0';
+      memcpy(_strBuffer + _bufferLength, value, valueLength);
+      _bufferLength += valueLength;
+      _strBuffer[_bufferLength] = '\0';
       return *this;
+    }
+
+    FastString& add(uint32_t value)
+    {
+      char numberBuffer[11];
+      ultoa(value, numberBuffer, DEC);
+      return add(numberBuffer);
+    }
+
+    FastString& add(uint16_t value)
+    {
+      char numberBuffer[6];
+      utoa(value, numberBuffer, DEC);
+      return add(numberBuffer);
+    }
+
+    FastString& add(uint8_t value)
+    {
+      return add((uint16_t)value);
+    }
+
+    FastString& add(int32_t value)
+    {
+      char numberBuffer[12];
+      ltoa(value, numberBuffer, DEC);
+      return add(numberBuffer);
+    }
+
+    FastString& add(int16_t value)
+    {
+      char numberBuffer[7];
+      itoa(value, numberBuffer, DEC);
+      return add(numberBuffer);
+    }
+
+    FastString& add(int8_t value)
+    {
+      return add((int16_t)value);
+    }
+
+    FastString& add(FastString value)
+    {
+      return add(value.getBuffer());
     }
 };

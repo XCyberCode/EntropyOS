@@ -23,7 +23,7 @@ void TestApp::draw()
 
   Serial.begin(115200);
   testString.add("Hello");
-  Serial.println(testString._strBuffer);
-  testString.add("123");
-  Serial.println(testString._strBuffer);
+  Serial.println(testString.getBuffer());
+  testString.add(123);
+  Serial.println(testString.getBuffer());
 }
