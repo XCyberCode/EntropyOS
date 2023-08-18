@@ -4,6 +4,7 @@
 // Local dependencies
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
+#include <lib/FastString.h>
 
 Button upBtnWidget(36, 5, 18, 18, 4);
 Button downBtnWidget(36, 41, 18, 18, 4);
@@ -20,6 +21,7 @@ void Debug::draw()
   // clockModule.set(0, 0, 0, 3, 15, 8, 23);
   // tone(17, 500);
   clockUpdateTimer.start();
+  FastString<8> timeWidgetStr = "N:N:N";
   while(1)
   {
     tickAll();
@@ -38,6 +40,8 @@ void Debug::draw()
     if(clockUpdateTimer.tick())
     {
       clockModule.read();
+      timeWidgetStr.clearBuffer();
+      timeWidgetStr = timeWidgetStr + clockModule.getSecond() + ":" + clockModule.getMinute() + ":" + clockModule.getHour();
     }
 
     disp.clearBuffer();
@@ -46,7 +50,7 @@ void Debug::draw()
     leftBtnWidget.draw("L");
     rightBtnWidget.draw("R");
     aBtnWidget.draw("A");
-    timeWidget.draw((String(clockModule.getSecond()) + ":" + String(clockModule.getMinute()) + ":" + String(clockModule.getHour())).c_str());
+    timeWidget.draw(timeWidgetStr.c_str());
     disp.sendBuffer();
   }
 }
