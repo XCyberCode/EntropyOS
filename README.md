@@ -10,4 +10,4 @@ Minimal OS for embedded devices
 ## Recommended hardware 💾
 - CPU: ESP32
 - RAM: >100KB
-- ROM: >1MB
+- ROM: >2MB
