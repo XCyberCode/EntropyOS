@@ -16,6 +16,7 @@ void setup()
   beginHardware();
   if(!storage.getShort("initialized"))
   {
+    // appTest.draw();
     appWelcome.draw();
     appLauncher.draw();
   }
