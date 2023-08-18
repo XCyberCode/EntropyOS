@@ -54,8 +54,7 @@ class DS1307
     void set(byte second, byte minute, byte hour, byte dayOfWeek, byte dayOfMonth, byte month, byte year)
     {
       Wire.beginTransmission(DS1307_I2C_ADDRESS);
-      // выставляем регистр указателей DS3231 на регистр «00h»,
-      // т.е. на регистр, в котором хранятся данные о секундах:
+      // Set DS1307 register value
       Wire.write(0);
       Wire.write(decToBcd(second)); // Set seconds
       Wire.write(decToBcd(minute)); // Set minutes
