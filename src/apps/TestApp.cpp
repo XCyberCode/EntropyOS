@@ -22,8 +22,8 @@ void TestApp::draw()
   disp.sendBuffer();
 
   Serial.begin(115200);
-  testString.add("Hello");
+  testString = "Hello";
   Serial.println(testString.getBuffer());
-  testString.add(123);
+  testString += "123";
   Serial.println(testString.getBuffer());
 }
