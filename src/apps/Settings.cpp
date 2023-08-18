@@ -15,13 +15,19 @@
 #include <lib/FastString.h>
 
 TextLabel itemLabel(0, 0, 128, 16, 2, 1);
-String items[] = {"Load time from NTP", "Set timezone", "Set contrast", "Reset all data"};
+FastString<30> items[4];
+
 short cursorPosition = 0;
+
+FastString<32> outStr;
 
 void contrastWindow()
 {
   TextLabel contrastLabel(0, 0, 128, 64);
   short contrastValue = storage.getShort("contrast");
+
+  outStr.clearBuffer();
+  outStr = outStr + "Contrast: " + contrastValue;
 
   while(1)
   {
@@ -35,15 +41,19 @@ void contrastWindow()
     {
       contrastValue += 5;
       disp.setContrast(contrastValue);
+      outStr.clearBuffer();
+      outStr = outStr + "Contrast: " + contrastValue;
     }
     if(leftBtn.click() && contrastValue > 0) 
     {
       contrastValue -= 5;
       disp.setContrast(contrastValue);
+      outStr.clearBuffer();
+      outStr = outStr + "Contrast: " + contrastValue;
     }
 
     disp.clearBuffer();
-    contrastLabel.draw(("Contrast: " + String(contrastValue)).c_str());
+    contrastLabel.draw(outStr.c_str());
     disp.sendBuffer();
   }
 }
@@ -53,18 +63,36 @@ void timezoneWindow()
   TextLabel timezoneLabel(0, 0, 128, 64);
   short timezoneOffset = storage.getShort("timezone");
 
+  outStr.clearBuffer();
+  outStr = outStr + "Timezone: UTC" + timezoneOffset;
+
   while(1)
   {
     tickAll();
-    if(bBtn.click()) {
+    if(aBtn.click())
+    {
       storage.putShort("timezone", timezoneOffset);
       return;
     }
-    if(rightBtn.click()) {timezoneOffset++;}
-    if(leftBtn.click()) {timezoneOffset--;}
+    if(bBtn.click()) 
+    {
+      return;
+    }
+    if(rightBtn.click()) 
+    {
+      timezoneOffset++;
+      outStr.clearBuffer();
+      outStr = outStr + "Timezone: UTC" +  timezoneOffset;
+    }
+    if(leftBtn.click()) 
+    {
+      timezoneOffset--;
+      outStr.clearBuffer();
+      outStr = outStr + "Timezone: UTC" +  timezoneOffset;
+    }
 
     disp.clearBuffer();
-    timezoneLabel.draw(("Timezone: UTC" + String(timezoneOffset)).c_str());
+    timezoneLabel.draw(outStr.c_str());
     disp.sendBuffer();
   }
 }
@@ -104,6 +132,11 @@ void executeTask(short taskID)
 
 void Settings::draw()
 {
+  items[0] = "  Load time from NTP";
+  items[1] = "  Set timezone";
+  items[2] = "  Set contrast";
+  items[3] = "  Reset all data";
+
   while(1)
   {
     tickAll();
@@ -112,7 +145,7 @@ void Settings::draw()
     {
       if(cursorPosition == 0)
       {
-        cursorPosition = 3;
+        cursorPosition = NUMBER_OF_ITEMS - 1;
       }
       else
       {
@@ -121,7 +154,7 @@ void Settings::draw()
     }
     if(downBtn.click())
     {
-      if(cursorPosition == 3)
+      if(cursorPosition == NUMBER_OF_ITEMS - 1)
       {
         cursorPosition = 0;
       }
@@ -145,12 +178,14 @@ void Settings::draw()
       itemLabel.setPositionY(16 * currentItem);
       if(currentItem == cursorPosition)
       {
-        itemLabel.draw(("> " + String(items[currentItem])).c_str());
+        items[currentItem].setCharAt(0, '>');
       }
       else
       {
-        itemLabel.draw(("  " + String(items[currentItem])).c_str());
+        items[currentItem].setCharAt(0, ' ');
       }
+      itemLabel.draw(items[currentItem].c_str());
     }
+    disp.sendBuffer();
   }
 }

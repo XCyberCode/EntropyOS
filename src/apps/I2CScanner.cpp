@@ -13,12 +13,12 @@ Timer rescanTimer(3000, 0, 0);
 TextLabel infoLabel(0, 15, 128, 16);
 TextLabel speedInfoLabel(0, 31, 128, 16);
 
-byte error, address;
-short numOfDevices;
-
 void I2CScanner::draw()
 {
   Serial.begin(115200);
+
+  byte error, address;
+  short numOfDevices;
 
   disp.clearBuffer();
   infoLabel.draw("=== Serial Mode ===");

@@ -24,6 +24,8 @@ void TestApp::draw()
   Serial.begin(115200);
   testString = "Hello";
   Serial.println(testString.getBuffer());
-  testString = testString + "123" + 123;
+  testString = testString + 123 + "test";
+  Serial.println(testString.getBuffer());
+  testString.toUpperCase();
   Serial.println(testString.getBuffer());
 }

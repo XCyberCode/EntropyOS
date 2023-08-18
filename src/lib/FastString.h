@@ -1,7 +1,7 @@
 // Libraries
 #include <Arduino.h>
 
-template <short BUFFER_SIZE = 64>
+template <uint16_t BUFFER_SIZE>
 class FastString
 {
   private:
@@ -222,5 +222,47 @@ class FastString
     const char * c_str()
     {
       return _strBuffer;
+    }
+
+    // Set char of the buffer by index
+    void setCharAt(short index, char value)
+    {
+      _strBuffer[index] = value;
+    }
+
+    // Convert all chars to lower case
+    void toLowerCase()
+    {
+      // If buffer is empty
+      if(!_bufferLength)
+      {
+        return;
+      }
+      for(
+        char *addressPointer = _strBuffer; 
+        addressPointer <= &_strBuffer[_bufferLength]; 
+        addressPointer++
+      )
+      {
+        *addressPointer = tolower(*addressPointer);
+      }
+    }
+
+    // Convert all chars to upper case
+    void toUpperCase()
+    {
+      // If buffer is empty
+      if(!_bufferLength)
+      {
+        return;
+      }
+      for(
+        char *addressPointer = _strBuffer; 
+        addressPointer < &_strBuffer[_bufferLength]; 
+        addressPointer++
+      )
+      {
+        *addressPointer = toupper(*addressPointer);
+      }
     }
 };
