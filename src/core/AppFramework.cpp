@@ -89,7 +89,7 @@ void Icon::draw(unsigned char image[])
 }
 
 // Draw Checkbox widget
-void Checkbox::draw()
+void Checkbox::draw(const char * text = "")
 {
   disp.drawRFrame(_positionX, _positionY, _width, _height, _cornerRadius);
   if(_isChecked)

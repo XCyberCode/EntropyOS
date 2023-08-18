@@ -9,8 +9,6 @@
 #include <Arduino.h>
 #include <lib/FastString.h>
 
-FastString<20> testString;
-
 TextLabel testInfoLabel(0, 15, 128, 16);
 TextLabel testSpeedInfoLabel(0, 31, 128, 16);
 
@@ -22,7 +20,7 @@ void TestApp::draw()
   disp.sendBuffer();
 
   Serial.begin(115200);
-  testString = "Hello";
+  FastString<20> testString = "Hello";
   Serial.println(testString.getBuffer());
   testString = testString + 123 + "test";
   Serial.println(testString.getBuffer());

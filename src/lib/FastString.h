@@ -9,34 +9,45 @@ class FastString
     char _strBuffer[BUFFER_SIZE + 1];
 
   public:
+    // Constructor
     FastString()
     {
       clearBuffer();
     }
 
+    FastString(const char * value)
+    {
+      clearBuffer();
+      add(value);
+    }
+
+    // Get string buffer
     char * getBuffer()
     {
       return _strBuffer;
     }
 
+    // Get maximum capacity
     short getCapacity()
     {
       return BUFFER_SIZE;
     }
 
+    // Get string length
     short getLength()
     {
       _bufferLength = strlen(_strBuffer);
       return _bufferLength;
     }
 
+    // Clear string buffer
     void clearBuffer()
     {
       _strBuffer[0] = '\0';
       _bufferLength = 0;
     }
 
-    // Add
+    // "Add" methods
     FastString& add(const char value)
     {
       if(_bufferLength + 1 >= BUFFER_SIZE)
@@ -217,6 +228,12 @@ class FastString
       return (*this).add(value);
     }
 
+    // Other operators
+    char operator [] (short index)
+    {
+      return _strBuffer[index];
+    }
+
     // Methods
     // Return buffer as const char * (string)
     const char * c_str()
@@ -224,10 +241,16 @@ class FastString
       return _strBuffer;
     }
 
-    // Set char of the buffer by index
+    // Set a char from the buffer by index
     void setCharAt(short index, char value)
     {
       _strBuffer[index] = value;
+    }
+
+    // Get a char from the buffer by index
+    char getCharAt(short index)
+    {
+      return _strBuffer[index];
     }
 
     // Convert all chars to lower case

@@ -12,22 +12,22 @@
 class DS1307
 {
   private:
-    byte _second; // Seconds
-    byte _minute; // Minutes
-    byte _hour; // Hours
-    byte _dayOfWeek; // Day of the week
-    byte _dayOfMonth; // Day of the month
-    byte _month; // Month
-    byte _year; // Year
+    short _second; // Seconds
+    short _minute; // Minutes
+    short _hour; // Hours
+    short _dayOfWeek; // Day of the week
+    short _dayOfMonth; // Day of the month
+    short _month; // Month
+    short _year; // Year
 
     // Convert from decimal to binary-decimal
-    byte decToBcd(byte value)
+    short decToBcd(short value)
     {
       return (value / 10 * 16) + (value % 10);
     }
 
     // Convert from binary-decimal to decimal
-    byte bcdToDec(byte value)
+    short bcdToDec(short value)
     {
       return (value / 16 * 10) + (value % 16);
     }
@@ -51,7 +51,7 @@ class DS1307
     }
 
     // Set time and date
-    void set(byte second, byte minute, byte hour, byte dayOfWeek, byte dayOfMonth, byte month, byte year)
+    void set(short second, short minute, short hour, short dayOfWeek, short dayOfMonth, short month, short year)
     {
       Wire.beginTransmission(DS1307_I2C_ADDRESS);
       // Set DS1307 register value
@@ -67,13 +67,13 @@ class DS1307
       Wire.endTransmission();
     }
 
-    byte getSecond() {return _second;}
-    byte getMinute() {return _minute;}
-    byte getHour() {return _hour;}
-    byte getDayOfWeek() {return _dayOfWeek;}
-    byte getDayOfMonth() {return _dayOfMonth;}
-    byte getMonth() {return _month;}
-    byte getYear() {return _year;}
+    short getSecond() {return _second;}
+    short getMinute() {return _minute;}
+    short getHour() {return _hour;}
+    short getDayOfWeek() {return _dayOfWeek;}
+    short getDayOfMonth() {return _dayOfMonth;}
+    short getMonth() {return _month;}
+    short getYear() {return _year;}
 };
 
 #endif

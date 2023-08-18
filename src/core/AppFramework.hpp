@@ -11,7 +11,6 @@
 class Button
 {
   private:
-    // DEPRECATED. String _text; // Text of the widget
     short _width, _height; // Size of the widget
     short _positionX, _positionY; // Position of the widget 
     short _textAnchorV; // Vertical position of the widget text. Can be: 1 - up, 2 - center, 3 - down
@@ -139,7 +138,6 @@ class Button
 class TextLabel
 {
   private:
-    // DEPRECATED. String _text = "NONE"; // Text of the widget
     short _width, _height; // Size of the widget
     short _positionX, _positionY; // Position of the widget
     short _textAnchorV = 2; // Vertical position of the widget text. Can be: 1 - top, 2 - center, 3 - bottom
@@ -389,7 +387,7 @@ class Checkbox
   private:
     short _positionX, _positionY; // Position of the widget
     short _width, _height; // Size of the widget
-    String _text; // Text of the widget
+    // DEPRECATED. String _text; // Text of the widget
     bool _isChecked; // State of the widget
     short _cornerRadius; // Radius of the border corners
 
@@ -401,19 +399,17 @@ class Checkbox
       short width = 10, 
       short height = 10, 
       bool isChecked = false, 
-      short cornerRadius = 0, 
-      String text = ""
+      short cornerRadius = 0
     )
     {
       setPosition(positionX, positionY);
       setSize(width, height);
-      setText(text);
       setCheck(isChecked);
       setCornerRadius(cornerRadius);
     }
     
     // Draw configured widget
-    void draw();
+    void draw(const char * text);
 
     // Set horizontal position of the widget
     void setPositionX(short positionX)
@@ -472,11 +468,6 @@ class Checkbox
       {
         _cornerRadius = cornerRadius;
       }
-    }
-    // Set text of the widget
-    void setText(String text)
-    {
-      _text = text;
     }
 
     // Set widget state

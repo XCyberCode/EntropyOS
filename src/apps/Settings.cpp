@@ -34,6 +34,10 @@ void contrastWindow()
     tickAll();
     if(bBtn.click())
     {
+      return;
+    }
+    if(aBtn.click())
+    {
       storage.putShort("contrast", contrastValue);
       return;
     }
