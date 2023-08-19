@@ -262,12 +262,12 @@ class FastString
         return;
       }
       for(
-        char *addressPointer = _strBuffer; 
-        addressPointer <= &_strBuffer[_bufferLength]; 
-        addressPointer++
+        char *charPointer = _strBuffer; 
+        charPointer <= &_strBuffer[_bufferLength]; 
+        charPointer++
       )
       {
-        *addressPointer = tolower(*addressPointer);
+        *charPointer = tolower(*charPointer);
       }
     }
 
@@ -280,12 +280,30 @@ class FastString
         return;
       }
       for(
-        char *addressPointer = _strBuffer; 
-        addressPointer < &_strBuffer[_bufferLength]; 
-        addressPointer++
+        char *charPointer = _strBuffer; 
+        charPointer < &_strBuffer[_bufferLength]; 
+        charPointer++
       )
       {
-        *addressPointer = toupper(*addressPointer);
+        *charPointer = toupper(*charPointer);
       }
+    }
+
+    // Remove char with a shift
+    void remove(short index)
+    {
+      if(index > _bufferLength)
+      {
+        return;
+      }
+      memcpy(&_strBuffer[index], &_strBuffer[index + 1], _bufferLength - index);
+      _bufferLength--;
+    }
+
+    // Remove string (char *) with a shift
+    void remove(short index, short length)
+    {
+      memcpy(&_strBuffer[index], &_strBuffer[index + length], _bufferLength - (length - 1) - index);
+      _bufferLength -= length;
     }
 };
