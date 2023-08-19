@@ -15,7 +15,7 @@
 #include <lib/FastString.h>
 
 TextLabel itemLabel(0, 0, 128, 16, 2, 1);
-FastString<30> items[4];
+FastString<30> items[] = {"  Load time from NTP", "  Set timezone", "  Set contrast", "  Reset all data"};
 
 short cursorPosition = 0;
 
@@ -136,11 +136,6 @@ void executeTask(short taskID)
 
 void Settings::draw()
 {
-  items[0] = "  Load time from NTP";
-  items[1] = "  Set timezone";
-  items[2] = "  Set contrast";
-  items[3] = "  Reset all data";
-
   while(1)
   {
     tickAll();
@@ -188,7 +183,7 @@ void Settings::draw()
       {
         items[currentItem].setCharAt(0, ' ');
       }
-      itemLabel.draw(items[currentItem].c_str());
+      itemLabel.draw((items[currentItem] + " ").c_str());
     }
     disp.sendBuffer();
   }
