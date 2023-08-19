@@ -20,11 +20,12 @@ void TestApp::draw()
   disp.sendBuffer();
 
   Serial.begin(115200);
+
   FastString<20> testString = "Hello";
   Serial.println(testString.getBuffer());
   testString = testString + 123 + "test";
   Serial.println(testString.getBuffer());
-  testString.remove(1, 3);
+  testString.insert(1, "3");
   Serial.println(testString.getBuffer());
   testString += "New";
   Serial.println(testString.getBuffer());

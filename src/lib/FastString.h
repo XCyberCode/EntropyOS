@@ -230,6 +230,11 @@ class FastString
 
     // Other operators
     char operator [] (short index)
+    const {
+      return _strBuffer[index];
+    }
+
+    char& operator [] (short index)
     {
       return _strBuffer[index];
     }
@@ -303,7 +308,38 @@ class FastString
     // Remove string (char *) with a shift
     void remove(short index, short length)
     {
+      if(index > _bufferLength)
+      {
+        return;
+      }
       memcpy(&_strBuffer[index], &_strBuffer[index + length], _bufferLength - (length - 1) - index);
       _bufferLength -= length;
     }
+
+    // Convert and insert
+    void insert(short index, const char * value)
+    {
+      insert(index, (char*)value);
+    }
+
+    // Convert and insert
+    void insert(short index, char * value)
+    {
+      insert(index, *value);
+    }
+
+    // Insert a char in the buffer with a shift
+    void insert(short index, char value)
+    {
+      if(_bufferLength + 1 > BUFFER_SIZE)
+      {
+        return;
+      }
+      memcpy(&_strBuffer[index + 1], &_strBuffer[index], _bufferLength - index + 1);
+      _strBuffer[index] = value;
+      _bufferLength++;
+    }
+
+    // Insert a string (char *) in the buffer with a shift
+
 };
