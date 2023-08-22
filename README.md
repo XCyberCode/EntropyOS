@@ -1,8 +1,8 @@
 # EntropyOS
-## About ❔
+## About
 Minimalistic operating system for embedded devices
 
-## Content 📋
+## Content
 - [Apps](#apps)
 - [Libraries](#libraries)
 
@@ -18,9 +18,37 @@ Minimalistic operating system for embedded devices
 - [ ] Settings ⚙️
 
 <a id="libraries"></a>
-## Internal libraries ⚒️
-- App Framework 🔋
+## Libraries ⚒️
+### App Framework 🔋
+```cpp
+#include <AppFramework.hpp>
+// Button
+Button btn(positionX, positionY, width, height, textAnchorV, textAnchorH)
+
+// Widget positioning
+btn.setPosition(positionX, positionY); // Set position of the widget
+btn.setPositionX(positionX); // Set horizontal position of the widget
+btn.setPositionY(positionY); // Set vertical position of the widget
+
+// Widget size configuration
+btn.setSize(width, height); // Set size of the widget
+btn.setWidth(width); // Set width of the widget
+btn.setHeight(height); // Set height of the widget
+
+// Widget text positioning
+btn.setTextAnchor(textAnchorV, textAnchorH); // Set text position of the widget (vertical: 1 - top, 2 - center, 3 - bottom; horizontal: 1 - left, 2 - center, 3 - right)
+btn.setTextAnchorV(textAnchorV); // Set vertical text position of the widget
+btn.setTextAnchorH(textAnchorH); // Set horizontal text position of the widget
+
+// Widget state
+btn.setFocus(state); // Set focus state (if true, content color of the widget will be inverted)
+btn.setCornerRadius(number); // Set corner radius of the widget border
+```
+
 - DS1307 ⏰
 - FastString ⚡
+
+
+
 
 
