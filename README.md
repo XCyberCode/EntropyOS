@@ -20,9 +20,8 @@ Minimalistic operating system for embedded devices
 <a id="libraries"></a>
 ## Libraries ⚒️
 ### App Framework 🔋
-Core component of the operating system
+Core component of the operating system. Contains user interface abstractions called "widgets"
 
-#### Widgets
 - Button
 ```cpp
 #include <AppFramework.hpp>
