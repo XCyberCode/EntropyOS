@@ -160,32 +160,32 @@ class FastString
     }
 
     // Add assign ("+=") operator
-    FastString operator += (const char value)
+    FastString& operator += (const char value)
     {
       return (*this).add(value);
     }
-    FastString operator += (const char* data) {
+    FastString& operator += (const char* data) {
       return (*this).add(data);
     }
-    FastString operator += (uint32_t value) {
+    FastString& operator += (uint32_t value) {
       return (*this).add(value);
     }
-    FastString operator += (int32_t value) {
+    FastString& operator += (int32_t value) {
       return (*this).add(value);
     }
-    FastString operator += (uint16_t value) {
+    FastString& operator += (uint16_t value) {
       return (*this).add(value);
     }
-    FastString operator += (int16_t value) {
+    FastString& operator += (int16_t value) {
       return (*this).add(value);
     }
-    FastString operator += (uint8_t value) {
+    FastString& operator += (uint8_t value) {
       return (*this).add(value);
     }
-    FastString operator += (int8_t value) {
+    FastString& operator += (int8_t value) {
       return (*this).add(value);
     }
-    FastString operator += (FastString value) {
+    FastString& operator += (FastString value) {
       return (*this).add(value);
     }
 
@@ -301,31 +301,19 @@ class FastString
       {
         return;
       }
-      memcpy(&_strBuffer[index], &_strBuffer[index + 1], _bufferLength - index);
+      memmove(&_strBuffer[index], &_strBuffer[index + 1], _bufferLength - index);
       _bufferLength--;
     }
 
     // Remove string (char *) with a shift
-    void remove(short index, short length)
+    void remove(short index, short valueLength)
     {
       if(index > _bufferLength)
       {
         return;
       }
-      memcpy(&_strBuffer[index], &_strBuffer[index + length], _bufferLength - (length - 1) - index);
-      _bufferLength -= length;
-    }
-
-    // Convert and insert
-    void insert(short index, const char * value)
-    {
-      insert(index, (char*)value);
-    }
-
-    // Convert and insert
-    void insert(short index, char * value)
-    {
-      insert(index, *value);
+      memmove(&_strBuffer[index], &_strBuffer[index + valueLength], _bufferLength - index - (valueLength - 1));
+      _bufferLength -= valueLength;
     }
 
     // Insert a char in the buffer with a shift
@@ -335,11 +323,26 @@ class FastString
       {
         return;
       }
-      memcpy(&_strBuffer[index + 1], &_strBuffer[index], _bufferLength - index + 1);
+      memmove(&_strBuffer[index + 1], &_strBuffer[index], _bufferLength - index + 1);
       _strBuffer[index] = value;
       _bufferLength++;
     }
 
-    // Insert a string (char *) in the buffer with a shift
+    // Convert and insert
+    void insert(short index, const char * value)
+    {
+      insert(index, (char*)value, strlen(value));
+    }
 
+    // Insert a string (char *) in the buffer with a shift
+    void insert(short index, char * value, short valueLength)
+    {
+      if(_bufferLength + valueLength > BUFFER_SIZE)
+      {
+        return;
+      }
+      memmove(&_strBuffer[index + valueLength], &_strBuffer[index], _bufferLength - index + 1);
+      memcpy(&_strBuffer[index], value, valueLength);
+      _bufferLength += valueLength;
+    }
 };
