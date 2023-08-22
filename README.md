@@ -20,6 +20,10 @@ Minimalistic operating system for embedded devices
 <a id="libraries"></a>
 ## Libraries ⚒️
 ### App Framework 🔋
+Core component of the operating system
+
+#### Widgets
+- Button
 ```cpp
 #include <AppFramework.hpp>
 // Button
@@ -43,6 +47,16 @@ btn.setTextAnchorH(textAnchorH); // Set horizontal text position of the widget
 // Widget state
 btn.setFocus(state); // Set focus state (if true, content color of the widget will be inverted)
 btn.setCornerRadius(number); // Set corner radius of the widget border
+```
+
+- TextLabel
+```cpp
+#include <AppFramework.hpp>
+```
+
+- Icon
+```cpp
+#include <AppFramework.hpp>
 ```
 
 - DS1307 ⏰
