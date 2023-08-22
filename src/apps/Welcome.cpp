@@ -8,8 +8,6 @@
 
 Icon stepIcon(53, 13, 22, 22, true, 7, 5);
 TextLabel stepLabel(0, 43, 128, 16, 2, 2);
-short currentStep = 1;
-short stepValue = 0;
 
 void contrastStep()
 {
@@ -19,14 +17,20 @@ void contrastStep()
 void controlsStep()
 {
   disp.clearBuffer();
-  stepLabel.setPositionY(37);
-  stepLabel.draw("< > Change value");
-  stepLabel.setPositionY(47);
-  stepLabel.draw("A  Next step");
+  stepLabel.draw("A - Next step");
   stepIcon.draw(welcomeIcon);
   disp.sendBuffer();
 
-  stepLabel.setPositionY(37);
+  while(1)
+  {
+    tickAll();
+    if(aBtn.click()) {break;}
+  }
+
+  disp.clearBuffer();
+  stepLabel.draw("< > - Change value");
+  stepIcon.draw(welcomeIcon);
+  disp.sendBuffer();
 
   while(1)
   {
@@ -35,6 +39,7 @@ void controlsStep()
   }
 }
 
+/*
 void welcomeStep()
 {
   disp.clearBuffer();
@@ -48,10 +53,10 @@ void welcomeStep()
     if(aBtn.click()) {return;}
   }
 }
+*/
 
 void Welcome::draw()
 {
-  welcomeStep();
   controlsStep();
   contrastStep();
 }

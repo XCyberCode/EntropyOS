@@ -9,12 +9,12 @@
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
 
-Timer rescanTimer(3000, 0, 0);
-TextLabel infoLabel(0, 15, 128, 16);
-TextLabel speedInfoLabel(0, 31, 128, 16);
-
 void I2CScanner::draw()
 {
+  Timer rescanTimer(3000, 0, 0);
+  TextLabel infoLabel(0, 15, 128, 16);
+  TextLabel speedInfoLabel(0, 31, 128, 16);
+
   Serial.begin(115200);
 
   byte error, address;
