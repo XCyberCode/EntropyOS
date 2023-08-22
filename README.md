@@ -1,12 +1,26 @@
-#EntropyOS
+# EntropyOS
+## About ❔
 Minimalistic operating system for embedded devices
 
-##Features ✨
-- [ ] App Framework ⚒️ (WIP 🚧)
-- [ ] Apps 🔮 (WIP 🚧)
-- [ ] Hardware Independence ⚙️
+## Content 📋
+- [Apps](#apps)
+- [Libraries](#libraries)
 
-##Recommended hardware 💾
-- CPU: ESP32
-- RAM: >100KB
-- ROM: >2MB
+<a id="apps"><\a>
+## Apps 🔮
+- [] Clock ⏰
+- [] Calendar 📅
+- [] Calculator 📱
+- [] Notes 📝
+- [] Tasks 📑
+- [] Game Center 🕹️
+- [] Welcome 🎩
+- [] Settings ⚙️
+
+<a id="libraries"><\a>
+## Internal libraries ⚒️
+- App Framework 🔋
+- DS1307 ⏰
+- FastString ⚡
+
+
