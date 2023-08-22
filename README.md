@@ -1,5 +1,4 @@
 # EntropyOS
-## About
 Minimalistic operating system for embedded devices
 
 ## Content
