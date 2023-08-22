@@ -6,18 +6,18 @@ Minimalistic operating system for embedded devices
 - [Apps](#apps)
 - [Libraries](#libraries)
 
-<a id="apps"><\a>
+<a id="apps"></a>
 ## Apps 🔮
-- [] Clock ⏰
-- [] Calendar 📅
-- [] Calculator 📱
-- [] Notes 📝
-- [] Tasks 📑
-- [] Game Center 🕹️
-- [] Welcome 🎩
-- [] Settings ⚙️
+- [ ] Clock ⏰
+- [ ] Calendar 📅
+- [ ] Calculator 📱
+- [ ] Notes 📝
+- [ ] Tasks 📑
+- [ ] Game Center 🕹️
+- [ ] Welcome 🎩
+- [ ] Settings ⚙️
 
-<a id="libraries"><\a>
+<a id="libraries"></a>
 ## Internal libraries ⚒️
 - App Framework 🔋
 - DS1307 ⏰
