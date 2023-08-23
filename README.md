@@ -19,13 +19,13 @@ Minimalistic operating system for embedded devices
 <a id="libraries"></a>
 ## Libraries ⚒️
 ### App Framework 🔋
-Core component of the operating system. Contains user interface abstractions called "widgets"
+Core component of the operating system. Contains user interface abstractions called "widgets".
 
 - Button
 ```cpp
 #include <AppFramework.hpp>
 // Initialization
-Button btn(positionX, positionY, width, height, cornerRadius, textAnchorV, textAnchorH)
+Button btn(positionX, positionY, width, height, cornerRadius, textAnchorV, textAnchorH);
 
 // Widget positioning
 btn.setPosition(positionX, positionY); // Set position of the widget
@@ -51,7 +51,7 @@ btn.setCornerRadius(number); // Set corner radius of the widget border
 ```cpp
 #include <AppFramework.hpp>
 // Initialization
-TextLabel label(positionX, positionY, width, height, textAnchorV, textAnchorH)
+TextLabel label(positionX, positionY, width, height, textAnchorV, textAnchorH);
 
 // Widget positioning
 label.setPosition(positionX, positionY); // Set position of the widget
@@ -75,6 +75,12 @@ label.setTextAnchorH(textAnchorH); // Set horizontal text position of the widget
 ```
 
 ### DS1307 ⏰
+Dallas Semiconductor DS1307 chip control library.
+
+Usage
+```cpp
+DS1307 clockChip;
+```
 ### FastString ⚡
 
 
