@@ -24,8 +24,8 @@ Core component of the operating system. Contains user interface abstractions cal
 - Button
 ```cpp
 #include <AppFramework.hpp>
-// Button
-Button btn(positionX, positionY, width, height, textAnchorV, textAnchorH)
+// Initialization
+Button btn(positionX, positionY, width, height, cornerRadius, textAnchorV, textAnchorH)
 
 // Widget positioning
 btn.setPosition(positionX, positionY); // Set position of the widget
@@ -50,6 +50,23 @@ btn.setCornerRadius(number); // Set corner radius of the widget border
 - TextLabel
 ```cpp
 #include <AppFramework.hpp>
+// Initialization
+TextLabel label(positionX, positionY, width, height, textAnchorV, textAnchorH)
+
+// Widget positioning
+label.setPosition(positionX, positionY); // Set position of the widget
+label.setPositionX(positionX); // Set horizontal position of the widget
+label.setPositionY(positionY); // Set vertical position of the widget
+
+// Widget size configuration
+label.setSize(width, height); // Set size of the widget
+label.setWidth(width); // Set width of the widget
+label.setHeight(height); // Set height of the widget
+
+// Widget text positioning
+label.setTextAnchor(textAnchorV, textAnchorH); // Set text position of the widget (vertical: 1 - top, 2 - center, 3 - bottom; horizontal: 1 - left, 2 - center, 3 - right)
+label.setTextAnchorV(textAnchorV); // Set vertical text position of the widget
+label.setTextAnchorH(textAnchorH); // Set horizontal text position of the widget
 ```
 
 - Icon
@@ -57,8 +74,8 @@ btn.setCornerRadius(number); // Set corner radius of the widget border
 #include <AppFramework.hpp>
 ```
 
-- DS1307 ⏰
-- FastString ⚡
+### DS1307 ⏰
+### FastString ⚡
 
 
 
