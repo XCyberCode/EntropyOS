@@ -1,7 +1,7 @@
 # EntropyOS
 Minimalistic operating system for embedded devices
 
-## Content
+## Content 📋
 - [Apps](#apps)
 - [Libraries](#libraries)
 
@@ -21,7 +21,7 @@ Minimalistic operating system for embedded devices
 ### App Framework 🔋
 Core component of the operating system. Contains user interface abstractions called "widgets".
 
-- Button
+#### Button
 ```cpp
 #include <AppFramework.hpp>
 // Initialization
@@ -47,7 +47,7 @@ btn.setFocus(state); // Set focus state (if true, content color of the widget wi
 btn.setCornerRadius(number); // Set corner radius of the widget border
 ```
 
-- TextLabel
+#### TextLabel
 ```cpp
 #include <AppFramework.hpp>
 // Initialization
@@ -69,7 +69,7 @@ label.setTextAnchorV(textAnchorV); // Set vertical text position of the widget
 label.setTextAnchorH(textAnchorH); // Set horizontal text position of the widget
 ```
 
-- Icon
+#### Icon
 ```cpp
 #include <AppFramework.hpp>
 ```
@@ -79,6 +79,7 @@ Dallas Semiconductor DS1307 chip control library.
 
 Usage
 ```cpp
+#include <DS1307.h>
 DS1307 clockChip;
 ```
 ### FastString ⚡
