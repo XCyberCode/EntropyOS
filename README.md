@@ -45,6 +45,9 @@ btn.setTextAnchorH(textAnchorH); // Set horizontal text position of the widget
 // Widget state
 btn.setFocus(state); // Set focus state (if true, content color of the widget will be inverted)
 btn.setCornerRadius(number); // Set corner radius of the widget border
+
+// Draw widget
+btn.draw(const char * text);
 ```
 
 #### TextLabel
@@ -67,6 +70,9 @@ label.setHeight(height); // Set height of the widget
 label.setTextAnchor(textAnchorV, textAnchorH); // Set text position of the widget (vertical: 1 - top, 2 - center, 3 - bottom; horizontal: 1 - left, 2 - center, 3 - right)
 label.setTextAnchorV(textAnchorV); // Set vertical text position of the widget
 label.setTextAnchorH(textAnchorH); // Set horizontal text position of the widget
+
+// Draw widget
+label.draw(const char * text);
 ```
 
 #### Icon
