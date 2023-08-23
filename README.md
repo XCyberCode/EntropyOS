@@ -83,7 +83,7 @@ label.draw(const char * text);
 ### DS1307 ⏰
 Dallas Semiconductor DS1307 chip control library.
 
-Usage
+#### Usage
 ```cpp
 #include <DS1307.h>
 // Initialization
@@ -111,8 +111,13 @@ clockChip.set(
 );
 ```
 ### FastString ⚡
+Static alternative for Arduino String.
 
-
-
+#### Usage
+```cpp
+#include <FastString.h>
+// Initialization
+FastString<BUFFER_SIZE> str = "Hello";
+```
 
 
