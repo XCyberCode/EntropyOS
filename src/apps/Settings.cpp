@@ -19,21 +19,20 @@ FastString<30> items[] = {"  Load time from NTP", "  Set timezone", "  Set contr
 
 short cursorPosition = 0;
 
-FastString<32> outStr;
-
 void contrastWindow()
 {
+  FastString<11> contrastStr;
   TextLabel contrastLabel(0, 0, 128, 64);
   short contrastValue = storage.getShort("contrast");
 
-  outStr.clearBuffer();
-  outStr = outStr + "Contrast: " + contrastValue;
+  contrastStr = contrastStr + "Contrast: " + contrastValue;
 
   while(1)
   {
     tickAll();
     if(bBtn.click())
     {
+      disp.setContrast(map(storage.getShort("contrast"), 0, 9, 1, 255));
       return;
     }
     if(aBtn.click())
@@ -41,34 +40,35 @@ void contrastWindow()
       storage.putShort("contrast", contrastValue);
       return;
     }
-    if(rightBtn.click() && contrastValue < 255) 
+    if(rightBtn.click() && contrastValue < 9) 
     {
-      contrastValue += 5;
-      disp.setContrast(contrastValue);
-      outStr.clearBuffer();
-      outStr = outStr + "Contrast: " + contrastValue;
+      contrastValue++;
+      disp.setContrast(map(contrastValue, 0, 9, 1, 255));
+      contrastStr.clearBuffer();
+      contrastStr = contrastStr + "Contrast: " + contrastValue;
     }
     if(leftBtn.click() && contrastValue > 0) 
     {
-      contrastValue -= 5;
-      disp.setContrast(contrastValue);
-      outStr.clearBuffer();
-      outStr = outStr + "Contrast: " + contrastValue;
+      contrastValue--;
+      disp.setContrast(map(contrastValue, 0, 9, 1, 255));
+      contrastStr.clearBuffer();
+      contrastStr = contrastStr + "Contrast: " + contrastValue;
     }
 
     disp.clearBuffer();
-    contrastLabel.draw(outStr.c_str());
+    contrastLabel.draw(contrastStr.c_str());
     disp.sendBuffer();
   }
 }
 
 void timezoneWindow()
 {
+  FastString<16> timezoneStr;
   TextLabel timezoneLabel(0, 0, 128, 64);
   short timezoneOffset = storage.getShort("timezone");
 
-  outStr.clearBuffer();
-  outStr = outStr + "Timezone: UTC" + timezoneOffset;
+  timezoneStr.clearBuffer();
+  timezoneStr = timezoneStr + "Timezone: UTC" + timezoneOffset;
 
   while(1)
   {
@@ -85,18 +85,18 @@ void timezoneWindow()
     if(rightBtn.click()) 
     {
       timezoneOffset++;
-      outStr.clearBuffer();
-      outStr = outStr + "Timezone: UTC" +  timezoneOffset;
+      timezoneStr.clearBuffer();
+      timezoneStr = timezoneStr + "Timezone: UTC" +  timezoneOffset;
     }
     if(leftBtn.click()) 
     {
       timezoneOffset--;
-      outStr.clearBuffer();
-      outStr = outStr + "Timezone: UTC" +  timezoneOffset;
+      timezoneStr.clearBuffer();
+      timezoneStr = timezoneStr + "Timezone: UTC" +  timezoneOffset;
     }
 
     disp.clearBuffer();
-    timezoneLabel.draw(outStr.c_str());
+    timezoneLabel.draw(timezoneStr.c_str());
     disp.sendBuffer();
   }
 }
