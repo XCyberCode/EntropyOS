@@ -50,7 +50,7 @@ class FastString
     // "Add" methods
     FastString& add(const char value)
     {
-      if(_bufferLength + 1 >= BUFFER_SIZE)
+      if(_bufferLength + 1 > BUFFER_SIZE)
       {
         return *this;
       }
@@ -62,19 +62,18 @@ class FastString
     // Add string (const char *)
     FastString& add(const char * value)
     {
-      return add((char*)value, strlen(value));
+      return add((char*)value);
     }
 
     // Add string (char *). String length is required
-    FastString& add(char * value, short valueLength)
+    FastString& add(char * value)
     {
-      if(_bufferLength + valueLength >= BUFFER_SIZE)
+      if(_bufferLength + strlen(value) > BUFFER_SIZE)
       {
         return *this;
       }
-      memcpy(_strBuffer + _bufferLength, value, valueLength);
-      _bufferLength += valueLength;
-      _strBuffer[_bufferLength] = '\0';
+      strcat(_strBuffer, value);
+      _bufferLength += strlen(value);
       return *this;
     }
 
@@ -382,5 +381,13 @@ class FastString
     void replace(short index, const char * value)
     {
       replace(index, (char *)value);
+    }
+
+    // Convert and replace
+    void replace(uint16_t index, uint16_t value)
+    {
+      char valueStr[6];
+      utoa(value, valueStr, DEC);
+      replace(index, valueStr);
     }
 };
