@@ -89,7 +89,7 @@ Dallas Semiconductor DS1307 chip control library.
 // Initialization
 DS1307 clockChip;
 
-clockChip.read(); // Read data from chip
+clockChip.read(); // Read data from the chip
 
 clockChip.getSecond(); // Get current second value
 clockChip.getMinute(); // Get current minute value
@@ -117,7 +117,45 @@ Static alternative for Arduino String.
 ```cpp
 #include <FastString.h>
 // Initialization
-FastString<BUFFER_SIZE> str = "Hello";
+FastString<BUFFER_SIZE> str;
+
+// Initialization with a value
+FastString<BUFFER_SIZE> strValue = "Nothing";
+
+// Buffer operations
+str.clearBuffer(); // Clear the buffer
+str.getLength(); // Get the string length
+str.getCapacity(); // Get the maximum string length (buffer size)
+str.getBuffer(); // Get the buffer (char[])
+
+// Addition
+str.add(char / char * / const char * / (unsigned) (short, long) int / FastString);
+str += char / char * / const char * / (unsigned) (short, long)  int/ FastString;
+str = char / char * / const char * / (unsigned) (short, long) int / FastString;
+str = str + char / char * / const char * / (unsigned) (short, long) int / FastString;
+
+// Buffer access
+// Set a char
+str[index] = '1';
+str.setCharAt(index, '1');
+
+// Get a char
+char chr = str[index];
+char chr = str.getCharAt(index, '1');
+
+// Buffer modification
+// Remove data with a shift
+str.remove(index, '1')
+str.remove(index, "value");
+
+// Insert data with a shift
+str.insert(index, '1');
+str.insert(index, "value");
+
+// Replace data
+str.replace(index, '1');
+str.replace(index, "value");
+
 ```
 
 
