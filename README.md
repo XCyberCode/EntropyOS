@@ -86,7 +86,29 @@ Dallas Semiconductor DS1307 chip control library.
 Usage
 ```cpp
 #include <DS1307.h>
+// Initialization
 DS1307 clockChip;
+
+clockChip.read(); // Read data from chip
+
+clockChip.getSecond(); // Get current second value
+clockChip.getMinute(); // Get current minute value
+clockChip.getHour(); // Get current hour value
+clockChip.getDayOfWeek(); // Get current dayOfWeek value
+clockChip.getDayOfMonth(); // Get current dayOfMonth value
+clockChip.getMonth(); // Get current month value
+clockChip.getYear(); // Get current year value
+
+// Set current time and date data
+clockChip.set(
+  short second, 
+  short minute, 
+  short hour, 
+  short dayOfWeek, 
+  short dayOfMonth, 
+  short month, 
+  short year
+);
 ```
 ### FastString ⚡
 
