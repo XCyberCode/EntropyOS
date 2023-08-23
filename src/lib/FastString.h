@@ -249,12 +249,20 @@ class FastString
     // Set a char from the buffer by index
     void setCharAt(short index, char value)
     {
+      if(index > BUFFER_SIZE)
+      {
+        return;
+      }
       _strBuffer[index] = value;
     }
 
     // Get a char from the buffer by index
     char getCharAt(short index)
     {
+      if(index > BUFFER_SIZE)
+      {
+        return _strBuffer[_bufferLength];
+      }
       return _strBuffer[index];
     }
 
@@ -319,7 +327,7 @@ class FastString
     // Insert a char in the buffer with a shift
     void insert(short index, char value)
     {
-      if(_bufferLength + 1 > BUFFER_SIZE)
+      if(_bufferLength + 1 > BUFFER_SIZE || index > BUFFER_SIZE)
       {
         return;
       }
@@ -331,18 +339,48 @@ class FastString
     // Convert and insert
     void insert(short index, const char * value)
     {
-      insert(index, (char*)value, strlen(value));
+      insert(index, (char*)value);
     }
 
     // Insert a string (char *) in the buffer with a shift
-    void insert(short index, char * value, short valueLength)
+    void insert(short index, char * value)
     {
-      if(_bufferLength + valueLength > BUFFER_SIZE)
+      short valueLength = strlen(value);
+      if(_bufferLength + valueLength > BUFFER_SIZE || index > BUFFER_SIZE)
       {
         return;
       }
       memmove(&_strBuffer[index + valueLength], &_strBuffer[index], _bufferLength - index + 1);
       memcpy(&_strBuffer[index], value, valueLength);
       _bufferLength += valueLength;
+    }
+
+    // Replace buffer data with a single char
+    void replace(short index, char value)
+    {
+      if(_bufferLength + 1 > BUFFER_SIZE || index > BUFFER_SIZE)
+      {
+        return;
+      }
+      _strBuffer[index] = value;
+      _bufferLength++;
+    }
+
+    // Replace buffer data with a string (char *)
+    void replace(short index, char * value)
+    {
+      short valueLength = strlen(value);
+      if(_bufferLength + valueLength > BUFFER_SIZE || index > BUFFER_SIZE)
+      {
+        return;
+      }
+      memcpy(&_strBuffer[index], value, valueLength);
+      _bufferLength += valueLength;
+    }
+
+    // Convert and replace
+    void replace(short index, const char * value)
+    {
+      replace(index, (char *)value);
     }
 };

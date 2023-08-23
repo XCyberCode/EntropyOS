@@ -31,4 +31,6 @@ void TestApp::draw()
   Serial.println(testString.getBuffer());
   testString.remove(0, 2);
   Serial.println(testString.getBuffer());
+  testString.replace(0, 'w');
+  Serial.println(testString.getBuffer());
 }
