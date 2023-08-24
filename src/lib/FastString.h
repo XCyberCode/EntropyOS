@@ -5,7 +5,7 @@ template <uint16_t BUFFER_SIZE>
 class FastString
 {
   private:
-    short _bufferLength = 0;
+    uint16_t _bufferLength = 0;
     char _strBuffer[BUFFER_SIZE + 1];
 
   public:
@@ -65,7 +65,7 @@ class FastString
       return add((char*)value);
     }
 
-    // Add string (char *). String length is required
+    // Add string (char *)
     FastString& add(char * value)
     {
       if(_bufferLength + strlen(value) > BUFFER_SIZE)
@@ -161,79 +161,79 @@ class FastString
     // Add assign ("+=") operator
     FastString& operator += (const char value)
     {
-      return (*this).add(value);
+      return add(value);
     }
     FastString& operator += (const char* data) {
-      return (*this).add(data);
+      return add(data);
     }
     FastString& operator += (uint32_t value) {
-      return (*this).add(value);
+      return add(value);
     }
     FastString& operator += (int32_t value) {
-      return (*this).add(value);
+      return add(value);
     }
     FastString& operator += (uint16_t value) {
-      return (*this).add(value);
+      return add(value);
     }
     FastString& operator += (int16_t value) {
-      return (*this).add(value);
+      return add(value);
     }
     FastString& operator += (uint8_t value) {
-      return (*this).add(value);
+      return add(value);
     }
     FastString& operator += (int8_t value) {
-      return (*this).add(value);
+      return add(value);
     }
     FastString& operator += (FastString value) {
-      return (*this).add(value);
+      return add(value);
     }
 
     // Assign ("=") operator
-    FastString operator = (const char value)
+    FastString& operator = (const char value)
     {
       clearBuffer();
-      return (*this).add(value);
+      return add(value);
     }
-    FastString operator = (const char* data) {
+    FastString& operator = (const char* data) {
       clearBuffer();
-      return (*this).add(data);
+      return add(data);
     }
-    FastString operator = (uint32_t value) {
+    FastString& operator = (uint32_t value) {
       clearBuffer();
-      return (*this).add(value);
+      return add(value);
     }
-    FastString operator = (int32_t value) {
+    FastString& operator = (int32_t value) {
       clearBuffer();
-      return (*this).add(value);
+      return add(value);
     }
-    FastString operator = (uint16_t value) {
+    FastString& operator = (uint16_t value) {
       clearBuffer();
-      return (*this).add(value);
+      return add(value);
     }
-    FastString operator = (int16_t value) {
+    FastString& operator = (int16_t value) {
       clearBuffer();
-      return (*this).add(value);
+      return add(value);
     }
-    FastString operator = (uint8_t value) {
+    FastString& operator = (uint8_t value) {
       clearBuffer();
-      return (*this).add(value);
+      return add(value);
     }
-    FastString operator = (int8_t value) {
+    FastString& operator = (int8_t value) {
       clearBuffer();
-      return (*this).add(value);
+      return add(value);
     }
-    FastString operator = (FastString value) {
+    FastString& operator = (FastString value) {
       clearBuffer();  
-      return (*this).add(value);
+      return add(value);
     }
 
     // Other operators
-    char operator [] (short index)
+    char operator [] (uint16_t index)
     const {
       return _strBuffer[index];
     }
 
-    char& operator [] (short index)
+    char& operator [] (uint16_t index)
     {
       return _strBuffer[index];
     }
@@ -246,7 +246,7 @@ class FastString
     }
 
     // Set a char from the buffer by index
-    void setCharAt(short index, char value)
+    void setCharAt(uint16_t index, char value)
     {
       if(index > BUFFER_SIZE)
       {
@@ -256,7 +256,7 @@ class FastString
     }
 
     // Get a char from the buffer by index
-    char getCharAt(short index)
+    char getCharAt(uint16_t index)
     {
       if(index > BUFFER_SIZE)
       {
@@ -302,7 +302,7 @@ class FastString
     }
 
     // Remove char with a shift
-    void remove(short index)
+    void remove(uint16_t index)
     {
       if(index > _bufferLength)
       {
@@ -313,7 +313,7 @@ class FastString
     }
 
     // Remove string (char *) with a shift
-    void remove(short index, short valueLength)
+    void remove(uint16_t index, uint16_t valueLength)
     {
       if(index > _bufferLength)
       {
@@ -324,7 +324,7 @@ class FastString
     }
 
     // Insert a char in the buffer with a shift
-    void insert(short index, char value)
+    void insert(uint16_t index, char value)
     {
       if(_bufferLength + 1 > BUFFER_SIZE || index > BUFFER_SIZE)
       {
@@ -336,26 +336,25 @@ class FastString
     }
 
     // Convert and insert
-    void insert(short index, const char * value)
+    void insert(uint16_t index, const char * value)
     {
       insert(index, (char*)value);
     }
 
     // Insert a string (char *) in the buffer with a shift
-    void insert(short index, char * value)
+    void insert(uint16_t index, char * value)
     {
-      short valueLength = strlen(value);
-      if(_bufferLength + valueLength > BUFFER_SIZE || index > BUFFER_SIZE)
+      if(_bufferLength + strlen(value) > BUFFER_SIZE || index > BUFFER_SIZE)
       {
         return;
       }
-      memmove(&_strBuffer[index + valueLength], &_strBuffer[index], _bufferLength - index + 1);
-      memcpy(&_strBuffer[index], value, valueLength);
-      _bufferLength += valueLength;
+      memmove(&_strBuffer[index + strlen(value)], &_strBuffer[index], _bufferLength - index + 1);
+      memcpy(&_strBuffer[index], value, strlen(value));
+      _bufferLength += strlen(value);
     }
 
     // Replace buffer data with a single char
-    void replace(short index, char value)
+    void replace(uint16_t index, char value)
     {
       if(_bufferLength + 1 > BUFFER_SIZE || index > BUFFER_SIZE)
       {
@@ -366,7 +365,7 @@ class FastString
     }
 
     // Replace buffer data with a string (char *)
-    void replace(short index, char * value)
+    void replace(uint16_t index, char * value)
     {
       short valueLength = strlen(value);
       if(_bufferLength + valueLength > BUFFER_SIZE || index > BUFFER_SIZE)
@@ -378,7 +377,7 @@ class FastString
     }
 
     // Convert and replace
-    void replace(short index, const char * value)
+    void replace(uint16_t index, const char * value)
     {
       replace(index, (char *)value);
     }
