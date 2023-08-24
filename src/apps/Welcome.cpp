@@ -15,9 +15,10 @@ TextLabel stepLabel(0, 43, 128, 16, 2, 2);
 
 void contrastStep()
 {
-  FastString<11> contrastStr; 
-  contrastStr += "Contrast: 9";
-  uint8_t contrastValue = 9;
+  FastString<12> contrastStr; 
+  uint8_t contrastValue = 10;
+  contrastStr = "Contrast: ";
+  contrastStr += contrastValue;
   while(1)
   {
     tickAll();
@@ -26,22 +27,22 @@ void contrastStep()
       storage.putShort("contrast", contrastValue);
       break;
     }
-    if(leftBtn.click())
+    if(leftBtn.click() && contrastValue > 0)
     {
-      (contrastValue > 0) ? contrastValue-- : contrastValue = 9;
-      disp.setContrast(map(contrastValue, 0, 9, 1, 255));
-      contrastStr.remove(10, 1);
+      contrastValue--;
+      disp.setContrast(map(contrastValue, 0, 10, 1, 255));
+      contrastStr = "Contrast: ";
       contrastStr += contrastValue;
     }
-    if(rightBtn.click())
+    if(rightBtn.click() && contrastValue < 10)
     {
-      (contrastValue < 9) ? contrastValue++ : contrastValue = 0;
-      disp.setContrast(map(contrastValue, 0, 9, 1, 255));
-      contrastStr.remove(10, 1);
+      contrastValue++;
+      disp.setContrast(map(contrastValue, 0, 10, 1, 255));
+      contrastStr = "Contrast: ";
       contrastStr += contrastValue;
     }
     disp.clearBuffer();
-    stepIcon.draw(welcomeIcon);
+    stepIcon.draw(contrastIcon);
     stepLabel.draw(contrastStr.c_str());
     disp.sendBuffer();
   }

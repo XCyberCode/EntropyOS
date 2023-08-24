@@ -21,11 +21,12 @@ short cursorPosition = 0;
 
 void contrastWindow()
 {
-  FastString<11> contrastStr;
+  FastString<12> contrastStr;
   TextLabel contrastLabel(0, 0, 128, 64);
   short contrastValue = storage.getShort("contrast");
 
-  contrastStr = contrastStr + "Contrast: " + contrastValue;
+  contrastStr = "Contrast: "; 
+  contrastStr += contrastValue;
 
   while(1)
   {
@@ -40,19 +41,19 @@ void contrastWindow()
       storage.putShort("contrast", contrastValue);
       return;
     }
-    if(rightBtn.click() && contrastValue < 9) 
+    if(rightBtn.click() && contrastValue < 10) 
     {
       contrastValue++;
-      disp.setContrast(map(contrastValue, 0, 9, 1, 255));
-      contrastStr.clearBuffer();
-      contrastStr = contrastStr + "Contrast: " + contrastValue;
+      disp.setContrast(map(contrastValue, 0, 10, 1, 255));
+      contrastStr = "Contrast: ";
+      contrastStr += contrastValue;
     }
     if(leftBtn.click() && contrastValue > 0) 
     {
       contrastValue--;
-      disp.setContrast(map(contrastValue, 0, 9, 1, 255));
-      contrastStr.clearBuffer();
-      contrastStr = contrastStr + "Contrast: " + contrastValue;
+      disp.setContrast(map(contrastValue, 0, 10, 1, 255));
+      contrastStr = "Contrast: ";
+      contrastStr += contrastValue;
     }
 
     disp.clearBuffer();
@@ -67,8 +68,8 @@ void timezoneWindow()
   TextLabel timezoneLabel(0, 0, 128, 64);
   short timezoneOffset = storage.getShort("timezone");
 
-  timezoneStr.clearBuffer();
-  timezoneStr = timezoneStr + "Timezone: UTC" + timezoneOffset;
+  timezoneStr = "Timezone: UTC"; 
+  timezoneStr += timezoneOffset;
 
   while(1)
   {
@@ -85,14 +86,14 @@ void timezoneWindow()
     if(rightBtn.click()) 
     {
       timezoneOffset++;
-      timezoneStr.clearBuffer();
-      timezoneStr = timezoneStr + "Timezone: UTC" +  timezoneOffset;
+      timezoneStr = "Timezone: UTC"; 
+      timezoneStr += timezoneOffset;
     }
     if(leftBtn.click()) 
     {
       timezoneOffset--;
-      timezoneStr.clearBuffer();
-      timezoneStr = timezoneStr + "Timezone: UTC" +  timezoneOffset;
+      timezoneStr = "Timezone: UTC"; 
+      timezoneStr += timezoneOffset;
     }
 
     disp.clearBuffer();
