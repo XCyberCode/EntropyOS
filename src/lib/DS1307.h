@@ -12,13 +12,13 @@
 class DS1307
 {
   private:
-    short _second; // Seconds
-    short _minute; // Minutes
-    short _hour; // Hours
-    short _dayOfWeek; // Day of the week
-    short _dayOfMonth; // Day of the month
-    short _month; // Month
-    short _year; // Year
+    short _second;
+    short _minute;
+    short _hour;
+    short _dayOfWeek;
+    short _dayOfMonth;
+    short _month;
+    short _year;
 
     // Convert from decimal to binary-decimal
     short decToBcd(short value)
@@ -33,7 +33,6 @@ class DS1307
     }
 
   public:
-    // Read time and date
     void read()
     {
       Wire.beginTransmission(DS1307_I2C_ADDRESS);
@@ -50,20 +49,17 @@ class DS1307
       _year = bcdToDec(Wire.read());
     }
 
-    // Set time and date
     void set(short second, short minute, short hour, short dayOfWeek, short dayOfMonth, short month, short year)
     {
       Wire.beginTransmission(DS1307_I2C_ADDRESS);
-      // Set DS1307 register value
       Wire.write(0);
-      Wire.write(decToBcd(second)); // Set seconds
-      Wire.write(decToBcd(minute)); // Set minutes
-      Wire.write(decToBcd(hour)); // Set hours
+      Wire.write(decToBcd(second));
+      Wire.write(decToBcd(minute));
+      Wire.write(decToBcd(hour));
       Wire.write(decToBcd(dayOfWeek)); 
-      // Set day of the week (1 – Sunday, 7 – Saturday)
-      Wire.write(decToBcd(dayOfMonth)); // Set day (from 1 to 31)
-      Wire.write(decToBcd(month)); // Set months
-      Wire.write(decToBcd(year)); // Set years (from 0 to 99)
+      Wire.write(decToBcd(dayOfMonth));
+      Wire.write(decToBcd(month));
+      Wire.write(decToBcd(year));
       Wire.endTransmission();
     }
 
