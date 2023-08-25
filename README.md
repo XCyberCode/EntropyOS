@@ -137,9 +137,11 @@ Timer tmr(
 );
 
 // Timer methods
-tmr.start();   // Start timer
-tmr.stop();    // Stop timer
-tmr.setMode(); // Set timer mode
+tmr.start();   // Start the timer
+tmr.stop();    // Stop the timer
+tmr.pause();   // Pause the timer
+tmr.resume();  // Resume the timer
+tmr.setMode(); // Set the timer mode
 tmr.tick();    // Get the timer status
 ```
 
