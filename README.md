@@ -4,6 +4,9 @@ Minimalistic operating system for embedded devices
 ## Content 📋
 - [Apps](#apps)
 - [Libraries](#libraries)
+  - [AppFramework](#appframework) 
+  - [DS1307](#ds1307)
+  - [FastString](#faststring)
 
 <a id="apps"></a>
 ## Apps 🔮
@@ -18,6 +21,7 @@ Minimalistic operating system for embedded devices
 
 <a id="libraries"></a>
 ## Libraries ⚒️
+<a id="appframework"></a>
 ### App Framework 🔋
 Core component of the operating system. Contains user interface abstractions called "widgets" and other useful components.
 
@@ -139,6 +143,7 @@ tmr.setMode(); // Set timer mode
 tmr.tick();    // Get the timer status
 ```
 
+<a id="ds1307"></a>
 ### DS1307 ⏰
 Dallas Semiconductor DS1307 chip control library.
 
@@ -170,6 +175,7 @@ clockChip.set(
 );
 ```
 
+<a id="faststring"></a>
 ### FastString ⚡
 Static alternative for Arduino String.
 
