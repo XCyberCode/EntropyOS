@@ -36,7 +36,7 @@ unsigned char* appIcons[] = {
 };
 
 // Position of the menu cursor
-short cursorPos = 0;
+uint8_t cursorPos = 0;
 
 // === Widgets
 TextLabel appLabel(0, 43, 128, 16); // A label with the name of the app

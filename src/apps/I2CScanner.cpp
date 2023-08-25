@@ -17,8 +17,8 @@ void I2CScanner::draw()
 
   Serial.begin(115200);
 
-  byte error, address;
-  short numOfDevices;
+  uint8_t error, address;
+  uint8_t numOfDevices;
 
   disp.clearBuffer();
   infoLabel.draw("=== Serial Mode ===");

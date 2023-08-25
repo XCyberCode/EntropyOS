@@ -17,7 +17,7 @@
 TextLabel itemLabel(0, 0, 128, 16, 2, 1);
 FastString<30> items[] = {"  Load time from NTP", "  Set timezone", "  Set contrast", "  Reset all data"};
 
-short cursorPosition = 0;
+uint8_t cursorPosition = 0;
 
 void contrastWindow()
 {
@@ -33,7 +33,7 @@ void contrastWindow()
     tickAll();
     if(bBtn.click())
     {
-      disp.setContrast(map(storage.getShort("contrast"), 0, 9, 1, 255));
+      disp.setContrast(map(storage.getShort("contrast"), 0, 10, 1, 255));
       return;
     }
     if(aBtn.click())
