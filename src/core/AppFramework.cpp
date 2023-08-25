@@ -8,12 +8,12 @@
 #include <core/HardwareManager.hpp>
 
 // Get vertical position of the text
-short getVerticalPosition(
-  short positionY, 
-  short height, 
+uint16_t getVerticalPosition(
+  uint16_t positionY, 
+  uint16_t height, 
   const char * text, 
-  short mode,
-  short offset = 0
+  uint8_t mode,
+  uint16_t offset = 0
 )
 {
   if(mode == 1) {return positionY + 7 + offset;}
@@ -23,13 +23,13 @@ short getVerticalPosition(
 }
 
 // Get horizontal position of the text
-short getHorizontalPosition(
-  short positionX, 
-  short width, 
+uint16_t getHorizontalPosition(
+  uint16_t positionX, 
+  uint16_t width, 
   const char * text, 
-  short mode, 
-  short textWidth,
-  short offset = 0
+  uint8_t mode, 
+  uint16_t textWidth,
+  uint16_t offset = 0
 )
 {
   if(mode == 1) {return positionX + offset;}
@@ -94,7 +94,18 @@ void Checkbox::draw(const char * text = "")
   disp.drawRFrame(_positionX, _positionY, _width, _height, _cornerRadius);
   if(_isChecked)
   {
-    disp.drawLine(_positionX + floor((_width - 1) / 2), _positionY + _height - 3, _positionX + floor((_width - 1) / 2) - 2, _positionY + _height - 5);
-    disp.drawLine(_positionX + floor((_width - 1) / 2), _positionY + _height - 3, _positionX + floor((_width - 1) / 2) + 4, _positionY + _height - 7);
+    // Draw sign
+    disp.drawLine(
+      _positionX + floor((_width - 1) / 2), 
+      _positionY + _height - 3, 
+      _positionX + floor((_width - 1) / 2) - 2, 
+      _positionY + _height - 5
+    );
+    disp.drawLine(
+      _positionX + floor((_width - 1) / 2), 
+      _positionY + _height - 3, 
+      _positionX + floor((_width - 1) / 2) + 4, 
+      _positionY + _height - 7
+    );
   }
 }

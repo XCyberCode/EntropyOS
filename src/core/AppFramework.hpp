@@ -11,24 +11,24 @@
 class Button
 {
   private:
-    short _width, _height; // Size of the widget
-    short _positionX, _positionY; // Position of the widget 
-    short _textAnchorV; // Vertical position of the widget text. Can be: 1 - up, 2 - center, 3 - down
-    short _textAnchorH; // Horizontal position ot the widget text. Can be: 1 - right, 2 - center, 3 - left
+    uint16_t _width, _height; // Size of the widget
+    uint16_t _positionX, _positionY; // Position of the widget 
+    uint8_t _textAnchorV; // Vertical position of the widget text. Can be: 1 - up, 2 - center, 3 - down
+    uint8_t _textAnchorH; // Horizontal position ot the widget text. Can be: 1 - right, 2 - center, 3 - left
     bool _isFocused; // If true, a button content color will be inverted
     bool _isBordered; // If true, a border will be drawn
-    short _cornerRadius; // Radius of the corners
+    uint16_t _cornerRadius; // Radius of the corners
 
   public:
     // Constructor
     Button(
-        short positionX = 0, 
-        short positionY = 0, 
-        short width = 0, 
-        short height = 0, 
-        short cornerRadius = 0,  
-        short textAnchorV = 2, 
-        short textAnchorH = 2,
+        uint16_t positionX = 0, 
+        uint16_t positionY = 0, 
+        uint16_t width = 0, 
+        uint16_t height = 0, 
+        uint16_t cornerRadius = 0,  
+        uint8_t textAnchorV = 2, 
+        uint8_t textAnchorH = 2,
         bool isFocused = false,
         bool isBordered = true
     )
@@ -45,7 +45,7 @@ class Button
     void draw(const char *);
    
     // Set horizontal position of the widget
-    void setPositionX(short positionX)
+    void setPositionX(uint16_t positionX)
     {
       if(positionX >= 0)
       {
@@ -54,7 +54,7 @@ class Button
     }
 
     // Set vertical position of the widget
-    void setPositionY(short positionY)
+    void setPositionY(uint16_t positionY)
     {
       if(positionY >= 0)
       {
@@ -63,14 +63,14 @@ class Button
     }
 
     // Set position of the widget
-    void setPosition(short positionX, short positionY)
+    void setPosition(uint16_t positionX, uint16_t positionY)
     {
       _positionX = positionX;
       _positionY = positionY;
     }
 
     // Set width of the widget
-    void setWidth(short width)
+    void setWidth(uint16_t width)
     {
       if(width >= 0)
       {
@@ -79,7 +79,7 @@ class Button
     }
 
     // Set height of the widget
-    void setHeight(short height)
+    void setHeight(uint16_t height)
     {
       if(height >= 0)
       {
@@ -88,33 +88,33 @@ class Button
     }
 
     // Set size of the widget
-    void setSize(short width, short height)
+    void setSize(uint16_t width, uint16_t height)
     {
       setWidth(width);
       setHeight(height);
     }
 
     // Set vertical text acnhor of the widget
-    void setTextAnchorV(short textAnchorV)
+    void setTextAnchorV(uint8_t textAnchorV)
     {
       _textAnchorV = textAnchorV;
     }
 
     // Set horizontal text anchor of the widget
-    void setTextAnchorH(short textAnchorH)
+    void setTextAnchorH(uint8_t textAnchorH)
     {
       _textAnchorH = textAnchorH;
     }
 
     // Set text anchor of the widget
-    void setTextAnchor(short textAnchorV, short textAnchorH)
+    void setTextAnchor(uint8_t textAnchorV, uint8_t textAnchorH)
     {
       setTextAnchorV(textAnchorV);
       setTextAnchorH(textAnchorH);
     }
 
     // Set corner radius of the widget
-    void setCornerRadius(short cornerRadius)
+    void setCornerRadius(uint16_t cornerRadius)
     {
       if(cornerRadius >= 0)
       {
@@ -138,20 +138,22 @@ class Button
 class TextLabel
 {
   private:
-    short _width, _height; // Size of the widget
-    short _positionX, _positionY; // Position of the widget
-    short _textAnchorV = 2; // Vertical position of the widget text. Can be: 1 - top, 2 - center, 3 - bottom
-    short _textAnchorH = 2; // Horizontal position of the widget text. Can be 1 - right, 2 - center, 3 - left
+    uint16_t _width, _height; // Size of the widget
+    uint16_t _positionX, _positionY; // Position of the widget
+    // Vertical position of the widget text. Can be: 1 - top, 2 - center, 3 - bottom
+    uint8_t _textAnchorV = 2;
+    // Horizontal position of the widget text. Can be 1 - right, 2 - center, 3 - left
+    uint8_t _textAnchorH = 2; 
        
   public:
     // Constructor
     TextLabel(
-        short positionX = 0, 
-        short positionY = 0,
-        short width = 0,
-        short height = 0,
-        short textAnchorV = 2,
-        short textAnchorH = 2
+        uint16_t positionX = 0, 
+        uint16_t positionY = 0,
+        uint16_t width = 0,
+        uint16_t height = 0,
+        uint8_t textAnchorV = 2,
+        uint8_t textAnchorH = 2
     )
     {
       setPosition(positionX, positionY);
@@ -162,7 +164,7 @@ class TextLabel
     void draw(const char *);
 
     // Set width of the widget
-    void setWidth(short width)
+    void setWidth(uint16_t width)
     {
       if(width >= 0)
       {
@@ -171,7 +173,7 @@ class TextLabel
     }
 
     // Set height of the widget
-    void setHeight(short height)
+    void setHeight(uint16_t height)
     {
       if(height >= 0)
       {
@@ -180,14 +182,14 @@ class TextLabel
     }
 
     // Set size of the widget
-    void setSize(short width, short height)
+    void setSize(uint16_t width, uint16_t height)
     {
       setWidth(width);
       setHeight(height);
     }
 
     // Set vertical position of the widget
-    void setPositionX(short positionX)
+    void setPositionX(uint16_t positionX)
     {
       if(positionX >= 0)
       {
@@ -196,7 +198,7 @@ class TextLabel
     }
 
     // Set horizontal position of the widget
-    void setPositionY(short positionY)
+    void setPositionY(uint16_t positionY)
     {
       if(positionY >= 0)
       {
@@ -205,26 +207,26 @@ class TextLabel
     }
 
     // Set position of the widget
-    void setPosition(short positionX, short positionY)
+    void setPosition(uint16_t positionX, uint16_t positionY)
     {
       setPositionX(positionX);
       setPositionY(positionY);
     }
 
     // Set vertical text anchor of the widget
-    void setTextAnchorV(short textAnchorV)
+    void setTextAnchorV(uint8_t textAnchorV)
     {
       _textAnchorV = textAnchorV;
     }
 
     // Set horizontal text anchor of the widget
-    void setTextAnchorH(short textAnchorH)
+    void setTextAnchorH(uint8_t textAnchorH)
     {
       _textAnchorH = textAnchorH;
     }
 
     // Set text anchors of the widget
-    void setTextAnchor(short textAnchorV, short textAnchorH)
+    void setTextAnchor(uint8_t textAnchorV, uint8_t textAnchorH)
     {
       setTextAnchorV(textAnchorV);
       setTextAnchorH(textAnchorH);
@@ -234,22 +236,22 @@ class TextLabel
 class Icon
 {
   private:
-    short _width, _height; // Size of the widget
-    short _positionX, _positionY; // Position of the widget
+    uint16_t _width, _height; // Size of the widget
+    uint16_t _positionX, _positionY; // Position of the widget
     bool _isBordered; // If true, a border will be drawn
-    short _borderPadding; // Padding between border and content
-    short _cornerRadius; // Radius of the border corners
+    uint16_t _borderPadding; // Padding between border and content
+    uint16_t _cornerRadius; // Radius of the border corners
 
   public:
     // Constructor
     Icon(
-        short positionX = 0, 
-        short positionY = 0, 
-        short width = 0, 
-        short height = 0,
+        uint16_t positionX = 0, 
+        uint16_t positionY = 0, 
+        uint16_t width = 0, 
+        uint16_t height = 0,
         bool isBordered = false,
-        short cornerRadius = 0,
-        short borderPadding = 0
+        uint16_t cornerRadius = 0,
+        uint16_t borderPadding = 0
     )
     {
       setPosition(positionX, positionY);
@@ -262,7 +264,7 @@ class Icon
     void draw(unsigned char image[]);
 
     // Set horizontal position of the widget
-    void setPositionX(short positionX)
+    void setPositionX(uint16_t positionX)
     {
       if(positionX >= 0)
       {
@@ -271,7 +273,7 @@ class Icon
     }
 
     // Set vertical position of the widget
-    void setPositionY(short positionY)
+    void setPositionY(uint16_t positionY)
     {
       if(positionY >= 0)
       {
@@ -280,14 +282,14 @@ class Icon
     }
 
     // Set position of the widget
-    void setPosition(short positionX, short positionY)
+    void setPosition(uint16_t positionX, uint16_t positionY)
     {
       setPositionX(positionX);
       setPositionY(positionY);
     }
 
     // Set width of the widget
-    void setWidth(short width)
+    void setWidth(uint16_t width)
     {
       if(width >= 0)
       {
@@ -296,7 +298,7 @@ class Icon
     }
 
     // Set height of the widget
-    void setHeight(short height)
+    void setHeight(uint16_t height)
     {
       if(height >= 0)
       {
@@ -305,7 +307,7 @@ class Icon
     }
 
     // Set size of the widget
-    void setSize(short width, short height)
+    void setSize(uint16_t width, uint16_t height)
     {
       setWidth(width);
       setHeight(width);
@@ -318,7 +320,7 @@ class Icon
     }
 
     // Set radius of the border corners
-    void setCornerRadius(short cornerRadius)
+    void setCornerRadius(uint16_t cornerRadius)
     {
       if(cornerRadius >= 0)
       {
@@ -327,7 +329,7 @@ class Icon
     }
 
     // Set padding between border and content
-    void setBorderPadding(short borderPadding)
+    void setBorderPadding(uint16_t borderPadding)
     {
       if(borderPadding >= 0)
       {
@@ -385,21 +387,20 @@ class Timer
 class Checkbox
 {
   private:
-    short _positionX, _positionY; // Position of the widget
-    short _width, _height; // Size of the widget
-    // DEPRECATED. String _text; // Text of the widget
+    uint16_t _positionX, _positionY; // Position of the widget
+    uint16_t _width, _height; // Size of the widget
     bool _isChecked; // State of the widget
-    short _cornerRadius; // Radius of the border corners
+    uint16_t _cornerRadius; // Radius of the border corners
 
   public:
     // Constructor
     Checkbox(
-      short positionX = 0, 
-      short positionY = 0, 
-      short width = 10, 
-      short height = 10, 
+      uint16_t positionX = 0, 
+      uint16_t positionY = 0, 
+      uint16_t width = 10, 
+      uint16_t height = 10, 
       bool isChecked = false, 
-      short cornerRadius = 0
+      uint16_t cornerRadius = 0
     )
     {
       setPosition(positionX, positionY);
@@ -412,7 +413,7 @@ class Checkbox
     void draw(const char * text);
 
     // Set horizontal position of the widget
-    void setPositionX(short positionX)
+    void setPositionX(uint16_t positionX)
     {
       if(positionX >= 0)
       {
@@ -421,7 +422,7 @@ class Checkbox
     }
 
     // Set vertical position of the widget
-    void setPositionY(short positionY)
+    void setPositionY(uint16_t positionY)
     {
       if(positionY >= 0)
       {
@@ -430,14 +431,14 @@ class Checkbox
     }
 
     // Set position of the widget
-    void setPosition(short positionX, short positionY)
+    void setPosition(uint16_t positionX, uint16_t positionY)
     {
       setPositionX(positionX);
       setPositionY(positionY);
     }
 
     // Set width of the widget
-    void setWidth(short width)
+    void setWidth(uint16_t width)
     {
       if(width >= 0)
       {
@@ -446,7 +447,7 @@ class Checkbox
     }
 
     // Set height of the widget
-    void setHeight(short height)
+    void setHeight(uint16_t height)
     {
       if(height >= 0)
       {
@@ -455,14 +456,14 @@ class Checkbox
     }
 
     // Set size of the widget
-    void setSize(short width, short height)
+    void setSize(uint16_t width, uint16_t height)
     {
       setWidth(width);
       setHeight(width);
     }
 
     // Set radius of the border corners
-    void setCornerRadius(short cornerRadius)
+    void setCornerRadius(uint16_t cornerRadius)
     {
       if(cornerRadius >= 0)
       {
