@@ -1,5 +1,5 @@
-# EntropyOS
-Minimalistic operating system for embedded devices
+# EntropyOS 🌐
+_Minimalistic OS for embedded devices_
 
 ## Content 📋
 - [Apps](#apps)
