@@ -21,7 +21,7 @@ class FastString
       add(value);
     }
 
-    // Get string buffer
+    // Get string (char *) buffer
     char * getBuffer()
     {
       return _strBuffer;
@@ -122,7 +122,8 @@ class FastString
     }
 
     // Add another FastString
-    FastString& add(FastString value)
+    template <uint16_t bufferSize>
+    FastString& add(FastString<bufferSize> value)
     {
       return add(value.getBuffer());
     }
@@ -154,8 +155,9 @@ class FastString
     FastString operator + (int8_t value) {
       return (*this).add(value);
     }
-    FastString operator + (FastString value) {
-      return (*this).add(value);
+    template <uint16_t bufferSize>
+    FastString operator + (FastString<bufferSize> value) {
+      return (*this).add(value.getBuffer());
     }
 
     // Add assign ("+=") operator
@@ -184,8 +186,9 @@ class FastString
     FastString& operator += (int8_t value) {
       return add(value);
     }
-    FastString& operator += (FastString value) {
-      return add(value);
+    template <uint16_t bufferSize>
+    FastString& operator += (FastString<bufferSize> value) {
+      return add(value.getBuffer());
     }
 
     // Assign ("=") operator
@@ -222,9 +225,17 @@ class FastString
       clearBuffer();
       return add(value);
     }
-    FastString& operator = (FastString value) {
+    template <uint16_t bufferSize>
+    FastString& operator = (FastString<bufferSize> value) {
       clearBuffer();  
-      return add(value);
+      return add(value.getBuffer());
+    }
+
+    // Equal ("==") operator
+    template <uint16_t bufferSize>
+    bool operator == (FastString<bufferSize> value)
+    {
+      return !strcmp(_strBuffer, value.getBuffer());
     }
 
     // Other operators
