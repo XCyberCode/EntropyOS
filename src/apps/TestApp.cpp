@@ -22,6 +22,7 @@ void TestApp::draw()
   Serial.begin(115200);
 
   FastString<20> testString = "Hello";
+  /*
   Serial.println(testString.getBuffer());
   testString = testString + 123 + "test";
   Serial.println(testString.getBuffer());
@@ -33,4 +34,8 @@ void TestApp::draw()
   Serial.println(testString.getBuffer());
   testString.replace(0, 'w');
   Serial.println(testString.getBuffer());
+  */
+  FastString<30> newTestString;
+  newTestString = testString;
+  Serial.println(newTestString.c_str());
 }
