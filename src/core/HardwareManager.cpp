@@ -7,7 +7,7 @@
 #include <Preferences.h>
 
 // Local dependencies
-#include <core/Pins.hpp>
+#include <core/Pins.h>
 
 // Drivers
 #include <lib/DS1307.h>

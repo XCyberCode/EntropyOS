@@ -4,7 +4,7 @@
 // Local dependencies
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
-#include <core/Icons.hpp>
+#include <core/Icons.h>
 
 // Libraries
 #include <lib/FastString.h>

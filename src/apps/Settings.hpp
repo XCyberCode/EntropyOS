@@ -1,5 +1,5 @@
 // Local dependencies
-#include <core/Icons.hpp>
+#include <core/Icons.h>
 
 class Settings
 {

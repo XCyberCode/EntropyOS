@@ -13,7 +13,7 @@
 // === Local dependencies
 #include <core/HardwareManager.hpp>
 #include <core/AppFramework.hpp>
-#include <core/Icons.hpp>
+#include <core/Icons.h>
 
 // === Apps instances
 Debug appDebug;

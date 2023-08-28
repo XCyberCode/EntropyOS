@@ -2,7 +2,7 @@
 #include <Arduino.h>
 
 // Local dependencies
-#include <core/Icons.hpp>
+#include <core/Icons.h>
 
 class Debug
 {
