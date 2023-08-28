@@ -9,7 +9,6 @@ class FastString
     char _strBuffer[BUFFER_SIZE + 1];
 
   public:
-    // Constructor
     FastString()
     {
       clearBuffer();
@@ -21,7 +20,6 @@ class FastString
       add(value);
     }
 
-    // Get string (char *) buffer
     char * getBuffer()
     {
       return _strBuffer;
@@ -36,7 +34,6 @@ class FastString
     // Get string length
     short getLength()
     {
-      _bufferLength = strlen(_strBuffer);
       return _bufferLength;
     }
 
@@ -236,15 +233,15 @@ class FastString
     }
 
     // Assign ("=") operator
-    FastString& operator = (const char value)
+    FastString& operator = (char * value)
     {
       clearBuffer();
       return add(value);
     }
-    FastString& operator = (const char* data) 
+    FastString& operator = (const char * value) 
     {
       clearBuffer();
-      return add(data);
+      return add(value);
     }
     FastString& operator = (uint64_t value)
     {
