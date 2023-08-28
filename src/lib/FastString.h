@@ -76,8 +76,15 @@ class FastString
       _bufferLength += strlen(value);
       return *this;
     }
+    // Add uint64_t (unsigned long long)
+    FastString& add(uint64_t value)
+    {
+      char numberBuffer[21];
+      ulltoa(value, numberBuffer, DEC);
+      return add(numberBuffer);
+    }
 
-    // Add uint32_t (unsigned long / unsigned 32-bit int)
+    // Add uint32_t (unsigned long)
     FastString& add(uint32_t value)
     {
       char numberBuffer[11];
@@ -85,7 +92,7 @@ class FastString
       return add(numberBuffer);
     }
 
-    // Add uint16_t (unsigned 16-bit int)
+    // Add uint16_t (unsigned short)
     FastString& add(uint16_t value)
     {
       char numberBuffer[6];
@@ -93,13 +100,21 @@ class FastString
       return add(numberBuffer);
     }
 
-    // Add uint8_t (unsigned short / unsigned 8-bit int)
+    // Add uint8_t
     FastString& add(uint8_t value)
     {
       return add((uint16_t)value);
     }
 
-    // Add int32_t (long / 32-bit int)
+    // Add int64_t (long long)
+    FastString& add(int64_t value)
+    {
+      char numberBuffer[21];
+      lltoa(value, numberBuffer, DEC);
+      return add(numberBuffer);
+    }
+
+    // Add int32_t (long)
     FastString& add(int32_t value)
     {
       char numberBuffer[12];
@@ -107,7 +122,7 @@ class FastString
       return add(numberBuffer);
     }
 
-    // Add int16_t (16-bit int)
+    // Add int16_t (short)
     FastString& add(int16_t value)
     {
       char numberBuffer[7];
@@ -115,7 +130,7 @@ class FastString
       return add(numberBuffer);
     }
 
-    // Add int8_t (short / 8-bit int)
+    // Add int8_t
     FastString& add(int8_t value)
     {
       return add((int16_t)value);
@@ -134,25 +149,40 @@ class FastString
     {
       return (*this).add(value);
     }
-    FastString operator + (const char* value) {
+    FastString operator + (const char* value) 
+    {
       return (*this).add(value);
     }
-    FastString operator + (uint32_t value) {
+    FastString operator + (uint64_t value)
+    {
       return (*this).add(value);
     }
-    FastString operator + (int32_t value) {
+    FastString operator + (uint32_t value) 
+    {
       return (*this).add(value);
     }
-    FastString operator + (uint16_t value) {
+    FastString operator + (uint16_t value) 
+    {
       return (*this).add(value);
     }
-    FastString operator + (int16_t value) {
+    FastString operator + (uint8_t value) 
+    {
       return (*this).add(value);
     }
-    FastString operator + (uint8_t value) {
+    FastString operator + (int64_t value)
+    {
       return (*this).add(value);
     }
-    FastString operator + (int8_t value) {
+    FastString operator + (int32_t value) 
+    {
+      return (*this).add(value);
+    }
+    FastString operator + (int16_t value) 
+    {
+      return (*this).add(value);
+    }
+    FastString operator + (int8_t value) 
+    {
       return (*this).add(value);
     }
     template <uint16_t bufferSize>
@@ -168,22 +198,36 @@ class FastString
     FastString& operator += (const char* data) {
       return add(data);
     }
-    FastString& operator += (uint32_t value) {
+    FastString& operator += (uint64_t value)
+    {
       return add(value);
     }
-    FastString& operator += (int32_t value) {
+    FastString& operator += (uint32_t value) 
+    {
       return add(value);
     }
-    FastString& operator += (uint16_t value) {
+    FastString& operator += (uint16_t value) 
+    {
       return add(value);
     }
-    FastString& operator += (int16_t value) {
+    FastString& operator += (uint8_t value) 
+    {
       return add(value);
     }
-    FastString& operator += (uint8_t value) {
+    FastString& operator += (int64_t value)
+    {
       return add(value);
     }
-    FastString& operator += (int8_t value) {
+    FastString& operator += (int32_t value) 
+    {
+      return add(value);
+    }
+    FastString& operator += (int16_t value) 
+    {
+      return add(value);
+    }
+    FastString& operator += (int8_t value) 
+    {
       return add(value);
     }
     template <uint16_t bufferSize>
@@ -197,31 +241,48 @@ class FastString
       clearBuffer();
       return add(value);
     }
-    FastString& operator = (const char* data) {
+    FastString& operator = (const char* data) 
+    {
       clearBuffer();
       return add(data);
     }
-    FastString& operator = (uint32_t value) {
+    FastString& operator = (uint64_t value)
+    {
       clearBuffer();
       return add(value);
     }
-    FastString& operator = (int32_t value) {
+    FastString& operator = (uint32_t value) 
+    {
       clearBuffer();
       return add(value);
     }
-    FastString& operator = (uint16_t value) {
+    FastString& operator = (uint16_t value) 
+    {
       clearBuffer();
       return add(value);
     }
-    FastString& operator = (int16_t value) {
+    FastString& operator = (uint8_t value) 
+    {
       clearBuffer();
       return add(value);
     }
-    FastString& operator = (uint8_t value) {
+    FastString& operator = (int64_t value)
+    {
       clearBuffer();
       return add(value);
     }
-    FastString& operator = (int8_t value) {
+    FastString& operator = (int32_t value) 
+    {
+      clearBuffer();
+      return add(value);
+    }
+    FastString& operator = (int16_t value) 
+    {
+      clearBuffer();
+      return add(value);
+    }
+    FastString& operator = (int8_t value) 
+    {
       clearBuffer();
       return add(value);
     }
@@ -236,6 +297,50 @@ class FastString
     bool operator == (FastString<bufferSize> value)
     {
       return !strcmp(_strBuffer, value.getBuffer());
+    }
+    bool operator == (const char * value)
+    {
+      return !strcmp(_strBuffer, value);
+    }
+    bool operator == (char * value)
+    {
+      return !strcmp(_strBuffer, value);
+    }
+    bool operator == (uint64_t value)
+    {
+      char numberBuffer[21];
+      ulltoa(value, numberBuffer, DEC);
+      return !strcmp(_strBuffer, numberBuffer);
+    }
+    bool operator == (uint32_t value)
+    {
+      char numberBuffer[11];
+      ultoa(value, numberBuffer, DEC);
+      return !strcmp(_strBuffer, numberBuffer);
+    }
+    bool operator == (uint16_t value)
+    {
+      char numberBuffer[6];
+      utoa(value, numberBuffer, DEC);
+      return !strcmp(_strBuffer, numberBuffer);
+    }
+    bool operator == (int64_t value)
+    {
+      char numberBuffer[21];
+      lltoa(value, numberBuffer, DEC);
+      return !strcmp(_strBuffer, numberBuffer);
+    }
+    bool operator == (int32_t value)
+    {
+      char numberBuffer[12];
+      ltoa(value, numberBuffer, DEC);
+      return !strcmp(_strBuffer, numberBuffer);
+    }
+    bool operator == (int16_t value)
+    {
+      char numberBuffer[7];
+      itoa(value, numberBuffer, DEC);
+      return !strcmp(_strBuffer, numberBuffer);
     }
 
     // Other operators
@@ -285,12 +390,12 @@ class FastString
         return;
       }
       for(
-        char *charPointer = _strBuffer; 
-        charPointer <= &_strBuffer[_bufferLength]; 
-        charPointer++
+        uint32_t currentIndex = 0;
+        currentIndex < _bufferLength; 
+        currentIndex++
       )
       {
-        *charPointer = tolower(*charPointer);
+        _strBuffer[currentIndex] = tolower(_strBuffer[currentIndex]);
       }
     }
 
@@ -303,17 +408,17 @@ class FastString
         return;
       }
       for(
-        char *charPointer = _strBuffer; 
-        charPointer < &_strBuffer[_bufferLength]; 
-        charPointer++
+        uint32_t currentIndex = 0;
+        currentIndex < _bufferLength; 
+        currentIndex++
       )
       {
-        *charPointer = toupper(*charPointer);
+        _strBuffer[currentIndex] = toupper(_strBuffer[currentIndex]);
       }
     }
 
     // Remove char with a shift
-    void remove(uint16_t index)
+    void erase(uint16_t index)
     {
       if(index > _bufferLength)
       {
@@ -324,7 +429,7 @@ class FastString
     }
 
     // Remove string (char *) with a shift
-    void remove(uint16_t index, uint16_t valueLength)
+    void erase(uint16_t index, uint16_t valueLength)
     {
       if(index > _bufferLength)
       {

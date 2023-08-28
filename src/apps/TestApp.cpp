@@ -21,7 +21,7 @@ void TestApp::draw()
 
   Serial.begin(115200);
 
-  FastString<20> testString = "Hello";
+  FastString<20> testString;
   /*
   Serial.println(testString.getBuffer());
   testString = testString + 123 + "test";
@@ -36,6 +36,6 @@ void TestApp::draw()
   Serial.println(testString.getBuffer());
   */
   FastString<30> newTestString;
-  newTestString = testString;
-  Serial.println(newTestString.c_str());
+  testString = 12345943223544;
+  Serial.println(testString == 12345632452345);
 }
