@@ -127,7 +127,8 @@ btn.setBorderPadding(number); // Set the padding between the border and the widg
 btn.draw(unsigned char xbmImage[]);
 ```
 
-#### Timer
+### Timer ⏱️
+Millis-based ligthweight timer.
 ```cpp
 // Initialization
 Timer tmr(
