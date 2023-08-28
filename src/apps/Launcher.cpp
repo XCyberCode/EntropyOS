@@ -3,12 +3,13 @@
 
 // === Defines
 // Number of entries in the launcher - 1
-#define MAX_CURSOR_POS 2 
+#define MAX_CURSOR_POS 3
 
 // === Apps
 #include <apps/Settings.hpp>
 #include <apps/Debug.hpp>
 #include <apps/I2CScanner.hpp>
+#include <apps/Clock.hpp>
 
 // === Local dependencies
 #include <core/HardwareManager.hpp>
@@ -19,20 +20,23 @@
 Debug appDebug;
 Settings appSettings;
 I2CScanner appScanner;
+ClockApp appClock;
 
 // == Global variables
 // Names of the apps
 const char* appNames[] = {
   appSettings.appName,
   appDebug.appName, 
-  appScanner.appName
+  appScanner.appName,
+  appClock.appName
 };
 
 // Icons of the apps
 unsigned char* appIcons[] = {
   appSettings.appIcon, 
   appDebug.appIcon, 
-  appScanner.appIcon
+  appScanner.appIcon,
+  appClock.appIcon
 };
 
 // Position of the menu cursor
@@ -55,6 +59,10 @@ void loadApp(short appID)
   else if(appID == 2)
   {
     appScanner.draw();
+  }
+  else if(appID == 3)
+  {
+    appClock.draw();
   }
 }
 
