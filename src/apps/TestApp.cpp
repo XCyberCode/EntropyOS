@@ -21,7 +21,7 @@ void TestApp::draw()
 
   Serial.begin(115200);
 
-  FastString<20> testString;
+  FastString<20> testString = "Hi";
   /*
   Serial.println(testString.getBuffer());
   testString = testString + 123 + "test";
@@ -35,7 +35,12 @@ void TestApp::draw()
   testString.replace(0, 'w');
   Serial.println(testString.getBuffer());
   */
-  FastString<30> newTestString;
-  testString = 12345943223544;
-  Serial.println(testString == 12345632452345);
+  FastString<30> newTestString = "Hello";
+  FastString<40> sumStr;
+  for(int i = 0; i < 2; i++)
+  {   
+    sumStr = testString + 123;
+    Serial.println(testString.c_str());
+    Serial.println(sumStr.c_str());
+  }
 }
