@@ -41,6 +41,7 @@ class Button
     }
     
     void draw(const char *);
+    void draw(const char *, const uint8_t *);
    
     void setPositionX(uint16_t positionX)
     {
@@ -154,6 +155,7 @@ class TextLabel
     }
 
     void draw(const char *);
+    void draw(const char *, const uint8_t *);
 
     void setWidth(uint16_t width)
     {

@@ -41,6 +41,29 @@ uint16_t getHorizontalPosition(
 // Draw Button widget
 void Button::draw(const char * text)
 {
+  disp.setFont(u8g2_font_6x10_tf);
+  // Draw frame or field
+  if(_isFocused)
+  {
+    disp.drawRBox(_positionX, _positionY, _width, _height, _cornerRadius);
+  }
+  else if(_isBordered)
+  {
+    disp.drawRFrame(_positionX, _positionY, _width, _height, _cornerRadius);
+  }
+
+  disp.setDrawColor(2);
+  disp.drawStr(
+    getHorizontalPosition(_positionX, _width, text, _textAnchorH, disp.getUTF8Width(text), 2), 
+    getVerticalPosition(_positionY, _height, text, _textAnchorV, 2), 
+    text
+  );
+  disp.setDrawColor(1);
+}
+
+void Button::draw(const char * text, const uint8_t * font)
+{
+  disp.setFont(font);
   // Draw frame or field
   if(_isFocused)
   {
@@ -63,6 +86,19 @@ void Button::draw(const char * text)
 // Draw TextLabel widget
 void TextLabel::draw(const char * text)
 {
+  disp.setFont(u8g2_font_6x10_tf);
+  disp.setDrawColor(2);
+  disp.drawStr(
+    getHorizontalPosition(_positionX, _width, text, _textAnchorH, disp.getUTF8Width(text)), 
+    getVerticalPosition(_positionY, _height, text, _textAnchorV),
+    text
+  );
+  disp.setDrawColor(1);
+}
+
+void TextLabel::draw(const char * text, const uint8_t * font)
+{
+  disp.setFont(font);
   disp.setDrawColor(2);
   disp.drawStr(
     getHorizontalPosition(_positionX, _width, text, _textAnchorH, disp.getUTF8Width(text)), 
