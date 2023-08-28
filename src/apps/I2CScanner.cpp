@@ -8,6 +8,7 @@
 // Local dependencies
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
+#include <core/Timer.hpp>
 
 void I2CScanner::draw()
 {

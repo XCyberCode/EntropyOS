@@ -4,6 +4,7 @@
 // Local dependencies
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
+#include <core/Timer.hpp>
 #include <lib/FastString.h>
 
 void Debug::draw()
