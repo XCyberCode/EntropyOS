@@ -197,10 +197,10 @@ str.getCapacity(); // Get the maximum string length (buffer size)
 str.getBuffer();   // Get the buffer (char[])
 
 // Addition
-str.add(char / char * / const char * / (unsigned) (short, long) int / FastString);
-str += char / char * / const char * / (unsigned) (short, long)  int/ FastString;
-str = char / char * / const char * / (unsigned) (short, long) int / FastString;
-str = str + char / char * / const char * / (unsigned) (short, long) int / FastString;
+str.add(char / char * / const char * / (unsigned) (short, long, long long) int / FastString);
+str += char / char * / const char * / (unsigned) (short, long, long long)  int/ FastString;
+str = char / char * / const char * / (unsigned) (short, long, long long) int / FastString;
+str = str + char / char * / const char * / (unsigned) (short, long, long long) int / FastString;
 
 // Buffer access
 // Set a char
@@ -213,8 +213,8 @@ char chr = str.getCharAt(index, '1');
 
 // Buffer modification
 // Remove data with a shift
-str.remove(index, '1')
-str.remove(index, "value");
+str.erase(index, '1')
+str.erase(index, "value");
 
 // Insert data with a shift
 str.insert(index, '1');
