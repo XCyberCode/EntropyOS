@@ -11,9 +11,9 @@
 #include <apps/I2CScanner.hpp>
 
 // === Local dependencies
-#include <core/HardwareManager.h>
-#include <core/AppFramework.h>
-#include <core/Icons.h>
+#include <core/HardwareManager.hpp>
+#include <core/AppFramework.hpp>
+#include <core/Icons.hpp>
 
 // === Apps instances
 Debug appDebug;

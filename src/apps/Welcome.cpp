@@ -2,9 +2,9 @@
 #include <apps/Welcome.hpp>
 
 // Local dependencies
-#include <core/AppFramework.h>
-#include <core/HardwareManager.h>
-#include <core/Icons.h>
+#include <core/AppFramework.hpp>
+#include <core/HardwareManager.hpp>
+#include <core/Icons.hpp>
 
 // Libraries
 #include <lib/FastString.h>

@@ -1,5 +1,5 @@
 // Local dependencies
-#include <core/Icons.h>
+#include <core/Icons.hpp>
 
 class Welcome
 {

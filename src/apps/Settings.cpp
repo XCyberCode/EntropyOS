@@ -10,8 +10,8 @@
 // #include <WiFi.h>
 
 // Local dependencies
-#include <core/AppFramework.h>
-#include <core/HardwareManager.h>
+#include <core/AppFramework.hpp>
+#include <core/HardwareManager.hpp>
 #include <lib/FastString.h>
 
 TextLabel itemLabel(0, 0, 128, 16, 2, 1);
