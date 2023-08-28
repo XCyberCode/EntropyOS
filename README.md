@@ -4,7 +4,8 @@ _Minimalistic OS for embedded devices_
 ## Content 📋
 - [Apps](#apps)
 - [Libraries](#libraries)
-  - [AppFramework](#appframework) 
+  - [AppFramework](#appframework)
+  - [Timer](#timer)
   - [DS1307](#ds1307)
   - [FastString](#faststring)
 
@@ -127,6 +128,7 @@ btn.setBorderPadding(number); // Set the padding between the border and the widg
 btn.draw(unsigned char xbmImage[]);
 ```
 
+<a id="timer"></a>
 ### Timer ⏱️
 Millis-based ligthweight timer.
 ```cpp
