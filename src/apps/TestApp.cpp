@@ -2,8 +2,8 @@
 #include <apps/TestApp.hpp>
 
 // Local dependencies
-#include <core/AppFramework.hpp>
-#include <core/HardwareManager.hpp>
+#include <core/AppFramework.h>
+#include <core/HardwareManager.h>
 
 // Libraries
 #include <Arduino.h>

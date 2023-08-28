@@ -1,11 +1,13 @@
 // Libraries
 #include <Arduino.h>
 
-// Local dependencies
+// Apps
 #include <apps/Launcher.hpp>
 #include <apps/Welcome.hpp>
 #include <apps/TestApp.hpp>
-#include <core/HardwareManager.hpp>
+
+// Local dependencies
+#include <core/HardwareManager.h>
 
 Launcher appLauncher;
 Welcome appWelcome;

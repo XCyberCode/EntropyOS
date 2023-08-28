@@ -1,5 +1,5 @@
 // Header
-#include <core/HardwareManager.hpp>
+#include <core/HardwareManager.h>
 
 // Libraries
 #include <U8g2lib.h>
@@ -7,7 +7,7 @@
 #include <Preferences.h>
 
 // Local dependencies
-#include <core/Pins.hpp>
+#include <core/Pins.h>
 
 // Drivers
 #include <lib/DS1307.h>

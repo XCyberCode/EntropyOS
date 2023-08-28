@@ -1,11 +1,11 @@
 // Header
-#include <core/AppFramework.hpp>
+#include <core/AppFramework.h>
 
 // Libraries
 #include <U8g2lib.h>
 
 // Local dependencies
-#include <core/HardwareManager.hpp>
+#include <core/HardwareManager.h>
 
 // Get vertical position of the text
 uint16_t getVerticalPosition(

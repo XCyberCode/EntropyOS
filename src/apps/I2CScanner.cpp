@@ -6,8 +6,9 @@
 #include <Arduino.h>
 
 // Local dependencies
-#include <core/AppFramework.hpp>
-#include <core/HardwareManager.hpp>
+#include <core/AppFramework.h>
+#include <core/Timer.h>
+#include <core/HardwareManager.h>
 
 void I2CScanner::draw()
 {
