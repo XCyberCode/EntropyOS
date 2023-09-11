@@ -5,16 +5,12 @@
 // Numder of menu items
 #define NUMBER_OF_ITEMS 4
 
-// Libraries
-// #include <NTPClient.h>
-// #include <WiFi.h>
-
 // Local dependencies
 #include <core/AppFramework.hpp>
 #include <core/HardwareManager.hpp>
 #include <lib/FastString.h>
 
-TextLabel itemLabel(0, 0, 128, 16, 2, 1);
+TextLabelWidget itemLabel(0, 0, 128, 16, 2, 1);
 FastString<30> items[] = {"  Load time from NTP", "  Set timezone", "  Set contrast", "  Reset all data"};
 
 uint8_t cursorPosition = 0;
@@ -22,7 +18,7 @@ uint8_t cursorPosition = 0;
 void contrastWindow()
 {
   FastString<12> contrastStr;
-  TextLabel contrastLabel(0, 0, 128, 64);
+  TextLabelWidget contrastLabel(0, 0, 128, 64);
   short contrastValue = storage.getShort("contrast");
 
   contrastStr = "Contrast: "; 
@@ -65,7 +61,7 @@ void contrastWindow()
 void timezoneWindow()
 {
   FastString<16> timezoneStr;
-  TextLabel timezoneLabel(0, 0, 128, 64);
+  TextLabelWidget timezoneLabel(0, 0, 128, 64);
   short timezoneOffset = storage.getShort("timezone");
 
   timezoneStr = "Timezone: UTC"; 
@@ -104,7 +100,7 @@ void timezoneWindow()
 
 void resetWindow()
 {
-  TextLabel warningLabel(0, 0, 128, 64);
+  TextLabelWidget warningLabel(0, 0, 128, 64);
   disp.clearBuffer();
   warningLabel.draw("All data will be erased.");
   disp.sendBuffer();
@@ -135,7 +131,7 @@ void executeTask(short taskID)
   }
 }
 
-void Settings::draw()
+void SettingsApp::draw()
 {
   while(1)
   {

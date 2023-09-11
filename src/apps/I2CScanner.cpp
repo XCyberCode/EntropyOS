@@ -10,11 +10,11 @@
 #include <core/HardwareManager.hpp>
 #include <core/Timer.hpp>
 
-void I2CScanner::draw()
+void I2CScannerApp::draw()
 {
   Timer rescanTimer(3000, 0, 0);
-  TextLabel infoLabel(0, 15, 128, 16);
-  TextLabel speedInfoLabel(0, 31, 128, 16);
+  TextLabelWidget infoLabel(0, 15, 128, 16);
+  TextLabelWidget speedInfoLabel(0, 31, 128, 16);
 
   Serial.begin(115200);
 
@@ -43,33 +43,33 @@ void I2CScanner::draw()
         if(error == 0)
         {
           Serial.print("I2C device found at address 0x");
-          if(address<16)
+          if(address < 16)
           {
             Serial.print("0");
           }
 
-          Serial.print(address,HEX);
+          Serial.print(address, HEX);
           Serial.println(" !");
 
           numOfDevices++;
         }
-        else if(error==4) 
+        else if(error == 4) 
         {
           Serial.print("Unknow error at address 0x");
-          if (address<16)
+          if (address < 16)
           {
             Serial.print("0");
           }
-          Serial.println(address,HEX);
+          Serial.println(address, HEX);
         } 
       }
       if (numOfDevices == 0)
       {
-        Serial.println("No I2C devices found\n");
+        Serial.println("No I2C devices found");
       }
       else
       {
-        Serial.println("done\n");
+        Serial.println("done");
       }
     }
 

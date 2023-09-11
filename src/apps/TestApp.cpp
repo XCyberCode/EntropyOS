@@ -9,8 +9,8 @@
 #include <Arduino.h>
 #include <lib/FastString.h>
 
-TextLabel testInfoLabel(0, 15, 128, 16);
-TextLabel testSpeedInfoLabel(0, 31, 128, 16);
+TextLabelWidget testInfoLabel(0, 15, 128, 16);
+TextLabelWidget testSpeedInfoLabel(0, 31, 128, 16);
 
 void TestApp::draw()
 {

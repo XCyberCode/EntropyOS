@@ -39,7 +39,7 @@ uint16_t getHorizontalPosition(
 }
 
 // Draw Button widget
-void Button::draw(const char * text)
+void ButtonWidget::draw(const char * text)
 {
   disp.setFont(u8g2_font_6x10_tf);
   // Draw frame or field
@@ -61,7 +61,7 @@ void Button::draw(const char * text)
   disp.setDrawColor(1);
 }
 
-void Button::draw(const char * text, const uint8_t * font)
+void ButtonWidget::draw(const char * text, const uint8_t * font)
 {
   disp.setFont(font);
   // Draw frame or field
@@ -84,7 +84,7 @@ void Button::draw(const char * text, const uint8_t * font)
 }
 
 // Draw TextLabel widget
-void TextLabel::draw(const char * text)
+void TextLabelWidget::draw(const char * text)
 {
   disp.setFont(u8g2_font_6x10_tf);
   disp.setDrawColor(2);
@@ -96,7 +96,7 @@ void TextLabel::draw(const char * text)
   disp.setDrawColor(1);
 }
 
-void TextLabel::draw(const char * text, const uint8_t * font)
+void TextLabelWidget::draw(const char * text, const uint8_t * font)
 {
   disp.setFont(font);
   disp.setDrawColor(2);
@@ -109,7 +109,7 @@ void TextLabel::draw(const char * text, const uint8_t * font)
 }
 
 // Draw Icon widget
-void Icon::draw(unsigned char image[])
+void IconWidget::draw(unsigned char image[])
 {
   disp.drawXBMP(_positionX, _positionY, _width, _height, image);
   if(_isBordered)

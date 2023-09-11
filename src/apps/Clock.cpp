@@ -12,7 +12,7 @@
 
 void ClockApp::draw()
 {
-  TextLabel timeLabel(0, 0, 128, 64);
+  TextLabelWidget timeLabel(0, 0, 128, 64);
   Timer updateTimer(1000, 0, 0);
   FastString<8> timeInfo;
 

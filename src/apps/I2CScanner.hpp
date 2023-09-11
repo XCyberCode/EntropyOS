@@ -1,7 +1,7 @@
 // Local dependencies
 #include <core/Icons.h>
 
-class I2CScanner
+class I2CScannerApp
 {
   public: 
     void draw();

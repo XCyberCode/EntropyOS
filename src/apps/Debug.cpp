@@ -7,14 +7,14 @@
 #include <core/Timer.hpp>
 #include <lib/FastString.h>
 
-void Debug::draw()
+void DebugApp::draw()
 { 
-  Button upBtnWidget(36, 5, 18, 18, 4);
-  Button downBtnWidget(36, 41, 18, 18, 4);
-  Button leftBtnWidget(18, 23, 18, 18, 4);
-  Button rightBtnWidget(54, 23, 18, 18, 4);
-  Button aBtnWidget(90, 23, 18, 18, 4);
-  TextLabel timeWidget(2, 2, 124, 14, 1, 3);
+  ButtonWidget upBtnWidget(36, 5, 18, 18, 4);
+  ButtonWidget downBtnWidget(36, 41, 18, 18, 4);
+  ButtonWidget leftBtnWidget(18, 23, 18, 18, 4);
+  ButtonWidget rightBtnWidget(54, 23, 18, 18, 4);
+  ButtonWidget aBtnWidget(90, 23, 18, 18, 4);
+  TextLabelWidget timeWidget(2, 2, 124, 14, 1, 3);
   Timer clockUpdateTimer(1000, 0, 0);
 
   clockUpdateTimer.start();

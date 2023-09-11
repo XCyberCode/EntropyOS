@@ -10,8 +10,8 @@
 #include <lib/FastString.h>
 #include <Arduino.h>
 
-Icon stepIcon(53, 13, 22, 22, true, 7, 5);
-TextLabel stepLabel(0, 43, 128, 16, 2, 2);
+IconWidget stepIcon(53, 13, 22, 22, true, 7, 5);
+TextLabelWidget stepLabel(0, 43, 128, 16, 2, 2);
 
 void contrastStep()
 {
@@ -73,7 +73,7 @@ void controlsStep()
   }
 }
 
-void Welcome::draw()
+void WelcomeApp::draw()
 {
   controlsStep();
   contrastStep();

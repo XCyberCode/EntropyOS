@@ -7,8 +7,8 @@
 #include <apps/TestApp.hpp>
 #include <core/HardwareManager.hpp>
 
-Launcher appLauncher;
-Welcome appWelcome;
+LauncherApp appLauncher;
+WelcomeApp appWelcome;
 TestApp appTest;
 
 void setup()

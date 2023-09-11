@@ -16,7 +16,7 @@ class WidgetTransform
   public:
     void setPositionX(uint16_t positionX)
     {
-      if(positionX > 0)
+      if(positionX >= 0)
       {
         _positionX = positionX;
       }
@@ -24,7 +24,7 @@ class WidgetTransform
 
     void setPositionY(uint16_t positionY)
     {
-      if(positionY > 0)
+      if(positionY >= 0)
       {
         _positionY = positionY;
       }
@@ -64,11 +64,9 @@ class WidgetTransform
     uint16_t getPositionY() {return _positionY;}
 };
 
-class Button : public WidgetTransform
+class ButtonWidget : public WidgetTransform
 {
-  private:
-    // uint16_t _width, _height;
-    // uint16_t _positionX, _positionY; 
+  private: 
     uint8_t _textAnchorV;
     uint8_t _textAnchorH;
     bool _isFocused; // If true, a button content color will be inverted
@@ -76,7 +74,7 @@ class Button : public WidgetTransform
     uint16_t _cornerRadius;
 
   public:
-    Button(
+    ButtonWidget(
         uint16_t positionX = 0, 
         uint16_t positionY = 0, 
         uint16_t width = 0, 
@@ -138,16 +136,14 @@ class Button : public WidgetTransform
     bool getFocus() {return _isFocused;}
 };
 
-class TextLabel : public WidgetTransform
+class TextLabelWidget : public WidgetTransform
 {
   private:
-    // uint16_t _width, _height;        // Size of the widget
-    // uint16_t _positionX, _positionY; // Position of the widget
-    uint8_t _textAnchorV = 2;        // Vertical position of the widget text.
-    uint8_t _textAnchorH = 2;        // Horizontal position of the widget text.
+    uint8_t _textAnchorV = 2;
+    uint8_t _textAnchorH = 2;
        
   public:
-    TextLabel(
+    TextLabelWidget(
         uint16_t positionX = 0, 
         uint16_t positionY = 0,
         uint16_t width = 0,
@@ -181,24 +177,17 @@ class TextLabel : public WidgetTransform
       setTextAnchorV(textAnchorV);
       setTextAnchorH(textAnchorH);
     }
-
-    uint16_t getWidth() {return _width;}
-    uint16_t getHeight() {return _height;}
-    uint16_t getPositionX() {return _positionX;}
-    uint16_t getPositionY() {return _positionY;}
 };
 
-class Icon : public WidgetTransform
+class IconWidget : public WidgetTransform
 {
   private:
-    // uint16_t _width, _height;
-    // uint16_t _positionX, _positionY;
     bool _isBordered;
     uint16_t _borderPadding;
     uint16_t _cornerRadius;
 
   public:
-    Icon(
+    IconWidget(
         uint16_t positionX = 0, 
         uint16_t positionY = 0, 
         uint16_t width = 0, 
@@ -240,17 +229,11 @@ class Icon : public WidgetTransform
 
     // Get different widget data
     bool getBorder() {return _isBordered;}
-    uint16_t getWidth() {return _width;}
-    uint16_t getHeight() {return _height;}
-    uint16_t getPositionX() {return _positionX;}
-    uint16_t getPositionY() {return _positionY;}
 };
 
-class Progress : public WidgetTransform
+class ProgressWidget : public WidgetTransform
 {
   private:
-    // uint16_t _positionX, _positionY;
-    // uint16_t _width, _height;
     uint8_t _progress;
 };
 #endif

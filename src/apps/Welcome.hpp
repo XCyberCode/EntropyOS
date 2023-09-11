@@ -1,7 +1,7 @@
 // Local dependencies
 #include <core/Icons.h>
 
-class Welcome
+class WelcomeApp
 {
   public:
     void draw();

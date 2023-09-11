@@ -4,7 +4,7 @@
 // Local dependencies
 #include <core/Icons.h>
 
-class Debug
+class DebugApp
 {
   public:
     void draw();

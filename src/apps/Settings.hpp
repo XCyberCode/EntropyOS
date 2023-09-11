@@ -1,7 +1,7 @@
 // Local dependencies
 #include <core/Icons.h>
 
-class Settings
+class SettingsApp
 {
   public:
     void draw();

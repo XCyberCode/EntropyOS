@@ -1,4 +1,4 @@
-class Launcher
+class LauncherApp
 {
   public:
     void draw();
