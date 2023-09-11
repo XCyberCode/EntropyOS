@@ -1,6 +1,7 @@
 include <BOSL2/std.scad>
 $fn = 50;
 
+// Global variable
 BOARD_WIDTH = 70;
 BOARD_HEIGHT = 50;
 WALL_THICKNESS = 3;
@@ -8,17 +9,29 @@ WALL_THICKNESS = 3;
 PLATE_HEIGHT = 3;
 PLATE_SHIFT_HEIGHT = 2;
 
+BUZZER_RADIUS = 6.5;
+
 difference()
 {
   // Main plate
   difference()
   {
     linear_extrude(PLATE_HEIGHT)
-    rect([BOARD_WIDTH + WALL_THICKNESS * 2, BOARD_HEIGHT + WALL_THICKNESS * 2], rounding = 3, anchor = [-1, 0, -1]);
+    rect([
+      BOARD_WIDTH + WALL_THICKNESS * 2, 
+      BOARD_HEIGHT + WALL_THICKNESS * 2], 
+      rounding = 3, 
+      anchor = [-1, 0, -1]
+    );
   
     translate([3, 3, -1])
     linear_extrude(PLATE_SHIFT_HEIGHT)
-    rect([BOARD_WIDTH, BOARD_HEIGHT], rounding = 2, anchor = [-1, 0, -1]);
+    rect([
+      BOARD_WIDTH, 
+      BOARD_HEIGHT], 
+      rounding = 2, 
+      anchor = [-1, 0, -1]
+    );
   }
   
   // Components
@@ -49,7 +62,7 @@ difference()
   // Buzzer
   translate([65, 44, 0])
   linear_extrude(4)
-  circle(r = 6.5);
+  circle(r = BUZZER_RADIUS);
   
   // A/B Buttons
   translate([60.4, 4, 0])
