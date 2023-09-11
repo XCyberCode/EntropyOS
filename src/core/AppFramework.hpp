@@ -8,11 +8,67 @@
 #ifndef APP_FRAMEWORK_H
 #define APP_FRAMEWORK_H
 
-class Button
+class Widget 
+{
+  protected:
+    uint16_t _width, _height;
+    uint16_t _positionX, _positionY;
+  public:
+    void setPositionX(uint16_t positionX)
+    {
+      if(positionX > 0)
+      {
+        _positionX = positionX;
+      }
+    }
+
+    void setPositionY(uint16_t positionY)
+    {
+      if(positionY > 0)
+      {
+        _positionY = positionY;
+      }
+    }
+
+    void setPosition(uint16_t positionX, uint16_t positionY)
+    {
+      setPositionX(positionX);
+      setPositionY(positionY);
+    }
+
+    void setWidth(uint16_t width)
+    {
+      if(width >= 0)
+      {
+        _width = width;
+      }
+    }
+
+    void setHeight(uint16_t height)
+    {
+      if(height >= 0)
+      {
+        _height = height;
+      }
+    }
+
+    void setSize(uint16_t width, uint16_t height)
+    {
+      setWidth(width);
+      setHeight(height);
+    }
+
+    uint16_t getWidth() {return _width;}
+    uint16_t getHeight() {return _height;}
+    uint16_t getPositionX() {return _positionX;}
+    uint16_t getPositionY() {return _positionY;}
+};
+
+class Button : public Widget
 {
   private:
-    uint16_t _width, _height;
-    uint16_t _positionX, _positionY; 
+    // uint16_t _width, _height;
+    // uint16_t _positionX, _positionY; 
     uint8_t _textAnchorV;
     uint8_t _textAnchorH;
     bool _isFocused; // If true, a button content color will be inverted
@@ -42,51 +98,6 @@ class Button
     
     void draw(const char *);
     void draw(const char *, const uint8_t *);
-   
-    void setPositionX(uint16_t positionX)
-    {
-      if(positionX >= 0)
-      {
-        _positionX = positionX;
-      }
-    }
-
-    // Set vertical position of the widget
-    void setPositionY(uint16_t positionY)
-    {
-      if(positionY >= 0)
-      {
-        _positionY = positionY;
-      }
-    }
-
-    void setPosition(uint16_t positionX, uint16_t positionY)
-    {
-      _positionX = positionX;
-      _positionY = positionY;
-    }
-
-    void setWidth(uint16_t width)
-    {
-      if(width >= 0)
-      {
-        _width = width;
-      }
-    }
-
-    void setHeight(uint16_t height)
-    {
-      if(height >= 0)
-      {
-        _height = height;
-      }
-    }
-
-    void setSize(uint16_t width, uint16_t height)
-    {
-      setWidth(width);
-      setHeight(height);
-    }
 
     // 1 - top, 2 - center, 3 - bottom
     void setTextAnchorV(uint8_t textAnchorV)
@@ -125,13 +136,9 @@ class Button
 
     bool getBorder() {return _isBordered;}
     bool getFocus() {return _isFocused;}
-    uint16_t getWidth() {return _width;}
-    uint16_t getHeight() {return _height;}
-    uint16_t getPositionX() {return _positionX;}
-    uint16_t getPositionY() {return _positionY;}
 };
 
-class TextLabel
+class TextLabel : public Widget
 {
   private:
     uint16_t _width, _height;        // Size of the widget
@@ -157,50 +164,6 @@ class TextLabel
     void draw(const char *);
     void draw(const char *, const uint8_t *);
 
-    void setWidth(uint16_t width)
-    {
-      if(width >= 0)
-      {
-        _width = width;
-      }
-    }
-
-    void setHeight(uint16_t height)
-    {
-      if(height >= 0)
-      {
-        _height = height;
-      }
-    }
-
-    void setSize(uint16_t width, uint16_t height)
-    {
-      setWidth(width);
-      setHeight(height);
-    }
-
-    void setPositionX(uint16_t positionX)
-    {
-      if(positionX >= 0)
-      {
-        _positionX = positionX;
-      }
-    }
-
-    void setPositionY(uint16_t positionY)
-    {
-      if(positionY >= 0)
-      {
-        _positionY = positionY;
-      }
-    }
-
-    void setPosition(uint16_t positionX, uint16_t positionY)
-    {
-      setPositionX(positionX);
-      setPositionY(positionY);
-    }
-
     // 1 - top, 2 - center, 3 - bottom
     void setTextAnchorV(uint8_t textAnchorV)
     {
@@ -225,7 +188,7 @@ class TextLabel
     uint16_t getPositionY() {return _positionY;}
 };
 
-class Icon
+class Icon : public Widget
 {
   private:
     uint16_t _width, _height;
@@ -252,50 +215,6 @@ class Icon
       setBorderPadding(borderPadding);
     }
     void draw(unsigned char image[]);
-
-    void setPositionX(uint16_t positionX)
-    {
-      if(positionX >= 0)
-      {
-        _positionX = positionX;
-      }
-    }
-
-    void setPositionY(uint16_t positionY)
-    {
-      if(positionY >= 0)
-      {
-        _positionY = positionY;
-      }
-    }
-
-    void setPosition(uint16_t positionX, uint16_t positionY)
-    {
-      setPositionX(positionX);
-      setPositionY(positionY);
-    }
-
-    void setWidth(uint16_t width)
-    {
-      if(width >= 0)
-      {
-        _width = width;
-      }
-    }
-
-    void setHeight(uint16_t height)
-    {
-      if(height >= 0)
-      {
-        _height = height;
-      }
-    }
-
-    void setSize(uint16_t width, uint16_t height)
-    {
-      setWidth(width);
-      setHeight(width);
-    }
 
     void setBorder(bool isBordered)
     {
@@ -327,7 +246,7 @@ class Icon
     uint16_t getPositionY() {return _positionY;}
 };
 
-class Progress
+class Progress : public Widget
 {
   private:
     uint16_t _positionX, _positionY;
