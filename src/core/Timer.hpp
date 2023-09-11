@@ -40,6 +40,11 @@ class Timer
 
     void setMode(bool isTimer) {_isTimer = isTimer;}
 
+    void setPeriod(uint32_t period)
+    {
+      _timerPeriod = period;
+    }
+
     bool getMode() {return _isTimer;}
 
     bool tick()
