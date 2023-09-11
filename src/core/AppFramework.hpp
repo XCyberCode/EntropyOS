@@ -8,7 +8,7 @@
 #ifndef APP_FRAMEWORK_H
 #define APP_FRAMEWORK_H
 
-class Widget 
+class WidgetTransform 
 {
   protected:
     uint16_t _width, _height;
@@ -64,7 +64,7 @@ class Widget
     uint16_t getPositionY() {return _positionY;}
 };
 
-class Button : public Widget
+class Button : public WidgetTransform
 {
   private:
     // uint16_t _width, _height;
@@ -138,11 +138,11 @@ class Button : public Widget
     bool getFocus() {return _isFocused;}
 };
 
-class TextLabel : public Widget
+class TextLabel : public WidgetTransform
 {
   private:
-    uint16_t _width, _height;        // Size of the widget
-    uint16_t _positionX, _positionY; // Position of the widget
+    // uint16_t _width, _height;        // Size of the widget
+    // uint16_t _positionX, _positionY; // Position of the widget
     uint8_t _textAnchorV = 2;        // Vertical position of the widget text.
     uint8_t _textAnchorH = 2;        // Horizontal position of the widget text.
        
@@ -188,11 +188,11 @@ class TextLabel : public Widget
     uint16_t getPositionY() {return _positionY;}
 };
 
-class Icon : public Widget
+class Icon : public WidgetTransform
 {
   private:
-    uint16_t _width, _height;
-    uint16_t _positionX, _positionY;
+    // uint16_t _width, _height;
+    // uint16_t _positionX, _positionY;
     bool _isBordered;
     uint16_t _borderPadding;
     uint16_t _cornerRadius;
@@ -246,11 +246,11 @@ class Icon : public Widget
     uint16_t getPositionY() {return _positionY;}
 };
 
-class Progress : public Widget
+class Progress : public WidgetTransform
 {
   private:
-    uint16_t _positionX, _positionY;
-    uint16_t _width, _height;
+    // uint16_t _positionX, _positionY;
+    // uint16_t _width, _height;
     uint8_t _progress;
 };
 #endif
