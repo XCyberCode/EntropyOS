@@ -13,12 +13,12 @@
 #ifndef HARDWARE_MANAGER_H
 #define HARDWARE_MANAGER_H
 
-extern EncButton<EB_TICK, LEFT_BTN_PIN> leftBtn;
-extern EncButton<EB_TICK, UP_BTN_PIN> upBtn;
-extern EncButton<EB_TICK, RIGHT_BTN_PIN> rightBtn;
-extern EncButton<EB_TICK, DOWN_BTN_PIN> downBtn;
-extern EncButton<EB_TICK, A_BTN_PIN> aBtn;
-extern EncButton<EB_TICK, B_BTN_PIN> bBtn;
+extern Button leftBtn;
+extern Button upBtn;
+extern Button rightBtn;
+extern Button downBtn;
+extern Button aBtn;
+extern Button bBtn;
 
 extern U8G2_SSD1306_128X64_NONAME_F_HW_I2C disp;
 
