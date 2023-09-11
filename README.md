@@ -30,7 +30,7 @@ Core component of the operating system. Contains user interface abstractions cal
 ```cpp
 #include <AppFramework.hpp>
 // Initialization
-Button btn(
+ButtonWidget btn(
   uint16_t positionX,    // Horizontal position of the widget
   uint16_t positionY,    // Vertical position of the widget
   uint16_t width,        // Width of the widget
@@ -67,7 +67,7 @@ btn.draw(const char * text);
 ```cpp
 #include <AppFramework.hpp>
 // Initialization
-TextLabel label(
+TextLabelWidget label(
   uint16_t positionX,  // Horizontal position of the widget 
   uint16_t positionY,  // Vertical position of the widget
   uint16_t width,      // Width of the widget
@@ -99,7 +99,7 @@ label.draw(const char * text);
 ```cpp
 #include <AppFramework.hpp>
 // Initialization
-Icon icon(
+IconWidget icon(
   uint16_t positionX,    // Horizontal position of the widget
   uint16_t positionY,    // Vertical position of the widget
   uint16_t width,        // Width of the widget
