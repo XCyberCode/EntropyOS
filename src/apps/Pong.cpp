@@ -173,7 +173,7 @@ void PongApp::draw()
         playerY--;
       }
       
-      if(downBtn.read() && playerY < 63 - playerLength + 1)
+      if(downBtn.read() && playerY < 64 - playerLength)
       {
         playerY++;
       }
@@ -185,7 +185,7 @@ void PongApp::draw()
       {
         enemyY--;
       }
-      else if(ballY > enemyY + playerLength / 2 && enemyY + playerLength - 1 < 63)
+      else if(ballY > enemyY + playerLength / 2 && enemyY + playerLength < 64)
       {
         enemyY++;
       }
