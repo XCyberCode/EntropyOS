@@ -9,36 +9,44 @@
 // Libraries
 #include <Arduino.h>
 
-// pps - Pixels Per Second
-uint8_t ballSpeed = 20;
-uint8_t playerSpeed = 12;
-uint8_t enemySpeed = 12;
-
-uint8_t ballX = 64;
-uint8_t ballY = 32;
-int8_t ballVectorX = 1;
-int8_t ballVectorY = 1;
-uint16_t playerY = 24;
-uint16_t enemyY = 24;
+// Defines
+// Set speed in pps (Pixels Per Second)
 uint8_t playerLength = 16;
-uint16_t playerScore = 0;
+uint8_t initialBallSpeed = 30;
+uint8_t initialPlayerSpeed = 16;
+uint8_t initialEnemySpeed = 18;
 
-Timer playerUpdateTimer(1000 / playerSpeed, 0, 0);
-Timer enemyUpdateTimer(1000 / enemySpeed, 0, 0);
-Timer ballUpdateTimer(1000 / ballSpeed);
+uint16_t playerY, enemyY;
+uint8_t ballX, ballY;
+int8_t ballVectorX;
+int8_t ballVectorY;
+uint16_t playerScore;
+
+Timer playerUpdateTimer(1000 / initialPlayerSpeed, 0, 0);
+Timer enemyUpdateTimer(1000 / initialEnemySpeed, 0, 0);
+Timer ballUpdateTimer(1000 / initialBallSpeed, 0, 0);
 
 TextLabelWidget scoreLabel(0, 0, 128, 16);
 
-void resetGame()
+void resetGame(bool resetScore = true)
 {
-  ballX = 64;
-  ballY = 32;
-  ballVectorX = 1;
-  ballVectorY = 1;
+  // Initial players position
   playerY = 24;
   enemyY = 24;
-  ballSpeed = 6;
-  playerScore = 0;
+
+  // Initial ball position
+  ballX = 56 + random(0, 16);
+  ballY = 25 + random(0, 16);
+
+  // Initial ball acceleration
+  ballVectorX = 1;
+  int8_t accelerationVectors[2] = {-1, 1};
+  ballVectorY = accelerationVectors[random(0, 2)];
+
+  if(resetScore)
+  {
+    playerScore = 0;
+  }
 }
 
 void drawField()
@@ -53,10 +61,12 @@ void drawField()
 
 void updateBall()
 {
+  // Bottom wall
   if(ballY == 63)
   {
     ballVectorY = -1;
   }
+  // Top wall
   else if(ballY == 0)
   {
     ballVectorY = 1;
@@ -64,71 +74,81 @@ void updateBall()
 
   if(ballX == 123 && ballVectorX == 1)
   {
-    
-  }
-
-  if(ballX == 123 && ballVectorX == 1)
-  {
-    if(ballY + ballVectorY > playerY && ballY + ballVectorY < playerY + playerLength - 1)
+    if(ballVectorY == 1)
     {
-      ballVectorX = -1;
-      playerScore++;
+      if(ballY + 1 > playerY && ballY + 1 < playerY + playerLength)
+      {
+        ballVectorX = -1;
+      }
+      else if(ballY + 1 == playerY)
+      {
+        ballVectorX = -1;
+        ballVectorY = -1;
+      }
     }
 
-    else if(ballVectorY == 1 && ballY + 1 == playerY)
+    else if(ballVectorY == -1)
     {
-      ballVectorX = -1;
-      ballVectorY = -1;
-      playerScore++;
-    }
-
-    else if(ballVectorY == -1 && ballY - 1 == playerY + playerLength - 1)
-    {
-      ballVectorX = -1;
-      ballVectorY = 1;
-      playerScore++;
+      if(ballY - 1 > playerY && ballY - 1 < playerY + playerLength - 1)
+      {
+        ballVectorX = -1;
+      }
+      else if(ballY - 1 == playerY + playerLength - 1)
+      {
+        ballVectorX = -1;
+        ballVectorY = 1;
+      }
     }
   }
 
   if(ballX == 6 && ballVectorX == -1)
   {
-    if(ballY + 1 > enemyY && ballY + ballVectorY < enemyY + playerLength - 1)
+    if(ballVectorY == 1)
     {
-      ballVectorX = 1;
+      if(ballY + 1 > enemyY && ballY + 1 < enemyY + playerLength)
+      {
+        ballVectorX = 1;
+      }
+      else if(ballY + 1 == enemyY)
+      {
+        ballVectorX = 1;
+        ballVectorY = -1;
+      }
     }
 
-    else if(ballVectorY == 1 && ballY + 1 == enemyY)
+    else if(ballVectorY == -1)
     {
-      ballVectorX = 1;
-      ballVectorY = -1;
-    }
-
-    else if(ballVectorY == -1 && ballY - 1 == enemyY + playerLength - 1)
-    {
-      ballVectorX = 1;
-      ballVectorY = 1;
+      if(ballY - 1 > enemyY && ballY - 1 < enemyY + playerLength - 1)
+      {
+        ballVectorX = 1;
+      }
+      else if(ballY - 1 == enemyY + playerLength - 1)
+      {
+        ballVectorX = 1;
+        ballVectorY = 1;
+      }
     }
   }
-    
+   
+  // Right wall
   if(ballX == 127)
   {
     resetGame();
   }
 
+  // Left wall
   else if(ballX == 0)
   {
-    playerScore += 3;
-    ballX = 64;
-    ballY = 32;
-    ballVectorX = 1;
-    ballVectorY = 1;
-    playerY = 24;
-    enemyY = 24;
+    playerScore += 2;
+    resetGame(false);
   }
 
-  ballSpeed = 16 + floor(playerScore / 2);
-  ballUpdateTimer.setPeriod(1000 / ballSpeed);
+  // Update ball and players speed
+  ballUpdateTimer.setPeriod(1000 / (initialBallSpeed + floor(playerScore / 2)));
+  playerUpdateTimer.setPeriod(1000 / (initialPlayerSpeed + floor(playerScore / 4)));
+  enemyUpdateTimer.setPeriod(1000 / (initialEnemySpeed + floor(playerScore / 4)));
 
+  // Update ball position
   ballX += ballVectorX;
   ballY += ballVectorY;
 }
@@ -143,15 +163,9 @@ void PongApp::draw()
   while(1)
   {
     tickAll();
-    if(bBtn.click())
-    {
-      return;
-    }
+    if(bBtn.click()) {return;}
+    if(aBtn.click()) {resetGame();}
 
-    if(aBtn.click())
-    {
-      resetGame();
-    }
     if(playerUpdateTimer.tick())
     {
       if(upBtn.read() && playerY > 0)
