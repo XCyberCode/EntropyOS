@@ -2,6 +2,7 @@
 #include <U8g2lib.h>
 #include <EncButton.h>
 #include <Preferences.h>
+#include <WiFi.h>
 
 // Local dependencies
 #include <core/Pins.h>
@@ -38,8 +39,17 @@ static void tickAll()
 
 static void beginHardware()
 {
+  // Set Modem-sleep mode for ESP32
+  WiFi.setSleep(true);
+  // setCpuFrequencyMhz(80);
+
+  // Begin NVM Storage
   storage.begin("settings", false);
+
+  // Begin I2C peripheral
   Wire.begin();
+
+  // Begin display and configure font
   disp.begin();
   disp.setFont(u8g2_font_6x10_tf);
   disp.setFontMode(1);
