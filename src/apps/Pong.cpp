@@ -79,11 +79,13 @@ void updateBall()
       if(ballY + 1 > playerY && ballY + 1 < playerY + playerLength)
       {
         ballVectorX = -1;
+        playerScore++;
       }
       else if(ballY + 1 == playerY)
       {
         ballVectorX = -1;
         ballVectorY = -1;
+        playerScore++;
       }
     }
 
@@ -92,11 +94,13 @@ void updateBall()
       if(ballY - 1 > playerY && ballY - 1 < playerY + playerLength - 1)
       {
         ballVectorX = -1;
+        playerScore++;
       }
       else if(ballY - 1 == playerY + playerLength - 1)
       {
         ballVectorX = -1;
         ballVectorY = 1;
+        playerScore++;
       }
     }
   }
